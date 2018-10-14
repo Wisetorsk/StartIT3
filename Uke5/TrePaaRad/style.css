@@ -1,0 +1,67 @@
+.grid {
+    display: grid;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: aquamarine;
+    color: green;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    padding-top: auto;
+    padding-bottom: auto;
+    line-height: 100px;
+    font-size: 500%;
+    text-transform: uppercase;
+}
+
+#r0c0 {
+    grid-area: r0c0;
+}
+#r0c1 {
+    grid-area: r0c1;
+}
+#r0c2 {
+    grid-area: r0c2;
+}
+
+#r1c0 {
+    grid-area: r1c0;
+}
+#r1c1 {
+    grid-area: r1c1;
+}
+#r1c2 {
+    grid-area: r1c2;
+}
+
+#r2c0 {
+    grid-area: r2c0;
+}
+#r2c1 {
+    grid-area: r2c1;
+}
+#r2c2 {
+    grid-area: r2c2;
+}
+
+#textbox {
+    grid-area: textbox;
+}
+
+#gameBoard {
+    grid-area: gameBoard;
+    grid-template-areas: "r0c0 r0c1 r0c2"
+                         "r1c0 r1c1 r1c2"
+                         "r2c0 r2c1 r2c2";
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+}
+
+#contentWrapper {
+    grid-template-areas: "textbox"
+                         "gameBoard";
+    width: 140px;
+}
+
