@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <p>Ferdighet 6 - Sette sammen tekst av flere deler og bruke dette til å bygge HTML dynamisk</p>
+    <input id="sizeSlider" type="range" min="100" max="500" step="10" oninput="showDiv()" />
+    <br /> <input id="textInput" type="text" oninput="showDiv()" value="Endre teksten!" />
+    <select id="colorPicker" onchange="showDiv()">
+        <option value="red">Red Color</option>
+        <option value="blue">Blue Color</option>
+        <option selected value="green">Green Color</option>
+    </select>
+
+    <div id="resultat"></div>
+    <div id="resultatHtml" style="font-family: monospace"></div>
+
+    <script>
+        var resultatDiv = document.getElementById('resultat');
+        var resultatHtmlDiv = document.getElementById('resultatHtml');
+        var sizeSlider = document.getElementById('sizeSlider');
+        var textInput = document.getElementById('textInput');
+        var colorPicker = document.getElementById('colorPicker');
+
+        showDiv();
+
+        function showDiv() {
+            var size = sizeSlider.value;
+            var text = textInput.value;
+            var color = colorPicker.value;
+
+            var backgroundColor = 'background-color:' + color + ';';
+            var width = 'width:' + size + 'px;';
+            var height = 'height:' + size + 'px;';
+            var style = 'style="' + backgroundColor + width + height + '"';
+            resultatDiv.innerHTML = '<div ' + style + '>' + text + '</div';
+            resultatHtmlDiv.innerText = resultatDiv.innerHTML;
+        }
+    </script>
+</body>
+</html>

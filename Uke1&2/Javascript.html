@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="Script1.js"></script>
+    <title></title>
+    <style>
+        
+    </style>
+</head>
+<body onkeydown="testOnKeyDown()">
+    <h1>Quiz</h1>
+
+    <ol>Spørsmål: Hva er meningen med livet?
+        <li onclick="correct()">42</li>
+        <li id="nr 2" onclick="feil(id)">Døden</li>
+        <li id="nr 3" onclick="feil(id)">Ostehøvel</li>
+
+    </ol>
+    <p id="Svarvindu">Svarvindu</p>
+
+    <hr />
+
+    <h1>Alternative event handlers</h1>
+    <p>Denne delen viser bruk av alernative eventHandlers som "onLoad", "onChange", "onInput", "onMouseOver" og "onMouseOut".<br />F12 for å se console outputs</p>
+    <a href="https://www.w3schools.com/jsref/dom_obj_event.asp">Info</a>
+    <br />
+    <input type="text" onchange="testOnChange()" oninput="testOnInput()"/>
+    <h3 oncontextmenu="testOnContextMenu()" onmouseover="testOnMouseOver()" onmouseout="testOnMouseOut()" ondblclick="testOnDblClick()">TEST</h3>
+    <h2 id="info"></h2>
+
+
+    <hr />
+
+    <h2>Kodeordet "this"</h2>
+    <p>Denne gjør bruk av classes eller id unøvendig til å ref til elementet med, da 'this' sendes videre til den uncerliggende funksjonen, slik at den kan kontinuerlig refferere til det somme elementet.</p>
+    <h3 id="Test1" onclick="testThis(this)">Test1</h3>
+    <h3 id="Test2" onclick="testThis(this)">Test2</h3>
+    <button onclick="reset()">RESET</button>
+
+
+    <hr />
+
+</body>
+</html>

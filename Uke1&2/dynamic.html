@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <input id="width" type="range" min="1" max="1000" step="10" oninput="showDiv()"/>
+    <input id="height" type="range" min="1" max="1000" step="10" oninput="showDiv()"/>
+    <div id="area"><div id="result"></div></div>
+
+    <script>
+        var widthSlider = document.getElementById('width');
+        var heightSlider = document.getElementById('height');
+
+
+        //document.getElementById('result').style.color = "white";
+        var result = document.getElementById('result');
+        var area = document.getElementById('area');
+        result.style.color = "white";
+        result.style.textAlign = "center";
+        result.style.position = "absolute";
+        result.style.display = "flex";
+        result.style.justifyContent = "center";
+        result.style.alignItems = "center";
+        result.style.top = "0";
+        result.style.right = "0";
+        result.style.bottom = "0";
+        result.style.left = "0";
+        result.style.fontSize = "200%";
+
+        area.style.backgroundColor = "grey";
+        area.style.position = "relative";
+
+
+        showDiv();
+
+        function showDiv() {
+            var h = heightSlider.value;
+            var w = widthSlider.value;
+            area.style.width = w + 'px';
+            area.style.height = h + 'px';
+            document.getElementById('result').innerHTML = 'Area : ' + (h * w) + 'px<sup>2</sup>_C: ' + (h*2 + w*2) + 'px';
+        }
+
+    </script>
+</body>
+</html>
