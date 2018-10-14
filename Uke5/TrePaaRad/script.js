@@ -13,8 +13,12 @@ function check(element) {
                 field2.push(field[i]);
             }
         }
-
-        ((field2.length > 0) ? field2[Math.floor(Math.random() * field2.length)].innerHTML = 'O' : console.log('Game is over'));
+        var selected = Math.floor(Math.random() * field2.length);
+        if (field2.length > 0) {
+            field2[selected].innerHTML = 'O';
+            field2[selected].style.color = 'blue';
+            } else { console.log('Game is over');
+        }
 
 
     } else {
