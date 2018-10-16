@@ -12,6 +12,11 @@
     <p>
         Trykk på en vegg for å fjerne den.
     </p>
+    <ul>
+        <li><input type="number" id="numberX" value="5"/></li>
+        <li><input type="number" id="numberY" value="5"/></li>
+        <li><button onclick="new Labyrinth(document.getElementById('numberX').value, document.getElementById('numberY').value)">Ny Labyrint</button></li>
+    </ul>
     <table id="canvas"></table>
     <button class="button" id="randomButton" onclick="lab.randomize(document.getElementById('randomness').value/1000)">RANDOMIZE: 0.5%</button>
     <input id="randomness" type="range" max="1000" min="0" class="slider" oninput="document.getElementById('randomButton').innerHTML = 'RANDOMIZE: '+ document.getElementById('randomness').value/10 + '%'"/>
