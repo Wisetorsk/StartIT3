@@ -94,9 +94,11 @@ function terje(el) {
         el.classList.remove('off');
         interval = setInterval(party, 100);
         el.classList.add('on');
+        el.innerHTML = "Hva sa jeg?";
     } else {
         clearInterval(interval);
         el.classList.remove('on');
         el.classList.add('off');
+        el.innerHTML = "Ikke trykk på meg";
     }
 }
