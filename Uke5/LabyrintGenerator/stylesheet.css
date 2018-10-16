@@ -33,7 +33,9 @@ td.high {
     height: 40px;
 }
 
-
+#randomness {
+    width: 343px;
+}
 
 .button {
     background-color: #4CAF50; /* Green */
@@ -51,4 +53,3 @@ td.high {
 .button2 {
     background-color: #008CBA;
 }
-/* Blue */
