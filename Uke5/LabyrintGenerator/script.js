@@ -15,8 +15,6 @@ class Labyrinth {
         this.html = '';
         this.draw();
         this.loadMaze();
-        console.log(this.maze);
-        //this.randomize(0.45);
     }
 
     draw() {
