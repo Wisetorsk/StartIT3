@@ -8,6 +8,7 @@ class Labyrinth {
          * Draw the entire labyrinth with closed wass, and go through and remove to create path.
          * */
         this.x = x;
+        this.x++;
         this.y = y;
         this.maze = [];
 
