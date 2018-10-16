@@ -13,8 +13,8 @@
         Trykk på en vegg for å fjerne den.
     </p>
     <table id="canvas"></table>
-    <button class="button" id="randomButton" onclick="lab.randomize(document.getElementById('randomness').value/1000)">RANDOMIZE: 0.5</button>
-    <input id="randomness" type="range" max="1000" min="0" class="slider" oninput="document.getElementById('randomButton').innerHTML = 'RANDOMIZE: '+ document.getElementById('randomness').value/1000"/>
+    <button class="button" id="randomButton" onclick="lab.randomize(document.getElementById('randomness').value/1000)">RANDOMIZE: 0.5%</button>
+    <input id="randomness" type="range" max="1000" min="0" class="slider" oninput="document.getElementById('randomButton').innerHTML = 'RANDOMIZE: '+ document.getElementById('randomness').value/10 + '%'"/>
     <button class="button button2 off" onclick="terje(this)">Ikke trykk på meg</button>
 
     <p>
