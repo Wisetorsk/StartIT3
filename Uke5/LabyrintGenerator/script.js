@@ -81,7 +81,7 @@ function noWall(element) {
     
 
 function main() {
-    lab = new Labyrinth(10, 10);
+    lab = new Labyrinth(15, 15);
 
 }
 
