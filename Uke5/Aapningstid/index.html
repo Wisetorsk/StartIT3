@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    Dag: <input id="day" onchange="showDayAndTime()" type="range" min="1" max="7" /><br />
+    Time: <input id="hour" onchange="showDayAndTime()" type="range" min="0" max="23" /><br />
+    Minutter: <input id="minute" onchange="showDayAndTime()" type="range" min="0" max="59" /><br />
+
+    <div id="dayAndTime" style="padding-top: 20px;"></div>
+    <div id="status"></div>
+    <script type="text/javascript">
+        var dager = ['Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag', 'Søndag'];
+        function showDayAndTime() {
+            var div = document.getElementById('dayAndTime');
+            var day = document.getElementById('day').value;
+            var hour = document.getElementById('hour').value;
+            var minute = document.getElementById('minute').value;
+            var dayNo = parseInt(day);
+            var state = document.getElementById('status');
+            div.innerHTML = dager[dayNo - 1] + ': ' + hour + ':' + minute;
+            switch (dayNo) { // Switch med "fall through"
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                    if (hour >= 11 && hour < 18) {
+                        state.innerHTML = ' OPEN';
+                        break;
+                    }
+                case 5:
+                    if (hour >= 11 && hour < 18) {
+                        state.innerHTML = ' OPEN';
+                        break;
+                    } 
+                case 6:
+                    if (hour >= 11 && hour < 15) {
+                        state.innerHTML = ' OPEN';
+                        break;
+                    }
+                default:
+                    state.innerHTML = ' CLOSED';
+                    break;
+
+            }
+        }
+    </script>
+</body>
+</html>
