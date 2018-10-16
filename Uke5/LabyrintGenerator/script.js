@@ -1,4 +1,4 @@
-// JavaScript source code
+﻿// JavaScript source code
 var lab;
 var interval;
 
@@ -99,6 +99,6 @@ function terje(el) {
         clearInterval(interval);
         el.classList.remove('on');
         el.classList.add('off');
-        el.innerHTML = "Ikke trykk p� meg";
+        el.innerHTML = "Ikke trykk på meg";
     }
 }
