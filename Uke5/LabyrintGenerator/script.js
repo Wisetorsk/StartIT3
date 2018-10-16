@@ -5,7 +5,7 @@ var interval;
 class Labyrinth {
     constructor(x, y) {
         /*
-         * Draw the entire labyrinth with closed wass, and go through and remove to create path.
+         * Draw the entire labyrinth with closed walls.
          * */
         this.x = x;
         this.x++;
