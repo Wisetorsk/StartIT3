@@ -8,15 +8,18 @@
     <title></title>
 </head>
 <body onload="main()">
-    <table id="canvas">
-
-    </table>
+    <h1>Labyrint!</h1>
+    <p>
+        Trykk på en vegg for å fjerne den.
+    </p>
+    <table id="canvas"></table>
     <button class="button" onclick="lab.randomize(document.getElementById('randomness').value/1000)">RANDOMIZE</button>
     <input id="randomness" type="range" max="1000" min="0" class="slider" />
+    <button class="button button2 off" onclick="terje(this)">Ikke trykk på meg</button>
+
     <p>
         Dra i slideren og trykk på "randomize". Er slideren plassert til høyre, er det lav sjanse for at en vegg endrer seg. Er slideren plassert mot venstre er det høy sjanse.
     </p>
-    <button class="button button2" onclick="terje()">Ikke trykk på meg</button>
 
 </body>
 </html>

@@ -1,5 +1,6 @@
 // JavaScript source code
 var lab;
+var interval;
 
 class Labyrinth {
     constructor(x, y) {
@@ -87,6 +88,14 @@ function party() {
     lab.randomize(document.getElementById('randomness').value/1000);
 }
 
-function terje() {
-    setInterval(party, 100);
+function terje(el) {
+    if (el.classList.contains('off')) {
+        el.classList.remove('off');
+        interval = setInterval(party, 100);
+        el.classList.add('on');
+    } else {
+        clearInterval(interval);
+        el.classList.remove('on');
+        el.classList.add('off');
+    }
 }
