@@ -17,5 +17,21 @@
 
         </li>
     </ul>
+
+        <div id="0">Terning 0</div>
+        <div id="1">Terning 1</div>
+        <div id="2">Terning 2</div>
+        <div id="3">Terning 3</div>
+        <div id="4">Terning 4</div>
+        <div id="5">Terning 5</div>
+        <script>
+        var time = setInterval(draw, 10);
+
+        function draw() {
+            document.getElementById(Math.floor(Math.random() * 6)).innerHTML += '*';
+        }
+
+        </script>
+
 </body>
 </html>
