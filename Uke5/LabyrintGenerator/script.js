@@ -52,7 +52,7 @@ class Labyrinth {
 
     randomize(chance=.5) {
         for (var index = 0; index < this.maze.length; index++) {
-            if (Math.random() > chance) {
+            if (Math.random() <= chance) {
                 noWall(this.maze[index]);
             }
         }
