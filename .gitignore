@@ -8,3 +8,4 @@
 *.sqlite
 .vs/StartIT3/v15/.suo
 .vs/VSWorkspaceState.json
+*.sqlite
