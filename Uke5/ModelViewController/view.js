@@ -22,7 +22,7 @@ class UI {
         }
         this.html += '<tr>';
         for (var i in createArray(this.width)) {
-            this.html += '<td class="' + content[i] + '">' + '</td>'
+            this.html += '<td class="' + content[i] + '" onclick=show(this)>' + '</td>'
         }
         this.html += '</tr>';
     }

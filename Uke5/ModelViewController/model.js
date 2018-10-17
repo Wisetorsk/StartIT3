@@ -1,5 +1,4 @@
 // JavaScript source code
-//DATA
 
 class Cell {
     constructor(x, y, isBomb = false, bombsNear = false, isOpen = false, flag = false) {
