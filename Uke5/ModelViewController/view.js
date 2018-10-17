@@ -11,18 +11,22 @@ class UI {
         this.board = board;
         this.html = '';
         this.classes = [];
+        this.bombs = [];
+
         this.loadClasses();
+        this.loadNearbyBombs();
         this.buildBoard();
+        
     }
 
-    buildRow(content) {
+    buildRow(content, bombsNear) {
         //Content is an array of cell object class list formatted as string with spaces
         if (this.width !== content.length) {
             throw "Width does not match classlist length";
         }
         this.html += '<tr>';
         for (var i in createArray(this.width)) {
-            this.html += '<td class="' + content[i] + '" onclick=show(this)>' + '</td>'
+            this.html += '<td class="' + content[i] + '" onclick=show(this)>' + bombsNear[i] + '</td>'
         }
         this.html += '</tr>';
     }
@@ -46,10 +50,20 @@ class UI {
     buildBoard() {
         this.html += '<table>';
         for (var i in createArray(this.height)) {
-            this.buildRow(this.classes[i]);
+            this.buildRow(this.classes[i], this.bombs[i]);
         }
         this.html += '</table>';
         document.getElementById('board').innerHTML = this.html;
     }
-    
+
+    loadNearbyBombs() {
+        for (var x in createArray(this.width)) {
+            var rowBombs = [];
+            for (var y in createArray(this.height)) {
+                rowBombs.push(this.board.playfield[x][y].bombsNear);
+            }
+            this.bombs.push(rowBombs);
+        }
+    }
+
 }

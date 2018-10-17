@@ -7,6 +7,8 @@
     height: 50px;
     background-color: black;
     border: 2px white solid;
+    color: yellow;
+    text-align: center;
 }
 
 .notOpen {
@@ -23,4 +25,13 @@
 
 .isFlag {
 
+}
+
+.isBomb {
+    /*background-color: red;*/
+    text-decoration: underline;
+}
+
+.notBomb {
+    
 }
