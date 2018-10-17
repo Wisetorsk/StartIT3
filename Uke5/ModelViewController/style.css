@@ -1,0 +1,26 @@
+﻿body
+{
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    border: 2px white solid;
+}
+
+.notOpen {
+
+}
+
+.isOpen {
+
+}
+
+.notFlag {
+
+}
+
+.isFlag {
+
+}
