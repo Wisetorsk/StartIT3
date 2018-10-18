@@ -1,5 +1,3 @@
-// Globals
-
 
 //Object definitions
 class Controller {
@@ -8,12 +6,4 @@ class Controller {
         this.ui = new UI(xDim, yDim, this.board);
     }
 
-    uncoverClose(selectedElement) {
-        /*
-         * Uncover all cells close to the one selected, if the close cell is also empty, uncover next layer
-         */
-        var close = closeIndex(selectedElement.x, selectedElement.y, xDim, yDim);
-
-        console.log(close);
-    }
 }
