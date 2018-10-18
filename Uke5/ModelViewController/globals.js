@@ -1,5 +1,6 @@
 // Global variables and functions
-var bombs = [
+
+var bombs = [ //Usable to manually place bombs
     { x: 5, y: 6 },
     { x: 7, y: 1 }
 ];
@@ -33,28 +34,23 @@ function closeIndex(x, y, xMax, yMax, xMin = 0, yMin = 0) {
     var closeIndexes = [
         { xClose: x - 1, yClose: y },
         { xClose: x + 1, yClose: y },
-
         { xClose: x - 1, yClose: y + 1 },
         { xClose: x + 1, yClose: y + 1 },
         { xClose: x - 1, yClose: y - 1 },
         { xClose: x + 1, yClose: y - 1 },
-
         { xClose: x, yClose: y - 1 },
         { xClose: x, yClose: y + 1 }
     ];
-
     for (var index in closeIndexes) {
         if (!(closeIndexes[index].xClose < xMin || closeIndexes[index].xClose >= xMax || closeIndexes[index].yClose < yMin || closeIndexes[index].yClose >= yMax)) {
             newIndexes.push(closeIndexes[index]);
         }
     }
-
     return newIndexes;
 }
 
-
-//MAIN
-
+//Main
 function main() {
-    game = new Controller();
+    game = new Controller(10,10,20);
+    
 }

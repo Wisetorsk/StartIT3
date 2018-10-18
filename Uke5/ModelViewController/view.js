@@ -1,6 +1,3 @@
-// JavaScript source code
-//UI
-
 class UI {
 
     /*Builds and manages the ui window*/
@@ -54,8 +51,13 @@ class UI {
         for (var i in createArray(this.height)) {
             this.buildRow(this.classes[i], this.bombs[i]);
         }
-        this.html += '</table><div id="Scoreboard">Scoreboard</div>';
+        this.html += '</table>';
         document.getElementById('board').innerHTML = this.html;
+        var newDiv = document.createElement('div');
+        newDiv.id = "score";
+        var node = document.createTextNode("SCOREBOARD");
+        newDiv.appendChild(node);
+        document.body.appendChild(newDiv);
     }
 
     loadNearbyBombs() {
@@ -69,7 +71,7 @@ class UI {
     }
 
     gameOver() {
-        var scoreBoard = document.getElementById('Scoreboard');
+        var scoreBoard = document.getElementById('score');
         this.uncoverAll();
         scoreBoard.innerHTML = "GAME OVER!";
         scoreBoard.style.fontSize = "300%";
@@ -98,10 +100,10 @@ class UI {
             console.log('This one is empty');
             for (var index in closeIndexes) {
                 var selected = document.getElementById('x' + closeIndexes[index].xClose + 'y' + closeIndexes[index].yClose);
+                
                 selected.classList.add("isOpen");
-                element.classList.remove("notOpen");
+                selected.classList.remove("notOpen");
             }
         }
     }
-
 }
