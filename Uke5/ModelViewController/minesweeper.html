@@ -14,7 +14,20 @@
 
 
 </head>
-<body onload="main()">
-    <div id="board"></div>
+<body >
+    <div class="wrapper" id="mainPage">
+        <div id="userInputField">
+                X-Width:
+                <input type="number" value="10" id="xInput" /><br />
+                Y-height:
+                <input type="number" value="10" id="yInput" /><br />
+                Bombs:
+                <input type="number" value="10" id="bombs" /><br />
+                <br />
+                <button onclick="main()">GENERATE</button>
+        </div>
+        <div id="board"></div>
+    </div>
+    
 </body>
 </html>

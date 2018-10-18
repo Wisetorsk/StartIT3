@@ -51,6 +51,10 @@ function closeIndex(x, y, xMax, yMax, xMin = 0, yMin = 0) {
 
 //Main
 function main() {
-    game = new Controller(10,10,20);
+    let numberOfBombs = parseInt(document.getElementById("bombs").value);
+    let numberOfCellsX = parseInt(document.getElementById("xInput").value);
+    let numberOfCellsY = parseInt(document.getElementById("yInput").value);
+    console.log(numberOfCellsX);
+    game = new Controller(numberOfCellsX, numberOfCellsY, numberOfBombs);
     
 }

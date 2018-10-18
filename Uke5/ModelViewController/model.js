@@ -85,6 +85,5 @@ class Board {
         }
         this.playfield[x][y].bombsNear = numberOfBombs;
     }
-
 }
 

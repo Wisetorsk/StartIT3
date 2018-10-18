@@ -1,6 +1,18 @@
 ﻿#board
 {
+    grid-area: board;
     user-select: none;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-areas: "userInputField" "board";
+}
+
+#userInputField {
+    grid-area: userInputField;
+    width: 100%;
+    height: 200px;
 }
 
 .cell {
