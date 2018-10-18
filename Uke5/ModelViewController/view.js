@@ -20,6 +20,9 @@ class UI {
     buildRow(content, bombsNear) {
         //Content is an array of cell object class list formatted as string with spaces
         if (this.width !== content.length) {
+            console.log('width: ' + this.width);
+            console.log('content length: ' + content.length);
+            console.log('content: ' + content);
             throw "Width does not match classlist length";
         }
         this.html += '<tr>';
@@ -38,7 +41,7 @@ class UI {
                 classes += 'n' + (current.bombsNear + ' ');
                 classes += (((current.isBomb) ? 'is' : 'not') + 'Bomb ');
                 classes += (((current.isOpen) ? 'is' : 'not') + 'Open ');
-                classes += (((current.flag) ? 'is' : 'not') + 'Flag ');
+                classes += (((current.flag) ? 'is' : 'not') + 'Flag');
                 classes += ('"id="x' + x + 'y' + y + '"');
                 classRow.push(classes);
             }
@@ -53,11 +56,17 @@ class UI {
         }
         this.html += '</table>';
         document.getElementById('board').innerHTML = this.html;
-        var newDiv = document.createElement('div');
-        newDiv.id = "score";
-        var node = document.createTextNode("SCOREBOARD");
-        newDiv.appendChild(node);
-        document.body.appendChild(newDiv);
+        if (!document.getElementById('score')) {
+            var newDiv = document.createElement('div');
+            newDiv.id = "score";
+            var node = document.createTextNode("SCOREBOARD");
+            newDiv.appendChild(node);
+            document.body.appendChild(newDiv);
+        } else {
+            document.getElementById("score").innerHTML = "SCOREBOARD";
+            document.getElementById("score").style = "100%";
+        }
+
     }
 
     loadNearbyBombs() {

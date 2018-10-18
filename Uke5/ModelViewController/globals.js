@@ -54,7 +54,6 @@ function main() {
     let numberOfBombs = parseInt(document.getElementById("bombs").value);
     let numberOfCellsX = parseInt(document.getElementById("xInput").value);
     let numberOfCellsY = parseInt(document.getElementById("yInput").value);
-    console.log(numberOfCellsX);
     game = new Controller(numberOfCellsX, numberOfCellsY, numberOfBombs);
     
 }
