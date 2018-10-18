@@ -1,5 +1,6 @@
 ﻿body
 {
+    user-select: none;
 }
 
 .cell {
@@ -18,7 +19,6 @@
 }
 
 .notFlag {
-
 }
 
 .isFlag {
