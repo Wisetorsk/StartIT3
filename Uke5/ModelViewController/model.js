@@ -78,25 +78,7 @@ class Board {
 
     closeBombs(x, y) {
         var numberOfBombs = 0;
-        var closeIndexes = [
-            { xClose: x - 1, yClose: y },
-            { xClose: x + 1, yClose: y },
-            { xClose: x, yClose: y - 1 },
-            { xClose: x, yClose: y + 1 }
-        ];
-
-        if (x === 0) {
-            closeIndexes.splice(0, 1);
-        } else if (x === this.xDim-1) {
-            closeIndexes.splice(1, 1)
-        }
-
-        if (y === 0) {
-            closeIndexes.splice(-2, 1);
-        } else if (y === this.yDim-1) {
-            closeIndexes.splice(-1, 1);
-        }
-
+        var closeIndexes = closeIndex(x, y, this.xDim, this.yDim);
         for (var index in closeIndexes) {
             
             if (this.playfield[closeIndexes[index].xClose][closeIndexes[index].yClose].isBomb) {
@@ -108,10 +90,3 @@ class Board {
 
 }
 
-function randInt(n) {
-    return Math.floor(Math.random() * n);
-}
-
-function createArray(n) {
-    return Array.from(Array(n).keys());
-}

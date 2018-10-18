@@ -5,19 +5,14 @@
 .cell {
     width: 50px;
     height: 50px;
-    background-color: black;
-    border: 2px white solid;
-    color: yellow;
+    background-color: grey;
+    border: 2px black solid;
+    color: grey;
     text-align: center;
+    font-size: 150%;
 }
 
-.notOpen {
 
-}
-
-.isOpen {
-    background-color: white;
-}
 
 .notFlag {
 
@@ -27,11 +22,12 @@
 
 }
 
-.isBomb {
-    /*background-color: red;*/
-    text-decoration: underline;
+.isBomb.isOpen{
+    background-image: url(img/bomb.png);
+    background-size: contain;
 }
 
-.notBomb {
-    
+.isOpen{
+    background-color: white;
 }
+

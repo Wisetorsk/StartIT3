@@ -16,7 +16,8 @@ class UI {
         this.loadClasses();
         this.loadNearbyBombs();
         this.buildBoard();
-        
+
+        this.cells = document.getElementsByTagName("td");
     }
 
     buildRow(content, bombsNear) {
@@ -26,7 +27,7 @@ class UI {
         }
         this.html += '<tr>';
         for (var i in createArray(this.width)) {
-            this.html += '<td class="' + content[i] + '" onclick=show(this)>' + bombsNear[i] + '</td>'
+            this.html += '<td class="' + content[i] + '" onclick=show(this)>' + ((content[i].includes("isBomb")) ? "" : bombsNear[i]) + '</td>'
         }
         this.html += '</tr>';
     }
@@ -52,7 +53,7 @@ class UI {
         for (var i in createArray(this.height)) {
             this.buildRow(this.classes[i], this.bombs[i]);
         }
-        this.html += '</table>';
+        this.html += '</table><div id="Scoreboard">Scoreboard</div>';
         document.getElementById('board').innerHTML = this.html;
     }
 
@@ -63,6 +64,23 @@ class UI {
                 rowBombs.push(this.board.playfield[x][y].bombsNear);
             }
             this.bombs.push(rowBombs);
+        }
+    }
+
+    gameOver() {
+        var scoreBoard = document.getElementById('Scoreboard');
+        this.uncoverAll();
+        scoreBoard.innerHTML = "GAME OVER!";
+        scoreBoard.style.fontSize = "300%";
+    }
+
+    uncoverAll() {
+        try {
+            for (var index in this.cells) {
+                this.cells[index].classList.add("isOpen");
+            }
+        } catch (err) {
+            console.log(err);
         }
     }
 
