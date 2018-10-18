@@ -8,11 +8,14 @@
     background-color: grey;
     border: 2px black solid;
     color: grey;
+    font-family: Impact;
     text-align: center;
     font-size: 150%;
 }
 
-
+.cell:hover {
+    cursor: pointer;
+}
 
 .notFlag {
 
@@ -31,3 +34,38 @@
     background-color: white;
 }
 
+.n0.isOpen {
+    color: white;
+}
+
+.n1.isOpen {
+    color: blue;
+}
+
+.n2.isOpen {
+    color: green;
+}
+
+.n3.isOpen {
+    color: red;
+}
+
+.n4.isOpen {
+    color: purple;
+}
+
+.n5.isOpen {
+    color: maroon;
+}
+
+.n6.isOpen {
+    color: turquoise;
+}
+
+.n7.isOpen {
+    color: Black;
+}
+
+.n8.isOpen {
+    color: brown;
+}

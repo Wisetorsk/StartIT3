@@ -38,10 +38,11 @@ class UI {
             for (var y in createArray(this.height)) {
                 var classes = "cell ";
                 var current = this.board.playfield[x][y];
-                
+                classes += 'n' + (current.bombsNear + ' ');
                 classes += (((current.isBomb) ? 'is' : 'not') + 'Bomb ');
                 classes += (((current.isOpen) ? 'is' : 'not') + 'Open ');
                 classes += (((current.flag) ? 'is' : 'not') + 'Flag ');
+                classes += ('"id="x' + x + 'y' + y + '"');
                 classRow.push(classes);
             }
             this.classes.push(classRow);
@@ -81,6 +82,25 @@ class UI {
             }
         } catch (err) {
             console.log(err);
+        }
+    }
+
+    uncoverClose(element) {
+        console.log("uncover");
+        var positionString = element.id;
+        var x = parseInt(positionString[1]);
+        var y = parseInt(positionString[3]);
+        console.log(x, y);
+        var closeIndexes = closeIndex(x, y, this.width, this.height);
+        console.log(closeIndexes);
+        
+        if (element.classList.contains("n0")) {
+            console.log('This one is empty');
+            for (var index in closeIndexes) {
+                var selected = document.getElementById('x' + closeIndexes[index].xClose + 'y' + closeIndexes[index].yClose);
+                selected.classList.add("isOpen");
+                element.classList.remove("notOpen");
+            }
         }
     }
 

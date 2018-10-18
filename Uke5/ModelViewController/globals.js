@@ -10,7 +10,7 @@ function show(element) {
     if (element.classList.contains('notOpen')) {
         element.classList.remove("notOpen");
         element.classList.add("isOpen");
-        //game.uncoverClose(element);
+        game.ui.uncoverClose(element);
         if (element.classList.contains("isBomb")) {
             game.ui.gameOver();
         }
