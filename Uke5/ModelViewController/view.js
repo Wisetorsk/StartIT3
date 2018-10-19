@@ -27,7 +27,7 @@ class UI {
         }
         this.html += '<tr>';
         for (var i in createArray(this.width)) {
-            this.html += '<td class="' + content[i] + '" onclick=show(this)>' + ((content[i].includes("isBomb")) ? "" : bombsNear[i]) + '</td>'
+            this.html += '<td class="' + content[i] + '" onclick="show(this)" onContextMenu="flagCell(this)">' + ((content[i].includes("isBomb")) ? "" : bombsNear[i]) + '</td>'
         }
         this.html += '</tr>';
     }
@@ -109,10 +109,14 @@ class UI {
             console.log('This one is empty');
             for (var index in closeIndexes) {
                 var selected = document.getElementById('x' + closeIndexes[index].xClose + 'y' + closeIndexes[index].yClose);
+                if (selected.classList.contains("notOpen") && !selected.classList.contains("isFlag")) {
+                    selected.classList.add("isOpen");
+                    selected.classList.remove("notOpen");
+                    
+                }
+             }
                 
-                selected.classList.add("isOpen");
-                selected.classList.remove("notOpen");
-            }
+            
         }
     }
 }

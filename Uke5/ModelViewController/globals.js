@@ -8,7 +8,7 @@ var game;
 
 
 function show(element) {
-    if (element.classList.contains('notOpen')) {
+    if (element.classList.contains('notOpen') && !element.classList.contains("isFlag")) {
         element.classList.remove("notOpen");
         element.classList.add("isOpen");
         game.ui.uncoverClose(element);
@@ -17,6 +17,18 @@ function show(element) {
         }
     } else {
         console.log('Already open');
+    }
+}
+
+function flagCell(element) {
+    if (element.classList.contains("notFlag") && element.classList.contains("notOpen")) {
+        console.log("Flag: " + element.id);
+        element.classList.add("isFlag");
+        element.classList.remove("notFlag");
+    } else if (element.classList.contains("isFlag") && element.classList.contains("notOpen")) {
+        console.log("Unflag: " + element.id);
+        element.classList.add("notFlag");
+        element.classList.remove("isFlag");
     }
 }
 
@@ -50,7 +62,10 @@ function closeIndex(x, y, xMax, yMax, xMin = 0, yMin = 0) {
 }
 
 //Main
-function main() {
+function main(seed) {
+    if (seed) {
+        console.log("seed: " + seed);
+    }
     let numberOfBombs = parseInt(document.getElementById("bombs").value);
     let numberOfCellsX = parseInt(document.getElementById("xInput").value);
     let numberOfCellsY = parseInt(document.getElementById("yInput").value);

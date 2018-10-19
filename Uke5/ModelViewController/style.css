@@ -35,12 +35,21 @@
 }
 
 .isFlag {
-
+    background-image: url(img/flag.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+    color: transparent;
 }
 
-.isBomb.isOpen{
+    .isFlag.isBomb.isOpen {
+        background-image: url(img/flag.png), url(img/bomb.png);
+    }
+
+.isBomb.isOpen {
     background-image: url(img/bomb.png);
     background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .isOpen{
