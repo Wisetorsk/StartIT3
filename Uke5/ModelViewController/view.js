@@ -107,9 +107,9 @@ class UI {
         
         if (element.classList.contains("n0")) {
             console.log('This one is empty');
-            for (var index in closeIndexes) {
+            for (var index in closeIndexes) { //Recursive portion? 
                 var selected = document.getElementById('x' + closeIndexes[index].xClose + 'y' + closeIndexes[index].yClose);
-                if (selected.classList.contains("notOpen") && !selected.classList.contains("isFlag")) {
+                if (selected.classList.contains("notOpen") && !selected.classList.contains("isFlag") && !selected.classList.contains("isBomb")) {
                     selected.classList.add("isOpen");
                     selected.classList.remove("notOpen");
                     
