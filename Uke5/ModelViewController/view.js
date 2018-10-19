@@ -122,7 +122,7 @@ class UI {
                     selected.click();
                     selected.classList.add("isOpen");
                     selected.classList.remove("notOpen");
-                    
+                    // Push Update
                 }
              }
                 
