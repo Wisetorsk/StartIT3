@@ -25,6 +25,7 @@ function flagCell(element) {
         console.log("Flag: " + element.id);
         element.classList.add("isFlag");
         element.classList.remove("notFlag");
+        game.ui.checkComplete();
     } else if (element.classList.contains("isFlag") && element.classList.contains("notOpen")) {
         console.log("Unflag: " + element.id);
         element.classList.add("notFlag");

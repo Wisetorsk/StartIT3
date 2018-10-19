@@ -96,6 +96,22 @@ class UI {
         }
     }
 
+    checkComplete() {
+        console.log(this.cells.length);
+        for (var index in createArray(this.cells.length)) {
+            console.log(this.cells[index]);
+            if (this.cells[index].classList.contains("isBomb") && this.cells[index].classList.contains("isFlag")) {
+                continue;
+            } else if (this.cells[index].classList.contains("isBomb") && this.cells[index].classList.contains("notFlag")) {
+                return;
+            }
+        }
+        console.log("Game complete");
+        document.getElementById('score').innerHTML = 'GRATULERER!';
+        document.getElementById('score').style.fontSize = "300%";
+        this.uncoverAll();
+    }
+
     uncoverClose(element) {
         console.log("uncover");
         var positionString = element.id;
