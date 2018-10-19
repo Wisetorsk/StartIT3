@@ -119,9 +119,10 @@ class UI {
             for (var index in closeIndexes) { //Recursive portion? 
                 var selected = document.getElementById('x' + closeIndexes[index].xClose + 'y' + closeIndexes[index].yClose);
                 if (selected.classList.contains("notOpen") && !selected.classList.contains("isFlag") && !selected.classList.contains("isBomb")) {
+                    selected.click();
                     selected.classList.add("isOpen");
                     selected.classList.remove("notOpen");
-                    selected.click();
+                    
                 }
              }
                 
