@@ -1,4 +1,9 @@
-﻿#board
+﻿html {
+    background-image: url(img/bakgrunn.jpg);
+
+}
+
+#board
 {
     grid-area: board;
     user-select: none;
@@ -7,6 +12,13 @@
 .cell:hover {
     box-shadow: 5px 5px 50px black;
     border: 2px dashed black;
+}
+
+ #txt {
+    background-color: rgba(193, 193, 193, 0.43);
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
 }
 
 .wrapper {

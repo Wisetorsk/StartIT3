@@ -27,13 +27,14 @@
                 <input class="userinput" type="number" value="10" id="bombs" /><br />
                 <br />
                 <button onclick="main(1234)">GENERATE</button>
-            <p><h2><u>Slik spiller man:</u></h2>Først fyller du inn antall celler vertikalt og horisontalt.
+            <div id="txt"><p><h2><u>Slik spiller man:</u></h2>Først fyller du inn antall celler vertikalt og horisontalt.
             Fyll også inn ønsket antall miner i spillbrettet, så trykker du på gererate. 
             Når spillbrettet er dannet, trykker du på en villkårlig celle. Hvis denne cellen er en mine, er spillet over. Hvis cellen
             er tom, vil celleinholdet vises. Hvis det er én eller flere miner i noen av cellene nærmest den valgte, vil dette vises som ett tall
             i cellen. Hvis du mistenker at en celle inneholder en mine, kan du høyreklikke over cellen for å 
             plassere ett varselflagg på cellen. Denne kan nå ikke lenger vises hvis du trykker på den. For å fjerne flagget
             trykker du bare på høyreklikk over cellen igjen. Hvis alle miner har flagg over seg, vinner du.</p>
+            </div>
         </div>
         <div id="textField"><h1>MINESWEEPER</h1></div>
         <div id="board" oncontextmenu="return false"></div>
