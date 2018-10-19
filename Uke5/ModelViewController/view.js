@@ -61,7 +61,7 @@ class UI {
             newDiv.id = "score";
             var node = document.createTextNode("SCOREBOARD");
             newDiv.appendChild(node);
-            document.body.appendChild(newDiv);
+            document.getElementById("userInputField").appendChild(newDiv);
         } else {
             document.getElementById("score").innerHTML = "SCOREBOARD";
             document.getElementById("score").style = "100%";
