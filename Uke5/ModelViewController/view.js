@@ -97,12 +97,10 @@ class UI {
     }
 
     checkComplete() {
-        console.log(this.cells.length);
         for (var index in createArray(this.cells.length)) {
-            console.log(this.cells[index]);
             if (this.cells[index].classList.contains("isBomb") && this.cells[index].classList.contains("isFlag")) {
                 continue;
-            } else if (this.cells[index].classList.contains("isBomb") && this.cells[index].classList.contains("notFlag")) {
+            } else if (this.cells[index].classList.contains("isBomb") && this.cells[index].classList.contains("notFlag") || this.cells[index].classList.contains("notBomb") && this.cells[index].classList.contains("isFlag") ) {
                 return;
             }
         }
@@ -113,16 +111,11 @@ class UI {
     }
 
     uncoverClose(element) {
-        console.log("uncover");
         var positionString = element.id;
         var x = parseInt(positionString[1]);
         var y = parseInt(positionString[3]);
-        console.log(x, y);
         var closeIndexes = closeIndex(x, y, this.width, this.height);
-        console.log(closeIndexes);
-        
         if (element.classList.contains("n0")) {
-            console.log('This one is empty');
             for (var index in closeIndexes) { //Recursive portion? 
                 var selected = document.getElementById('x' + closeIndexes[index].xClose + 'y' + closeIndexes[index].yClose);
                 if (selected.classList.contains("notOpen") && !selected.classList.contains("isFlag") && !selected.classList.contains("isBomb")) {
@@ -132,7 +125,6 @@ class UI {
                 }
              }
                 
-            
         }
     }
 }

@@ -30,6 +30,8 @@ function flagCell(element) {
         console.log("Unflag: " + element.id);
         element.classList.add("notFlag");
         element.classList.remove("isFlag");
+        game.ui.checkComplete();
+
     }
 }
 
