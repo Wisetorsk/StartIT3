@@ -5,8 +5,14 @@
     <meta charset="utf-8" />
     <title></title>
     <link rel="stylesheet" href="attractor.css" />
+    <script type="text/javascript" src="attractor.js"></script>
 </head>
-<body>
-    <canvas id="lorenz" width="500" height="500"></canvas>
+<body onload="main()">
+    <canvas id="lorenz" width="800" height="800">
+
+    </canvas>
+    <script>
+        var lor = setInterval(oneFrame, 10);
+    </script>
 </body>
 </html>
