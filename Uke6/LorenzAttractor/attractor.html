@@ -18,21 +18,24 @@
 
         <div class="block wrapper" id="inputField">
             <div id="title" class="block">Interaktiv Lorenz Funksjon</div>
-            <div id="pageText" class="block"><p>
-            <div id="math">
-                Dette er en interaktiv 2d representasjon av den matematiske funksjonen kjent som "Lorenz Attractor".<br />
-                z koordinatet representeres som punktets størrelse i animasjonen. 
-                $$
-                {dx\over dt} \begin{align} = \sigma(x - y)\\ \end{align}
-                $$
-                $$
-                {dy\over dt} \begin{align} = x(\rho - z) - y\\ \end{align}
-                $$    
-                $$
-                {dz\over dt} \begin{align} = xy-\beta z\\ \end{align}
-                $$
-                </div>
-</p></div>
+            <div id="pageText" class="block">
+                <p>
+                    <div id="math">
+                        Dette er en interaktiv 2d representasjon av den matematiske funksjonen kjent som "Lorenz Attractor".<br />
+                        z koordinatet representeres som punktets størrelse i animasjonen. Merk at når du trykker på refresh, settes kurven til <br />
+                        &#961;: 28, &#946;: 10, &#120590;: 8/3
+                        $$
+                        {dx\over dt} \begin{align} = \sigma(x - y)\\ \end{align}
+                        $$
+                        $$
+                        {dy\over dt} \begin{align} = x(\rho - z) - y\\ \end{align}
+                        $$
+                        $$
+                        {dz\over dt} \begin{align} = xy-\beta z\\ \end{align}
+                        $$
+                    </div>
+                </p>
+            </div>
             <ul id="inputList" class="block">
                 <li id="rhoField"><input type="range" value="28" id="rho" min="0" max="75" step="0.01" oninput="updateView(this)" />&#961;: <span id="rhoDisplay">28</span></li>
                 <li id="sigmaField"><input type="range" value="15" id="sigma" min="0" max="50" step="0.01" oninput="updateView(this)" />&#946;: <span id="sigmaDisplay">10</span></li>
