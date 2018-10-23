@@ -6,13 +6,59 @@
     <title></title>
     <link rel="stylesheet" href="attractor.css" />
     <script type="text/javascript" src="attractor.js"></script>
-</head>
-<body onload="main()">
-    <canvas id="lorenz" width="800" height="800">
+    <script defer src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-    </canvas>
+</head>
+<body onload="">
+    <div class="wrapper" id="pageContent">
+
+        <div class="block" id="viewWindow">
+            <canvas id="lorenz" width="800" height="800"></canvas>
+        </div>
+
+        <div class="block wrapper" id="inputField">
+            <div id="title" class="block">Interaktiv Lorenz Funksjon</div>
+            <div id="pageText" class="block"><p>
+            <div id="math">
+                Dette er en interaktiv 2d representasjon av den matematiske funksjonen kjent som "Lorenz Attractor".<br />
+                z koordinatet representeres som punktets størrelse i animasjonen. 
+                $$
+                {dx\over dt} \begin{align} = \sigma(x - y)\\ \end{align}
+                $$
+                $$
+                {dy\over dt} \begin{align} = x(\rho - z) - y\\ \end{align}
+                $$    
+                $$
+                {dz\over dt} \begin{align} = xy-\beta z\\ \end{align}
+                $$
+                </div>
+</p></div>
+            <ul id="inputList" class="block">
+                <li id="rhoField"><input type="range" value="28" id="rho" min="0" max="75" step="0.01" oninput="updateView(this)" />&#961;: <span id="rhoDisplay">28</span></li>
+                <li id="sigmaField"><input type="range" value="15" id="sigma" min="0" max="50" step="0.01" oninput="updateView(this)" />&#946;: <span id="sigmaDisplay">10</span></li>
+                <li id="betaField"><input type="range" value="3" id="beta" min="-1" max="25" step="0.01" oninput="updateView(this)" />&#120590;: <span id="betaDisplay">8/3</span></li>
+                <li id="buttonField"><button id="submitButton" onclick="refresh()">Refresh</button></li>
+            </ul>
+        </div>
+
+    </div>
+
     <script>
+        var lorenz = new Lorenz();
+        function updateView(callElement) {
+            lorenz.updateVariable(callElement.id, callElement.value);
+            document.getElementById(callElement.id + "Display").innerHTML = callElement.value;
+        }
+
+        function oneFrame() {
+            lorenz.updateFrame();
+        }
+
+        function refresh() {
+            lorenz = new Lorenz();
+        }
         var lor = setInterval(oneFrame, 10);
+
     </script>
 </body>
 </html>

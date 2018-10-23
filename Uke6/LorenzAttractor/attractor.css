@@ -6,3 +6,47 @@ canvas {
     border: 2px solid black;
     background-color: black;
 }
+
+input {
+    width: 800px;
+}
+
+ul {
+    list-style: none;
+}
+
+
+#pageContent {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "viewWindow inputField";
+}
+
+#viewWindow {
+    grid-area: viewWindow;
+}
+
+#inputField {
+    grid-area: inputField;
+    display: grid;
+    grid-template-areas: "title" "pageText" "pageText" "inputList";
+}
+
+#title {
+    grid-area: title;
+    font-size: 300%;
+    text-decoration: underline;
+}
+
+#pageText {
+    grid-area: pageText;
+}
+
+#inputList {
+    grid-area: inputList;
+}
+
+#math {
+    float: left;
+}

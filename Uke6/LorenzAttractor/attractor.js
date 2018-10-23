@@ -1,5 +1,4 @@
 // JavaScript source code
-let lorenz;
 let anim;
 
 class Lorenz {
@@ -19,6 +18,7 @@ class Lorenz {
         this.ctx = this.canvas.getContext("2d");
      
         this.ctx.fillStyle = '#FFFFFFFF';
+        this.ctx.clearRect(0, 0, 800, 800);
     }
 
 
@@ -31,13 +31,22 @@ class Lorenz {
         //console.log("X value: %s \n Y value: %s \n Z value: %s", this.x, this.y, this.z);
     }
 
+    updateVariable(variable, value) {
+        switch (variable) {
+            case "rho":
+                this._rho = value;
+                break;
+            case "sigma":
+                this._sigma = value;
+                break;
+            case "beta":
+                this._beta = value;
+                break;
+            default:
+                console.log("Error in parsing");
+                break;
+        }
+    }
+
 }
 
-
-function oneFrame() {
-        lorenz.updateFrame();
-}
-
-function main() {
-    lorenz = new Lorenz();
-}
