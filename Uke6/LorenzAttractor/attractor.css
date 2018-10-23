@@ -9,6 +9,14 @@ canvas {
     background-color: black;
 }
 
+a:visited {
+    color: white;
+}
+
+a:active {
+    color: yellow;
+}
+
 input {
     width: 800px;
 }
