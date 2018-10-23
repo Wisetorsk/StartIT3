@@ -2,7 +2,7 @@
 let anim;
 
 class Lorenz {
-    constructor(rho = 28, sigma = 10, beta = 8 / 3, step = 0.01, frameTime = 50) {
+    constructor(rho = 28, sigma = 10, beta = 8 / 3, step = 0.005, frameTime = 50) {
         this._rho = rho;
         this._sigma = sigma;
         this._beta = beta;
