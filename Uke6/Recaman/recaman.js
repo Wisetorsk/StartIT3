@@ -35,6 +35,7 @@ class Recaman {
     }
 }
 
+//Update this
 
 class Palette {
     /* This class draws and animates the canvas */
