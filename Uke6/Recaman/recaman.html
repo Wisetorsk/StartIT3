@@ -15,20 +15,19 @@
         </div>
 
         <div class="block" id="easel">
-            <canvas width="1890" height="900" id="recamanCanvas"></canvas>
+            <canvas width="1890" height="600" id="recamanCanvas"></canvas>
         </div>
 
         <div class="block" id="dataWindow">
-            <button onclick="oneStep()">STEP</button>
         </div>
     </div>
     <script>
         let painter = new Painter("recamanCanvas");
-        for (var x = 0; x < 300; x++) { painter.animateOneStep();}
+        //for (var x = 0; x < 300; x++) { painter.animateOneStep();}
         function oneStep() {
             painter.animateOneStep();
-            console.log("STEP");
         }
+        let x = setInterval(oneStep, 100);
     </script>
 </body>
 </html>
