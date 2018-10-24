@@ -46,40 +46,12 @@ class Palette {
     }
 
     drawArc(from, to, rotation=false) {
-        let center;
-        let radius = Math.abs((to - from / 2))*2;
-        if (to < from) {
-            // Negative direction
-            center = from - radius;
-        } else {
-            center = from + radius;
-        }
+        let radius = Math.abs((to - from / 2));
+        let center = from + radius;
         this.ctx.arc(center, 300, radius, 0, Math.PI, rotation);
         this.ctx.stroke();
     }
 
-    drawAnimatedArc(from, to, rotation=false) {
-        let arcLength;
-        let arcStart = 0;
-        let arcEnd = 0;
-        let center;
-        let radius = Math.abs((to - from / 2));
-        if (to < from) {
-            // Negative direction
-            center = from - radius;
-        } else {
-            center = from + radius;
-        }
-        for (let step = 0; step < this.animationSteps; step++) {
-            arcLength = (Math.PI / this.animationSteps);
-            //console.log(arcLength);
-            arcEnd += arcLength;
-            this.ctx.arc(center, 300, radius, arcStart, arcEnd, rotation);
-            //console.log("center: %s \t radius: %s \t start: %s \t end: %s", center, radius, arcStart, arcEnd);
-            this.ctx.stroke();
-            arcStart = arcEnd;
-        }
-    }
 }
 
 class Painter {
@@ -97,13 +69,9 @@ class Painter {
     }
 
     animateOneStep() {
-        let current = this.numbers[this.numbers.length - 1];
         this.generateStep();
+        let current = this.numbers[this.numbers.length - 1];
         console.log("last: %s\t next: %s", this.lastNumber, current);
-        if (this.numbers.length % 2 === 1) {
-            this.palette.drawArc(this.lastNumber, current, false);
-        } else {
-            this.palette.drawArc(this.lastNumber, current, true);
-        }
+        this.palette.drawArc(this.lastNumber, current, (this.numbers.length % 2 === 1));
     }
 }
