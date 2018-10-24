@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Recamán Sequence</title>
+    <link rel="stylesheet" type="text/css" href="recaman.css" />
+    <link rel="icon" type="image/png" href="r.png" />
+    <script type="text/javascript" src="recaman.js"></script>
+</head>
+<body>
+    <div class="wrapper" id="page">
+        <div class="block" id="header">
+            Recaman Sequence
+        </div>
+
+        <div class="block" id="easel">
+            <canvas width="1200" height="800" id="recamanCanvas"></canvas>
+        </div>
+
+        <div class="block" id="dataWindow">
+
+        </div>
+    </div>
+    <script>
+        let painter = new Painter("recamanCanvas");
+       
+        for (let x = 0; x < 100; x++) {
+            painter.animateOneStep();
+        }
+    </script>
+</body>
+</html>

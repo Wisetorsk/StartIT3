@@ -1,0 +1,27 @@
+﻿body
+{
+    background-color: black;
+    color: white;
+}
+
+#page {
+    display: grid;
+    grid-template-areas: "header" "easel" "dataWindow";
+}
+
+#header {
+    grid-area: header;
+}
+
+#easel {
+    grid-area: easel;
+}
+
+#dataWindow {
+    grid-area: dataWindow;
+}
+
+#recamanCanvas {
+    background-color: black;
+    border: 2px dashed red;
+}
