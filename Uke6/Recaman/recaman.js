@@ -70,6 +70,7 @@ class Painter {
         this.lastNumber = this.current;
         this.current = this.rec.oneStep();
         this.numbers.push(this.current);
+        document.getElementById("readout").innerHTML = this.current;
     }
 
     animateOneStep() {
