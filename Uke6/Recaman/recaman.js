@@ -45,11 +45,14 @@ class Palette {
         this.ctx.strokeStyle = "#FFFFFF";
     }
 
-    drawArc(from, to, rotation=false) {
-        let radius = Math.abs((to - from / 2));
-        let center = from + radius;
+    drawArc(from, to, rotation = false) {
+        this.ctx.beginPath();
+        let radius = Math.abs(((to - from) / 2));
+        let center = (from < to) ? (from + radius) : (from - radius);
         this.ctx.arc(center, 300, radius, 0, Math.PI, rotation);
+        this.ctx.strokeStyle = "#000000";
         this.ctx.stroke();
+        this.ctx.strokeStyle = "#FFFFFF";
     }
 
 }
@@ -71,7 +74,7 @@ class Painter {
     animateOneStep() {
         this.generateStep();
         let current = this.numbers[this.numbers.length - 1];
-        console.log("last: %s\t next: %s", this.lastNumber, current);
         this.palette.drawArc(this.lastNumber, current, (this.numbers.length % 2 === 1));
+        this.palette.ctx.stroke();
     }
 }

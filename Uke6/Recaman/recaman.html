@@ -19,14 +19,15 @@
         </div>
 
         <div class="block" id="dataWindow">
-
+            <button onclick="oneStep()">STEP</button>
         </div>
     </div>
     <script>
         let painter = new Painter("recamanCanvas");
-       
-        for (let x = 0; x < 200; x++) {
+        for (var x = 0; x < 300; x++) { painter.animateOneStep();}
+        function oneStep() {
             painter.animateOneStep();
+            console.log("STEP");
         }
     </script>
 </body>
