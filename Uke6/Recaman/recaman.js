@@ -87,7 +87,7 @@ class Painter {
         this.palette = new Palette(canvasID);
         this.rec = new Recaman();
         this.numbers = [];
-        this.lastNumber;
+        this.lastNumber = 0;
     }
 
     generateStep() {
@@ -97,8 +97,8 @@ class Painter {
     }
 
     animateOneStep() {
-        this.generateStep();
         let current = this.numbers[this.numbers.length - 1];
+        this.generateStep();
         console.log("last: %s\t next: %s", this.lastNumber, current);
         if (this.numbers.length % 2 === 1) {
             this.palette.drawArc(this.lastNumber, current, false);
