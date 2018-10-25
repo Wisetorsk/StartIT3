@@ -2,8 +2,11 @@
 {
 }
 
-#page {
+.wrapper {
     display: grid;
+}
+
+#page {
     grid-template-areas: "header header" "canvasContainer dataPanel" "footer footer";
     grid-column-gap: 20px;
 }

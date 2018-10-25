@@ -8,7 +8,7 @@
     <script type="text/javascript" src="physics.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
-<body onload="main()">
+<body onload="">
     <div class="wrapper" id="page">
         <div class="block" id="header">
             2D Physics simulation<hr />
@@ -17,7 +17,12 @@
             <canvas id="canvas" width="600" height="600"></canvas>
         </div>
         <div class="block wrapper" id="dataPanel">
-            Dette er en enkel fysikk simulering av en ball som spretter. Systemet har en konstant kraft i negativ y retning på 9.81, som tilsvarer gravitasjonskraften.
+            <div class="block" id="textBox">Dette er en enkel fysikksimulering av en ball som spretter. Systemet har en konstant kraft i negativ y retning på 9.81, som tilsvarer gravitasjonskraften. Når ballen treffer en av veggene, reverseres ballens fart slik at den begynner å bevege seg i motsatt retning. </div>
+            <div class="block" id="dataInput">
+                <ul>
+                    <li><button id="reset" onclick="main()">START</button></li>
+                </ul>
+            </div>
         </div>
         <div class="block" id="footer">
             <hr />

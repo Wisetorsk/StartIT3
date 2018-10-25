@@ -1,7 +1,7 @@
 // JavaScript source code
 let palette;
 class Ball {
-    constructor(mass, xInit, yInit, radius, height, width, xVelInit=50, yVelInit=-150) {
+    constructor(mass, xInit, yInit, radius, height, width, xVelInit=50, yVelInit=-100) {
         this.mass = mass;
         this.height = height;
         this.width = width;
@@ -15,17 +15,31 @@ class Ball {
     updatePosition(gravity, decay) {
         this.x += this.xVelocity;
         this.yVelocity += gravity;
-        this.xVelocity += decay;
+        
+        this.xVelocity *= decay;
+        this.yVelocity *= decay;
         this.y += this.yVelocity;
-        if (this.x >= this.width || this.x < this.radius) { // Edge impact
+        if (this.x >= this.width) { // Edge impact
+            this.xVelocity = -this.xVelocity;
+            console.log("reverse x");
+        } else if (this.x < 0) {
             this.xVelocity = -this.xVelocity;
             console.log("reverse x");
         }
-        if (this.y >= this.height || this.y < this.radius) { // Edge impact
+        if (this.y >= (this.height)) { // Edge impact
             this.yVelocity = -this.yVelocity;
             this.y = this.height;
             console.log("reverse y");
             console.log(this.y);
+        } else if (this.y < 0) {
+            this.yVelocity = -this.yVelocity;
+            this.y = 0;
+        }
+        if (this.x > this.width) {
+            this.x = this.width;
+        }
+            else if (this.x < 0) {
+            this.x = 0;
         }
     }
 }
@@ -41,7 +55,7 @@ class System {
 
     update(ctx) {
         ctx.clearRect(0, 0, this.width, this.height);
-        this.ball.updatePosition(this.gravity, -0.9);
+        this.ball.updatePosition(this.gravity, 0.985);
         
         ctx.beginPath();
         ctx.arc(this.ball.x, this.ball.y, this.ball.radius, 0, 2 * Math.PI, false);
