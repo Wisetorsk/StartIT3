@@ -1,0 +1,68 @@
+﻿.wrapper {
+    display: grid;
+}
+
+.block {
+
+}
+
+#page {
+    height: 98vh;
+    width: 99vW;
+    grid-template-areas:"header" "dynamic" "footer";
+    grid-template-rows: 1fr 7fr 1fr;
+}
+
+#header {
+    grid-area: header;
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#headerContent {
+    font-size: 200%;
+    text-align: center;
+}
+
+#dynamicContent {
+    grid-area: dynamic;
+    grid-template-areas: "canvas text";
+    grid-template-columns: 2fr 1fr;
+}
+
+#canvasContainer {
+    grid-area: canvas;
+    background-color: blue;
+}
+
+#viewCanvas {
+
+}
+
+#textContainer {
+    grid-area: text;
+    padding: 20px;
+}
+
+#footer {
+    grid-area: footer;
+    grid-template-areas: "left center right";
+    border: 2px dashed black;
+}
+
+#left {
+    grid-area: left;
+    background-color: rosybrown;
+}
+
+#center {
+    grid-area: center;
+    background-color: sandybrown;
+}
+
+#right {
+    grid-area: right;
+    background-color: saddlebrown;
+}
