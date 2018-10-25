@@ -67,7 +67,10 @@ class Palette {
 updateSimulation = function () {
     try {
         palette.oneFrame();
-    } catch (err) { console.log(err);}
+    } catch (err) {
+        clearInterval(palette.system.interval);
+        console.log(err);
+    }
 }
 
 function main() {
