@@ -1,7 +1,7 @@
 // JavaScript source code
 let palette;
 class Ball {
-    constructor(mass, xInit, yInit, radius, height, width, xVelInit = Math.floor(Math.random() * 100), yVelInit = -Math.floor(Math.random() *150)) {
+    constructor(mass, xInit, yInit, radius, height, width, xVelInit = (Math.random() > 0.5) ? -Math.floor(Math.random() * 100) : Math.floor(Math.random() * 100), yVelInit = -Math.floor(Math.random() *150)) {
         this.mass = mass;
         this.height = height;
         this.width = width;
