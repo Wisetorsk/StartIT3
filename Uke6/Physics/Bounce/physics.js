@@ -1,7 +1,7 @@
 // JavaScript source code
 let palette;
 class Ball {
-    constructor(mass, xInit, yInit, radius, height, width, xVelInit=50, yVelInit=-100) {
+    constructor(mass, xInit, yInit, radius, height, width, xVelInit = Math.floor(Math.random() * 100), yVelInit = -Math.floor(Math.random() *150)) {
         this.mass = mass;
         this.height = height;
         this.width = width;
@@ -49,7 +49,7 @@ class System {
         this.gravity = gravity;
         this.width = width;
         this.height = height;
-        this.ball = new Ball(mass, 150, 0, radius, height, width);
+        this.ball = new Ball(mass, width/2, height/2, radius, height, width);
         this.interval = setInterval(updateSimulation, 20);
     }
 
