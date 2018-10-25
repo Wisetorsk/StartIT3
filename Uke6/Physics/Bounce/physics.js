@@ -21,16 +21,13 @@ class Ball {
         this.y += this.yVelocity;
         if (this.x >= this.width) { // Edge impact
             this.xVelocity = -this.xVelocity;
-            console.log("reverse x");
         } else if (this.x < 0) {
             this.xVelocity = -this.xVelocity;
-            console.log("reverse x");
         }
         if (this.y >= (this.height)) { // Edge impact
             this.yVelocity = -this.yVelocity;
             this.y = this.height;
-            console.log("reverse y");
-            console.log(this.y);
+
         } else if (this.y < 0) {
             this.yVelocity = -this.yVelocity;
             this.y = 0;
