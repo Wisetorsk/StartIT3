@@ -10,7 +10,7 @@
 
 #header {
     grid-area: header;
-    height: 100px;
+    height: 10vh;
     text-align: center;
     font-size: 300%;
     text-decoration: underline;
@@ -43,7 +43,7 @@ canvas {
 
 #footer {
     grid-area: footer;
-    height: 100px;
+    height: 10vh;
 }
 
 #footerList {
@@ -60,4 +60,15 @@ li {
     flex: 0 1 auto;
     text-align: center;
     font-size: 200%;
+}
+
+@media only screen and (max-width: 1400px) {
+    #page {
+        grid-template-areas: "header" "canvasContainer" "dataPanel" "footer";
+        grid-template-rows: 100px 3fr 2fr 100px;
+    }
+    #dataPanel {
+        max-width: 100vh;
+
+    }
 }
