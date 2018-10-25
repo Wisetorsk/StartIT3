@@ -85,5 +85,8 @@ updateSimulation = function () {
 }
 
 function main() {
+    if (palette) {
+        clearInterval(palette.system.interval);
+    }
     palette = new Palette("canvas");
 }
