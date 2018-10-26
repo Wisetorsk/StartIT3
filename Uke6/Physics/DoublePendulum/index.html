@@ -6,18 +6,18 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     <title></title>
 </head>
-<body>
+<body onload="setInterval(main, 20)">
     <div class="wrapper" id="page">
         <div class="block" id="header">
             <div class="block" id="headerContent">
-                Double Pendulum
+                Pendulum
             </div>
         </div>
 
         <div class="block wrapper" id="dynamicContent">
 
             <div class="block" id="canvasContainer">
-                <canvas id="viewCanvas"></canvas>
+                <canvas id="viewCanvas" width="600" height="600"></canvas>
             </div>
 
             <div class="block" id="textContainer">
@@ -35,5 +35,7 @@
             <div class="block" id="right"></div>
         </div>
     </div>
+    <script type="text/javascript" src="pendulum.js"></script>
+
 </body>
 </html>
