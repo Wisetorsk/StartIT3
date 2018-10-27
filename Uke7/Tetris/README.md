@@ -1,21 +1,33 @@
-<h1>Tetris JS</h1>
+# **<u>Tetris JS</u>**
 
-<ul><h3><u>Fearture goals</u></h3>
-	<li>MVC structure using a NxM array backend data model</li>
-	<li>Easily embedable using a single div tag and script import</li>
-	<li>Dynamically generate either canvas or grid based layout based on casses in div tag</li>
-	<li>Min and Max size defined in div tag</li>
-	<li>Flexible css added in js file</li>
+Tetris JS is a simple tetris clone using javascript. The goal of the projects is to create a working game that can be easily embedded in any site, and resized dynamically.
+The game can take input from buttons generated in js an placed in html, or using keyboard inputs. 
 
-</ul>
+## Fearture goals :+1:
+- [ ] MVC structure using a NxM array backend data model
+- [ ] Easily embedable using a single div tag and script import
+- [ ] Dynamically generate either canvas or grid based layout based on casses in div tag
+- [ ] Min and Max size defined in div tag
+- [ ] Flexible css added in js file
+
 
 ## Including tetris.js
+Include TetrisJS using a script tag in &#60;head&#62; and call "main()" onload in body.
+```
+<head>
+	<script type="text/javascript" src="*pathTo*/tetris.js" />
+</head>
+<body onload="main()">
+	<div class="tetris"></div>
+</body>
+```
+
 Grid Layout or canvas rendering is selectable in div tag.<br />
 Syntax: 
 ```
 <div class="tetris *RenderMode* *width* *height*"></div>
 ```
-Params: 
+#### Params: 
 - RenderMode: Sets the way tetris.js will draw the game board on screen. (canvas or grid)
 - Width: Game board width in pixels on screen
 - Height: Game board height in pixels on screen
