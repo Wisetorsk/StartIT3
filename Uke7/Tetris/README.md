@@ -11,7 +11,10 @@
 
 <p>
 	Grid Layout or canvas rendering is selectable in div tag. <br />
-	Syntax: &#60;div class="tetris *RenderMode* *width* *height*"&#62;&#60;/div&#62; <br />
+	Syntax: 
+	```
+	&#60;div class="tetris *RenderMode* *width* *height*"&#62;&#60;/div&#62; <br />
+	```
 	Params: 
 	<ul>
 	<li>RenderMode: Sets the way tetris.js will draw the game board on screen. (canvas or grid)</li>
