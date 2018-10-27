@@ -9,16 +9,15 @@
 
 </ul>
 
-<p>
-	Grid Layout or canvas rendering is selectable in div tag. <br />
-	Syntax: 
-	```
-	&#60;div class="tetris *RenderMode* *width* *height*"&#62;&#60;/div&#62; <br />
-	```
-	Params: 
-	<ul>
-	<li>RenderMode: Sets the way tetris.js will draw the game board on screen. (canvas or grid)</li>
-	<li>width: Game board width in pixels on screen</li>
-	<li>height: Game board height in pixels on screen</li>
-	</ul>
-</p>
+## Including tetris.js
+Grid Layout or canvas rendering is selectable in div tag.<br />
+Syntax: 
+```
+<div class="tetris *RenderMode* *width* *height*"></div>
+```
+Params: 
+- RenderMode: Sets the way tetris.js will draw the game board on screen. (canvas or grid)
+- Width: Game board width in pixels on screen
+- Height: Game board height in pixels on screen
+	
+Demo site: <a href="https://wisetorsk.github.io/StartIT3/Uke7/Tetris/tetrisJS_TestPage.html">TETRIS!</a>
