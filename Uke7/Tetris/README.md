@@ -18,7 +18,7 @@ Include TetrisJS using a script tag in &#60;head&#62; and call "main()" onload i
 	<script type="text/javascript" src="*pathTo*/tetris.js" />
 </head>
 <body onload="main()">
-	<div class="tetris"></div>
+	<div class="parameters" id="tetris"></div>
 </body>
 ```
 

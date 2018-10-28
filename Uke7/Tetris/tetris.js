@@ -4,10 +4,42 @@
  */
 class Tetris {
     // Main game class
-    constructor(width, height) {
-        this.width = width;
-        this.height = height;
+    constructor() {
+        this.element;
+        this.width;
+        this.height;
+        this.mode;
         this.board = [];
+        try {
+            this.findElement();
+            this.parseParameters();
+        } catch (exc) {
+            if (exc instanceof FatalError || exc instanceof ParseError) {
+                throw exc;
+            } else {
+                console.log(exc);
+            }
+        }
+    }
+
+    parseParameters() {
+        /* Parse the <div> tag */
+        var elements = document.getElementById().classList;
+        this.mode = elemetns[0];
+        this.width = elements[1];
+        this.height = elements[2];
+    }
+
+    findElement() {
+        // Locates the div element with class "tetris"
+        var element = document.getElementsByClassName("tetris");
+        if (element.length > 0) {
+            throw new ParseError("The tetris class must only be defined once in HTML!", 1);
+        } else if (element.length === 0 || element.length === NaN) {
+            throw new ParseError("The tetris class was not found in HTML!", 2);
+        } else {
+            this.element = element[0];
+        }
     }
 }
 
@@ -97,4 +129,23 @@ class L extends GamePiece {
 //===============================================================================================================================================
 function main() {
     console.log("Main call");
+    var game = new Tetris();
 }
+
+
+//===============================================================================================================================================
+// Custom errors
+//===============================================================================================================================================
+
+class ParseError extends Error {
+    constructor(...args) {
+        super(...args);
+        Error.captureStackTrace(this, ParseError);
+    }
+}
+
+function FatalError() { // yay, prototypes... </sarcasm>
+    Error.apply(this, arguments);
+    this.name = "FatalError";
+}
+FatalError.prototype = Object.create(Error.prototype);
