@@ -34,5 +34,6 @@ class Cell {
         // Gameboard cell
         this.cW = cW; // Cell Width
         this.cH = cH; // Cell Height
+        this.occupied = false;
     }
 }

@@ -70,10 +70,6 @@ class Tetris {
             this.element = element[0];
         }
     }
-
-    buildBoard() {
-
-    }
 }
 
 

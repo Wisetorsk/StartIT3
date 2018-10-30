@@ -16,7 +16,7 @@ class Renderer {
                 this.renderer = new RenderCanvas(this.params);
                 break;
             default:
-                throw ParseError("Unable to read render mode");
+                throw new ParseError("Unable to read render mode");
                 break;
         }
     }
