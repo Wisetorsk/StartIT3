@@ -1,3 +1,10 @@
-﻿body
-{
+﻿body{
+}
+
+.cell {
+    border: 1px dashed rgba(0,0,0,0.3);
+}
+
+.cell:hover {
+    border: 2px solid black;
 }

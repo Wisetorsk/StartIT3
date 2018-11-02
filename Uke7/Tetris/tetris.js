@@ -14,14 +14,14 @@ class Tetris {
             height: NaN, //Window height
             mode: NaN, //Render mode
             xCells: 20, // Number of cells in horizontal dimention
-            yCells: 50, //Number of cells in verticla dimention
+            yCells: 30, //Number of cells in verticla dimention
             debug: debug
         };
         try {
             this.findElement();
             this.parseParameters();
-            this.loadRenderer();
             this.loadBoard();
+            this.loadRenderer();
             if (this.debug) {
                 console.log("Parameter dump");
                 console.log("Parameters ", this.params);
@@ -50,7 +50,7 @@ class Tetris {
 
     loadRenderer() {
         if (this.debug) console.log("Loading renderer");
-        this.renderer = new Renderer(this.params);
+        this.renderer = new Renderer(this.params, this.element, this.board);
     }
 
     loadBoard() {
