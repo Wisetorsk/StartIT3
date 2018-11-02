@@ -70,6 +70,18 @@ class Tetris {
             this.element = element[0];
         }
     }
+
+    oneStep() {
+        // Runs the game for one step
+        /* Go through the board one cell at a time and shift it.
+         */
+    }
+
+    addPiece() {
+        // Add a tetronimo to the game board at y = 0, x = _xCells/2_
+        // push a piece to board.pieces array
+        this.board[10][10].color = 'blue';
+    }
 }
 
 

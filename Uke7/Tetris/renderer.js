@@ -24,13 +24,7 @@ class Renderer {
         }
     }
 
-    render() {
-        // Places the elements.
-    }
-
-    update() {
-        // Updates the elements on page
-    }
+    
 }
 
 class RenderCanvas {
@@ -53,6 +47,8 @@ class RenderGrid {
         if (params.debug) console.log('Grid Render Mode');
         this.params = params;
         this.element = element;
+        this.divsRaw;
+        this.divsFormat;
         this.element.style.display = "grid";
         this.cols = '';
         this.rows = '';
@@ -63,7 +59,7 @@ class RenderGrid {
         this.element.style.height = this.params.height + "px";
         this.element.style.backgroundColor = "Aqua";
         this.loadDivs();
-
+        this.update();
     }
 
     loadRowCol() {
@@ -81,11 +77,16 @@ class RenderGrid {
             for (var y in range(this.params.yCells)) {
                 this.element.innerHTML += '<div class="cell" id="x' + x + 'y' + y + '"></div>'; }
         };
+        this.divsRaw = this.element.getElementsByTagName('div');
     }
 
     draw() {
         var html = '';
         var style = '';
+    }
+
+    update() {
+        // Updates the elements in board array to div array
     }
 }
 

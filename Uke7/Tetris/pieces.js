@@ -9,6 +9,7 @@ class GamePiece {
         this.width = params.width; // Width of gamefield
         this.height = params.height; // Height of gamefield
         this.positions; // array of adjecent cell positions to complete element.
+        this.color = 'rgba(' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) + ',1)'; // Give the element a random rgba color value
     }
 
     rotate(direction) {

@@ -11,6 +11,7 @@ class Board {
         this.cW = Math.floor(this.width / this.xCells); // Cell width in pixels
         this.cH = Math.floor(this.height / this.yCells); // Cell height in pixels
         this.board = []; // Collection of cells in NxM array
+        this.pieces = [];
         this.debug = params.debug;
         this.buildBoard();
         if (this.debug) console.log(this.board);
@@ -35,5 +36,6 @@ class Cell {
         this.cW = cW; // Cell Width in pixels
         this.cH = cH; // Cell Height in pixels
         this.occupied = false; // If a part of a game piece occupies this cell element
+        this.color = NaN;
     }
 }
