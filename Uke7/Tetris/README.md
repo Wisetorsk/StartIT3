@@ -33,3 +33,13 @@ Syntax:
 - Height: Game board height in pixels on screen
 	
 Demo site: <a href="https://wisetorsk.github.io/StartIT3/Uke7/Tetris/tetrisJS_TestPage.html">TETRIS!</a>
+
+## Program steps:
+- Build board data structure
+- Render the game board
+- Loop start
+  - if (timer > interval && no moving pieces) \{ Generate new piece \}
+  - listen for keyboard input
+  - Move the non-static piece down by one y index.
+  - if (a whole x row is full with cells) \{ Remove it and shift down \}
+- goto Loop
