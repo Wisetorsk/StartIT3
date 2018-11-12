@@ -18,9 +18,14 @@ class Cookies {
 
     get(cookie) {
         // Return a single cookie
+        /* If the given cookie name does not exist, throw an error*/
         this.load();
         console.log("Return this cookie: " + cookie);
-        return this.cookies[cookie];
+        if (this.cookies[cookie]) {
+            return this.cookies[cookie];
+        } else {
+            throw (cookie + " does noe exist.")
+        }
     }
 
     static remove() {
