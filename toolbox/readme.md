@@ -60,4 +60,9 @@ let numberHandler = new Numbers();
 let letterHandler = new Letters();
 let directionHandler = new WASD();
 ```
-When a key is pressed the handler returns the relative array for the pressed key. 
+When a key is pressed the handlers property lastPressed is set to the value of the pressed key.  
+To get the history of all pressed (valid) keys, use the .pressed property:  
+```js
+var lastKeyPressed = KeypressHandler.lastPressed // Replace with the name of your object
+var pressedHistory = KeypressHandler.pressed // Replace with the name of your object
+``` 

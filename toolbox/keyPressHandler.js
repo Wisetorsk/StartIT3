@@ -2,6 +2,8 @@
 class KeyHandler {
     constructor() {
         this.newKeys = {};
+        this.pressed = [];
+        this.lastPressed = NaN;
         this.keys = { //Defualt keys
             187: ['Plus',],
             43: ['Plus',],
@@ -16,7 +18,6 @@ class KeyHandler {
             8: ['Bakcspace'],
             17: ['Control', 'ctrl']
         };
-
     }
 
     addListner(keys) {
@@ -24,13 +25,16 @@ class KeyHandler {
             var keyCode = event.keyCode.toString();
             if (keys[keyCode]) {
                 console.log(keys[keyCode][0]);
-                return keys[keyCode];
+                // Do something with the key that was just pressed!
+                this.pressed.push(keys[keyCode][0]);
+                this.lastPressed = keys[keyCode][0];
+                //return keys[keyCode];
             }
         }, true);
     }
 
     removeListner() {
-        window.addEventListener('keydown', function () { }, true);
+        window.addEventListener('keydown', function () {}, true);
     }
 
     map() {
