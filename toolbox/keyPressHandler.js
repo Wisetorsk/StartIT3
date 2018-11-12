@@ -2,7 +2,7 @@
 class KeyHandler {
     constructor() {
         this.newKeys = {};
-        this.keys = {
+        this.keys = { //Defualt keys
             187: ['Plus',],
             43: ['Plus',],
             45: ['Minus',],
@@ -26,7 +26,11 @@ class KeyHandler {
                 console.log(keys[keyCode][0]);
                 return keys[keyCode];
             }
-        });
+        }, true);
+    }
+
+    removeListner() {
+        window.addEventListener('keydown', function () { }, true);
     }
 
     map() {
@@ -34,12 +38,18 @@ class KeyHandler {
             this.keys[x] = this.newKeys[x];
         }
     }
+
+    externalKeymap(externalKeys) {
+        this.removeListner();
+        this.keys = externalKeys;
+        this.addListner(this.keys);
+    }
 }
 
 class WASD extends KeyHandler{
     constructor() {
         super();
-        this.newKeys = { // Add hw input codes
+        this.newKeys = { 
             65: ['left'],
             68: ['right'],
             83: ['down'],
@@ -51,14 +61,13 @@ class WASD extends KeyHandler{
         };
         this.map();
         this.addListner(this.keys);
-
     }
 }
 
 class Letters extends KeyHandler {
     constructor() {
         super();
-        this.newKeys = { // Replace with unicode and keycode
+        this.newKeys = {  // Add Unicode
             65: ['a'],
             66: ['b'],
             67: ['c'],

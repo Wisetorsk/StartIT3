@@ -37,3 +37,27 @@ To view all stored cookies:
 ```javascript
 handler.list();
 ```
+
+## KeypressHandler.js
+Keypress handler enables the user to set individual keys to trigger output in console/js.  
+Following script tag includes the handler object  
+```html
+<script type="text/javascript" src="keypressHandler.js"></script>
+```
+#### Usage
+
+Built in flavours of the keypress handler includes:
+- WASD
+- Letters
+- Numbers
+Instance the handler using
+```js
+let handler = new KeypressHandler();
+```
+If you want to instance a subclass of KeypressHandler, just use it's class name in the object assignement. i.e:
+```js
+let numberHandler = new Numbers();
+let letterHandler = new Letters();
+let directionHandler = new WASD();
+```
+When a key is pressed the handler returns the relative array for the pressed key. 
