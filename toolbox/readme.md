@@ -49,7 +49,8 @@ Following script tag includes the handler object
 Built in flavours of the keypress handler includes:
 - WASD
 - Letters
-- Numbers
+- Numbers  
+
 Instance the handler using
 ```js
 let handler = new KeypressHandler();
