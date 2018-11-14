@@ -15,7 +15,9 @@
         <span v-if="visible">{{ message }}</span>
         <span v-if="!visible">{{message2}}</span><br />
         <button-item></button-item>
+        <todo-item></todo-item>
     </div>
+
     <!-- =============================================================================================================================== -->
     <!-- =========================================================toolTip=============================================================== -->
     <!-- =============================================================================================================================== -->
@@ -31,28 +33,45 @@
         <ol>
             <todo-item></todo-item>  <!-- This can be added within any Vue object in your page. Good for creating multiples of a signgle component. Remember to add Vue.component -->
         </ol>
+        <created></created> <!-- This element has a vue function bound to itself -->
+        <jauda></jauda> <!-- This elelment fills in text from the vue component named jauda -->
+        <lorem></lorem>
     </div>
 
 
 
 
     <script>
+        Vue.component('lorem', {
+            template: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Posuere morbi leo urna molestie at elementum eu. Ipsum consequat nisl vel pretium lectus quam id leo in. Non nisi est sit amet facilisis magna etiam tempor orci. Duis at consectetur lorem donec massa sapien faucibus et. In fermentum posuere urna nec tincidunt praesent semper. At elementum eu facilisis sed odio morbi. Convallis tellus id interdum velit laoreet id donec. Sem nulla pharetra diam sit. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare. Eget est lorem ipsum dolor sit amet consectetur adipiscing elit. Nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper. In aliquam sem fringilla ut morbi. Tempor orci dapibus ultrices in. Iaculis urna id volutpat lacus laoreet non curabitur. Scelerisque eleifend donec pretium vulputate sapien nec sagittis. Ut diam quam nulla porttitor massa id. Placerat vestibulum lectus mauris ultrices eros in cursus turpis massa. Sociis natoque penatibus et magnis dis parturient montes.</p>'
+        })
+
         Vue.component('todo-item', {
             template: '<li>This is a todo i added</li>'
         });
+
         Vue.component('button-item', {
-            template: '<button>This is a button</button>'
-        })
+            template: '<button onclick="page.visible = false">This is a button</button>'
+        });
+
+        Vue.component('jauda', {
+            template: '<div style="background-color: blue;color:white;width:200px;text-align:center">Jauda</div>'
+        });
+
+        Vue.component('created', function () {  // I've added an anonimous function that will be called when Vue sees a child element with the tag <created>
+            console.log('did it work?');
+        });
 
         let page = new Vue({
             el: '#app',
             data: {
                 message: 'Hello World!',
                 visible: true,
-                message2: 'O HI!'
+                message2: 'O HI!',
+                lorem: 'Lorem Ipsum'
             },
-            scripts: {
-
+            created: function () {
+                console.log('Vue instanced on ' + Date.now().toLocaleString())
             }
         });
 
@@ -62,6 +81,7 @@
                 tooltip: 'Opened on ' + new Date().toLocaleString(),
                 seen: true,
                 message3: 'Type here to change me!',
+                lorem: 'Dolor sit Amet',
                 objList: [
                     { text: 'Dette er linje 1' },
                     { text: 'Dette er linje 2' },
