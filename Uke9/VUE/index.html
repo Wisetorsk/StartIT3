@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- =============================================================================================================================== -->
+    <!-- =========================================================page================================================================== -->
+    <!-- =============================================================================================================================== -->
+    <div id="app"> I'm the first vue app<br /><br/>
+        <span v-if="visible">{{ message }}</span>
+        <span v-if="!visible">{{message2}}</span><br />
+        <button-item></button-item>
+    </div>
+    <!-- =============================================================================================================================== -->
+    <!-- =========================================================toolTip=============================================================== -->
+    <!-- =============================================================================================================================== -->
+    <br /><br /><hr />
+    <div id="app2"> I'm the second vue app<br /><br />
+        <span v-if="seen" v-bind:title="tooltip">Hover me for tooltip message</span>
+        <ul>
+            <li v-for="element in objList">{{element.text}}</li>
+        </ul>
+        <button v-on:click="alterFirst">Change the other one</button>
+        <p>{{message3}}</p>
+        <input v-model="message3" />
+        <ol>
+            <todo-item></todo-item>  <!-- This can be added within any Vue object in your page. Good for creating multiples of a signgle component. Remember to add Vue.component -->
+        </ol>
+    </div>
+
+
+
+
+    <script>
+        Vue.component('todo-item', {
+            template: '<li>This is a todo i added</li>'
+        });
+        Vue.component('button-item', {
+            template: '<button>This is a button</button>'
+        })
+
+        let page = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello World!',
+                visible: true,
+                message2: 'O HI!'
+            },
+            scripts: {
+
+            }
+        });
+
+        let toolTip = new Vue({
+            el: '#app2',
+            data: {
+                tooltip: 'Opened on ' + new Date().toLocaleString(),
+                seen: true,
+                message3: 'Type here to change me!',
+                objList: [
+                    { text: 'Dette er linje 1' },
+                    { text: 'Dette er linje 2' },
+                    { text: 'Dette er linje 3' }
+                ]
+                
+            },
+            methods: {
+                alterFirst: function () {
+                    page.message = 'I\'VE CHANGED!';
+                    this.objList.push({text: 'I was also added!'})
+                } 
+            }
+        });
+    </script>
+</body>
+</html>
