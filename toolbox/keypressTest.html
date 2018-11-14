@@ -7,10 +7,12 @@
     <script src="keyPressHandler.js"></script>
 </head>
 <body>
+    <div>LETTERS!<input oninput="setLetter()" type="text" /><span  id="output"></span></div>
     <script>
-        //let num = new Numbers();
-        //let wasd = new WASD();
         let letters = new Letters();
+        function setLetter() {
+            document.getElementById('output').innerHTML = letters.lastPressed;
+        }
     </script>
 </body>
 </html>

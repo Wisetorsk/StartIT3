@@ -25,12 +25,14 @@ class KeyHandler {
             var keyCode = event.keyCode.toString();
             if (keys[keyCode]) {
                 console.log(keys[keyCode][0]);
-                // Do something with the key that was just pressed!
-                this.pressed.push(keys[keyCode][0]);
-                this.lastPressed = keys[keyCode][0];
-                //return keys[keyCode];
+                return keys[keyCode][0];
             }
         }, true);
+    }
+
+    setMe(value) {
+        this.lastPressed = value;
+        this.pressed.push(value);
     }
 
     removeListner() {

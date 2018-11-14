@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .wrapper {
+            display: grid;
+        }
+        #page {
+            grid-template-areas: "header" "mainText" "footer";
+        }
+        #mainText {
+            grid-area: mainText;
+            grid-template-areas: 
+                "sidebar textbox1 textbox1 code1 code1"
+                "sidebar textbox2 textbox2 code2 code2";
+            height: 80vh;
+            width: 100vw;
+        }
+        .header {
+            grid-area: header;
+            text-align: center;
+            text-decoration: underline;
+            font-size: 200%
+        }
+        .textbox {
+            width: 40vh;
+        }
+        .code {
+            width: 60vh;
+        }
+        .sidebar {
+            grid-area: sidebar;
+            border: 2px dashed grey;
+            max-width: 150px;
+        }
+        #box1 {
+            grid-area: textbox1;
+        }
+        #box2 {
+            grid-area: textbox2;
+        }
+        #code1 {
+            grid-area: code1;
+        }
+        #code2 {
+            grid-area: code2;
+        }
+        .footer {
+            text-align: center;
+        }
+        .underline {
+            text-decoration: underline;
+        }
+        .codeText {
+            font-family: Calibri;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper" id="page">
+        <div class="content header" id="header">Funksjonell programmering</div>
+        <div class="wrapper subdivision" id="mainText">
+            <div class="content sidebar" id="sidebar">Sidebar
+                <ul>
+                    <li>adsfljk</li>
+                </ul>
+            </div>
+                
+            <div class="content textbox" id="box1"><h3 class="underline">Imperative</h3>
+                Imperativ/deklerativ programmering
+            </div>
+
+            <div class="content textbox" id="box2"><h3 class="underline">Functional</h3>
+                Funksjonell programmering
+            </div>
+
+            <div class="content code" id="code1"><br />
+                <span class="codeText">Code!</span><br /><br />
+                var result = [];<br />
+                function arr(n) {<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;return new Array.from(Array(10).keys())<br />
+                }<br /><br />
+                for (var i = 0; i < 10; i++) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;if (i % 2 === 0) { <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result.push('Hel'); <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;} else {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result.push('Halv');<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                }
+            </div>
+
+            <div class="content code" id="code2"><br />
+                <span class="codeText">Code!</span><br /><br />
+                var result = [...Array(10).keys()].map(i => (i % 2 === 0)? 'Hel' : 'Halv');
+
+            </div>
+        </div>
+        <div class="content footer" id="footer">footer</div>
+    </div>
+</body>
+</html>
