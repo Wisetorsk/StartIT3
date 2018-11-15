@@ -3,6 +3,11 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+let app = new Vue({
+    el: '#app',
+    data: {
+        message: 'Dette er en melding'
+    },
+    render: h => h(App)
+})
+

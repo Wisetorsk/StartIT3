@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue gives santa colorecal cancer</title>
+    <style>
+        .wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+        <input v-model="message" type="text" />
+        
+            <div class="wrapper"><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy></div>
+    </div>
+    <script>
+        Vue.component('fancy', {
+            template: '<div onload="fab()" class="fancy" style="border: 2px solid black; width: 100px; height: 100px"></div>',
+            
+        });
+
+        let app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Enter some stuff',
+            }
+        });
+
+
+        Array.from(document.getElementsByClassName('fancy')).map(i => i.style.backgroundColor = 'rgb(' + Math.random() * 255 + ',' + Math.random() * 255 + ',' + Math.random() * 255 + ')');
+    </script>
+</body>
+</html>
