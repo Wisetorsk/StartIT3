@@ -18,7 +18,9 @@
         {{message}}
         <input v-model="message" type="text" />
         <div class="wrapper">
-            <fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy>
+            <fancy></fancy>
+            
+            <fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy>
             <fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy>
             <fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy>
             <fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy><fancy></fancy>
@@ -49,7 +51,9 @@
         });
 
 
-        Array.from(document.getElementsByClassName('fancy')).map(i => i.style.backgroundColor = 'rgb(' + Math.random() * 255 + ',' + Math.random() * 255 + ',' + Math.random() * 255 + ')');
+        Array.from(document.getElementsByClassName('fancy'))
+            .map(i => i.style.backgroundColor =
+                'rgb(' + Math.random() * 255 + ',' + Math.random() * 255 + ',' + Math.random() * 255 + ')');
     </script>
 </body>
 </html>

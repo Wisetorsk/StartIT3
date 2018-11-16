@@ -13,10 +13,10 @@ class Renderer {
         if (this.debug) console.log('Renderer mode select');
         switch (this.params.mode.toLowerCase()) {
             case "grid":
-                this.renderer = new RenderGrid(this.params, this.element);
+                this.renderer = new RenderGrid(this.params, this.element, this.board);
                 break;
             case "canvas":
-                this.renderer = new RenderCanvas(this.params, this.element);
+                this.renderer = new RenderCanvas(this.params, this.element, this.board);
                 break;
             default:
                 throw new ParseError("Unable to read render mode");
@@ -29,9 +29,10 @@ class Renderer {
 
 class RenderCanvas {
     // Draws the canvas for tetris render
-    constructor(params, element) {
+    constructor(params, element, board) {
         if (params.debug) console.log('Canvas Render Mode');
         this.element = element;
+        this.board = board;
         this.element.innerHTML = '<canvas height="' + this.params.height + '" width="' + this.params.width + '" id="tetrisCanvas"></canvas>';
         this.ctx = document.getElementById("tetrisCanvas").getContext("2d");
     }
@@ -43,12 +44,13 @@ class RenderCanvas {
 
 class RenderGrid {
     // Draws the grid box layout for tetris render
-    constructor(params, element) {
+    constructor(params, element, board) {
         if (params.debug) console.log('Grid Render Mode');
         this.params = params;
+        this.board = board;
         this.element = element;
         this.divsRaw;
-        this.divsFormat;
+        this.divsFormat = [];
         this.element.style.display = "grid";
         this.cols = '';
         this.rows = '';
@@ -57,7 +59,7 @@ class RenderGrid {
         this.element.style.gridTemplateRows = this.rows;
         this.element.style.width = this.params.width + "px";
         this.element.style.height = this.params.height + "px";
-        this.element.style.backgroundColor = "Aqua";
+        this.element.style.backgroundColor = "None";
         this.loadDivs();
         this.update();
     }
@@ -72,17 +74,34 @@ class RenderGrid {
         }
     }
 
+    updateDivs() {
+        for (var x in range(this.params.xCells)) {
+            for (var y in range(this.params.yCells)) {
+                this.divsFormat[x][y].backgroundColor = this.board.board[x][y].color;
+            }
+        }
+        console.log(this.divsFormat);
+    }
+
     loadDivs() {
         for (var x in range(this.params.xCells)) {
             for (var y in range(this.params.yCells)) {
-                this.element.innerHTML += '<div class="cell" id="x' + x + 'y' + y + '"></div>'; }
+                this.element.innerHTML += '<div class="cell" id="x' + x + 'y' + y + '" ></div>'; }
         };
         this.divsRaw = this.element.getElementsByTagName('div');
+        this.reformatDivs();
     }
 
-    draw() {
-        var html = '';
-        var style = '';
+    reformatDivs() {
+        var index = 0;
+        for (var x in range(this.params.xCells)) {
+            var row = [];
+            for (var y in range(this.params.yCells)) {
+                row.push(this.divsRaw[index]);
+                index++;
+            }
+            this.divsFormat.push(row);
+        }
     }
 
     update() {

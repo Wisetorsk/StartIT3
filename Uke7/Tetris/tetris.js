@@ -54,8 +54,9 @@ class Tetris {
     }
 
     loadBoard() {
-        if (this.debug) console.log("Loading board");
+        
         this.board = new Board(this.params);
+        if (this.debug) console.log("Loading board");
     }
 
     findElement() {
@@ -75,12 +76,15 @@ class Tetris {
         // Runs the game for one step
         /* Go through the board one cell at a time and shift it.
          */
+        console.log(this.renderer);
+        this.renderer.renderer.updateDivs();
     }
 
     addPiece() {
         // Add a tetronimo to the game board at y = 0, x = _xCells/2_
         // push a piece to board.pieces array
-        this.board[10][10].color = 'blue';
+        this.board.board[10][10].color = 'blue';
+        console.log(this.board.board);
     }
 }
 
@@ -91,6 +95,8 @@ class Tetris {
 function main() {
     console.log("Main call");
     var game = new Tetris();
+    game.addPiece();
+    game.oneStep();
 }
 
 
