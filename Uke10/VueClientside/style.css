@@ -1,5 +1,6 @@
 .blue {
     background-color: blue;
+    color: white;
 }
 
 .red {
@@ -8,6 +9,7 @@
 
 .black {
     background-color: black;
+    color: black;
 }
 
 .border {
