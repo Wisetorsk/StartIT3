@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title></title>
+</head>
+<body>
+    <div class="app">
+        <p>{{ message | split | uppercase }}</p>
+        <p>Clicks: {{ count }}</p>
+        <p>Double: {{ double }}</p>
+        <p>Square: {{ square }}</p>
+        <p>Base two: {{ baseTwo }}</p>
+        <button v-on:click="welcome()">Click</button>
+       
+    </div>
+
+    <div class="app2" >
+        <button-counter></button-counter>
+    </div>       
+
+    <div id="app3" :class="classInfo"><input v-model="classInfo" /></div>
+    
+</body>
+
+    <script src="app.js"></script>
+</html>

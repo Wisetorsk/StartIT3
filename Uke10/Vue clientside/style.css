@@ -1,0 +1,19 @@
+.blue {
+    background-color: blue;
+}
+
+.red {
+    background-color: red;
+}
+
+.black {
+    background-color: black;
+}
+
+.border {
+    border: 2px solid black;
+}
+
+.dashed {
+    border: 2px dashed black;
+}
