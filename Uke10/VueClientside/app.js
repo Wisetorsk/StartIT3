@@ -16,6 +16,7 @@ new Vue({
     methods: {
         welcome: function () {
             console.log(new Date().toLocaleTimeString());
+            this.message = 'Welcome! I\'ve altered this string using a method';
             this.count++;
         }
     },

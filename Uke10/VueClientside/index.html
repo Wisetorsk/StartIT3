@@ -9,11 +9,12 @@
 </head>
 <body>
     <div class="app">
-        <p>{{ message | split | uppercase }}</p>
-        <p>Clicks: {{ count }}</p>
-        <p>Double: {{ double }}</p>
-        <p>Square: {{ square }}</p>
-        <p>Base two: {{ baseTwo }}</p>
+        <p>{{ message | split | uppercase }} This message is altered using filters and pipes</p>
+        <p>The following data are all computed properties using the variable count. (clicks)<br />
+        Clicks: {{ count }} <br />
+        Double: {{ double }} <br />
+        Square: {{ square }} <br />
+        Base two: {{ baseTwo }}</p>
         <button v-on:click="welcome()">Click</button>
        
     </div>
