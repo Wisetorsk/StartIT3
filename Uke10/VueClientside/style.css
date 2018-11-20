@@ -19,3 +19,8 @@
 .dashed {
     border: 2px dashed black;
 }
+
+.margin {
+    margin: 20px;
+    padding: 10px;
+}
