@@ -22,4 +22,14 @@ function insertCell(x, y) {
     return '<cell-element x="' + x + '" y="' + y + '"></cell-element>';
 }
 
+function openNav() {
+    document.getElementById("sidebar").style.width = "250px";
+    document.getElementById("mainPage").style.marginLeft = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
 
+function closeNav() {
+    document.getElementById("sidebar").style.width = "0";
+    document.getElementById("mainPage").style.marginLeft = "0";
+    document.body.style.backgroundColor = "white";
+}
