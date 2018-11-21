@@ -15,34 +15,47 @@
 }
 
 .index {
-
+    border: 2px solid green;
+    text-align: center;
+    height: 46px;
+    width: 46px;
 }
 
 #sidebar {
 }
 
 #mainPage {
-   
+   grid-template-areas: "header header header" "playfield playfield dataPanel" "infoPanel infoPanel infoPanel" "footer footer footer"
 }
 
 #header {
     grid-area: header;
+    height: 10vh;
+    text-align: center;
+    font-size: 400%;
+    font-family: Impact;
 }
 
 #playfield {
     grid-area: playfield;
-    grid-template-rows: repeat(10, 50px);
-    grid-template-columns: repeat(10, 50px);
+    grid-template-rows: repeat(11, 50px);
+    grid-template-columns: repeat(11, 50px);
+    width: 550px;
 }
 
 #dataPanel {
     grid-area: dataPanel;
+    border: 1px dashed black;
 }
 
 #infoPanel {
     grid-area: infoPanel;
+    border: 1px dashed black;
+    min-height: 100px;
 }
 
 #footer {
     grid-area: footer;
+    border: 1px dashed black;
+    min-height: 80px;
 }

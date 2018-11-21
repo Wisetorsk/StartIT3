@@ -11,23 +11,21 @@
     <script type="text/javascript" src="cell.js"></script>
     <script type="text/javascript" src="player.js"></script>
     <script type="text/javascript" src="main.js"></script>
-
-
     <title>BATTLESHIP2.0</title>
 </head>
     <body>
-        <div id="sidebar" class="accordion wrapper">
-
-        </div>
+        
 
         <div id="mainPage" class="wrapper">
-            
-            <div id="header">
+            <div id="sidebar" class="accordion wrapper">
 
             </div>
+
+            <div id="header">
+                BATTLESHIP
+            </div>
             
-            <div id="playfield" class="wrapper">
-                <cell-element x="2" y="5"></cell-element>
+            <div id="playfield" class="wrapper"> <!-- VUE -->
             </div>
 
             <div id="dataPanel" class="wrapper"> <!-- VUE -->
@@ -42,6 +40,10 @@
 
             </div>
         </div>
+        <script>
+            new Main();
+        </script>
         <script type="text/javascript" src="vueFunctions.js"></script>
+
     </body>
 </html>

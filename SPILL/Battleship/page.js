@@ -15,11 +15,11 @@ function letters(n) {
 }
 
 function insertIndex(val) {
-    return '<div index-value="' + val + '"></div>';
+    return '<index-element index-value="' + val + '"></index-element>';
 }
 
 function insertCell(x, y) {
-    return '<div xIndex="' + x + '" yIndex="' + y + '"></div>';
+    return '<cell-element x="' + x + '" y="' + y + '"></cell-element>';
 }
 
 
