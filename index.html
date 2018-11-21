@@ -3,69 +3,101 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>StartIT 3</title>
+    <style>
+        .wrapper {
+            display: grid;
+        }
+
+        #links { 
+            grid-area: links;
+        }
+
+        #header {
+            grid-area: header;
+            font-family: 300%;
+            text-align: center;
+        }
+
+        #info {
+            grid-area: infoField;
+        }
+
+        #footer {
+            grid-area: footer;
+        }
+
+        #main {
+            grid-template-areas: "header header" "links infoField" "footer footer"
+        }
+    </style>
 </head>
 <body>
-    <ul>
-        <li>
-            <a href="https://wisetorsk.github.io/StartIT3/Uke5/TrePaaRad/index.html">Tre På Rad</a>
-        </li>
+    <div class="wrapper" id="main">
+        <div id="header">START IT 3</div>
+        <ul id="links">
+            <li>
+                <a href="https://wisetorsk.github.io/StartIT3/Uke5/TrePaaRad/index.html">Tre På Rad</a>
+            </li>
 
-        <li>
-            <a href="https://wisetorsk.github.io/StartIT3/Uke5/TampenBrenner/index.html">TampenBrenner</a>
-        </li>
+            <li>
+                <a href="https://wisetorsk.github.io/StartIT3/Uke5/TampenBrenner/index.html">TampenBrenner</a>
+            </li>
 
-        <li>
-            <a href="https://wisetorsk.github.io/StartIT3/Uke5/Aapningstid/index.html">Åpningstid</a>
-        </li>
+            <li>
+                <a href="https://wisetorsk.github.io/StartIT3/Uke5/Aapningstid/index.html">Åpningstid</a>
+            </li>
 
-        <li>
-            <a href="https://wisetorsk.github.io/StartIT3/Uke5/LabyrintGenerator/index.html">Labyrint</a>
-        </li>
+            <li>
+                <a href="https://wisetorsk.github.io/StartIT3/Uke5/LabyrintGenerator/index.html">Labyrint</a>
+            </li>
 
-        <li>
-            <a href="https://wisetorsk.github.io/StartIT3/Uke5/ModelViewController/minesweeper.html">Minesweeper</a>
-        </li>
+            <li>
+                <a href="https://wisetorsk.github.io/StartIT3/Uke5/ModelViewController/minesweeper.html">Minesweeper</a>
+            </li>
 
-        <li>
-            <a href="https://wisetorsk.github.io/StartIT3/Uke6/LorenzAttractor/attractor.html">Lorenz Attractor</a>
-        </li>
+            <li>
+                <a href="https://wisetorsk.github.io/StartIT3/Uke6/LorenzAttractor/attractor.html">Lorenz Attractor</a>
+            </li>
 
-        <li>
-            <a href="https://wisetorsk.github.io/StartIT3/Uke6/Recaman/recaman.html">Recaman Sequence</a>
-        </li>
+            <li>
+                <a href="https://wisetorsk.github.io/StartIT3/Uke6/Recaman/recaman.html">Recaman Sequence</a>
+            </li>
 
-        <li>
-            <a href="https://wisetorsk.github.io/StartIT3/Uke6/Physics/Bounce/index.html">Simple Physics</a>
-        </li>
+            <li>
+                <a href="https://wisetorsk.github.io/StartIT3/Uke6/Physics/Bounce/index.html">Simple Physics</a>
+            </li>
 
-        <li>
-            <a href="https://wisetorsk.github.io/StartIT3/Uke6/VUE/vueTest.html">Vue test 1</a>
-        </li>
+            <li>
+                <a href="https://wisetorsk.github.io/StartIT3/Uke6/VUE/vueTest.html">Vue test 1</a>
+            </li>
 
-        <li>
-            <a href="https://wisetorsk.github.io/StartIT3/Uke6/ModalBoxes/modals.html">Modal Box</a>
-        </li>
+            <li>
+                <a href="https://wisetorsk.github.io/StartIT3/Uke6/ModalBoxes/modals.html">Modal Box</a>
+            </li>
 
-        <li>
-            <a href="https://wisetorsk.github.io/StartIT3/Uke6/Accordion/accordion.html">Accordion menu</a>
-        </li>
+            <li>
+                <a href="https://wisetorsk.github.io/StartIT3/Uke6/Accordion/accordion.html">Accordion menu</a>
+            </li>
 
-        <li>
-            <a href="https://wisetorsk.github.io/StartIT3/Uke9/functional/index.html">Functional programming</a>
-        </li>
+            <li>
+                <a href="https://wisetorsk.github.io/StartIT3/Uke9/functional/index.html">Functional programming</a>
+            </li>
 
-        <li>
-            <a href="https://wisetorsk.github.io/StartIT3/Uke9/VUE/index.html">Vue test 2</a>
-        </li>
+            <li>
+                <a href="https://wisetorsk.github.io/StartIT3/Uke9/VUE/index.html">Vue test 2</a>
+            </li>
 
-        <li>
-            <a href="https://wisetorsk.github.io/StartIT3/Uke10/VueClientside/index.html">Vue Filters Pipes and Computed Methods</a>
-        </li>
+            <li>
+                <a href="https://wisetorsk.github.io/StartIT3/Uke10/VueClientside/index.html">Vue Filters Pipes and Computed Methods</a>
+            </li>
 
-        <li>
-            <a href="https://wisetorsk.github.io/StartIT3/SPILL/Battleship/index.html">Battleship</a>
-        </li>
-    </ul>
+            <li>
+                <a href="https://wisetorsk.github.io/StartIT3/SPILL/Battleship/index.html">Battleship</a>
+            </li>
+        </ul>
+        <div id="info">Her finner du flere av sidene og prosjektene mine fra StartIT 3</div>
+        <div id="footer">FOOTER</div>
+    </div>
 </body>
 </html>
