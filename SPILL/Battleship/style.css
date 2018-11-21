@@ -1,0 +1,48 @@
+.wrapper {
+    display: grid;
+}
+
+.accordion {
+
+}
+
+.cell {
+    border: 2px solid black;
+}
+
+.cell:hover {
+    border: 2px solid red;
+}
+
+.index {
+
+}
+
+#sidebar {
+}
+
+#mainPage {
+   
+}
+
+#header {
+    grid-area: header;
+}
+
+#playfield {
+    grid-area: playfield;
+    grid-template-rows: repeat(10, 50px);
+    grid-template-columns: repeat(10, 50px);
+}
+
+#dataPanel {
+    grid-area: dataPanel;
+}
+
+#infoPanel {
+    grid-area: infoPanel;
+}
+
+#footer {
+    grid-area: footer;
+}
