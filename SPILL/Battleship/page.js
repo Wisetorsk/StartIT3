@@ -1,4 +1,11 @@
-/* Page functions & Vue*/
+/* Globals */
+let lastX = 0;
+let lastY = 0;
+let listX = [];
+let listY = [];
+const debug = true;
+
+/* Page functions*/
 function arr(n) {
     return [...Array(n).keys()]
 }
@@ -18,13 +25,13 @@ function insertIndex(val) {
     return '<index-element index-value="' + val + '"></index-element>';
 }
 
-function insertCell(x, y) {
-    return '<cell-element x="' + x + '" y="' + y + '"></cell-element>';
+function insertCell(x, y, boardNo) {
+    return '<cell-element x="' + x + '" y="' + y + '" brd="' + boardNo +'"></cell-element>';
 }
 
 function openNav() {
-    document.getElementById("sidebar").style.width = "250px";
-    document.getElementById("mainPage").style.marginLeft = "250px";
+    document.getElementById("sidebar").style.width = "200px";
+    document.getElementById("mainPage").style.marginLeft = "200px";
     document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 }
 
@@ -32,4 +39,16 @@ function closeNav() {
     document.getElementById("sidebar").style.width = "0";
     document.getElementById("mainPage").style.marginLeft = "0";
     document.body.style.backgroundColor = "white";
+}
+
+function clickCell(element) {
+    lastX = element.getAttribute("xindex");
+    lastY = element.getAttribute("yindex");
+    board = (element.getAttribute("brd") === '0') ? 'User' : 'Enemy';
+    listX.push(lastX);
+    listY.push(lastY);
+    document.getElementById("lx").innerHTML = lastX;
+    document.getElementById("ly").innerHTML = lastY;
+    document.getElementById("brd").innerHTML = board
+    if (board === 'Enemy') element.innerHTML = 'X';
 }

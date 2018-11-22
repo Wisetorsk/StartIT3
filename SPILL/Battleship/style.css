@@ -2,10 +2,6 @@
     display: grid;
 }
 
-.accordion {
-
-}
-
 .cell {
     border: 2px solid black;
 }
@@ -21,32 +17,43 @@
     width: 46px;
 }
 
+.board {
+    min-width: 550px;
+    width: 20vw;
+    grid-template-rows: repeat(11, 50px);
+    grid-template-columns: repeat(11, 50px);
+}
+
 #sidebar {
     grid-area: sidebar;
 }
 
 #mainPage {
-   grid-template-areas: "sidebar header header" "playfield playfield dataPanel" "infoPanel infoPanel infoPanel" "footer footer footer"
+   grid-template-areas: "sidebar header header" "playfield playfield2 dataPanel" "infoPanel infoPanel infoPanel" "footer footer footer";
+   grid-column-gap: 20px;
+
 }
 
 #header {
     grid-area: header;
     height: 10vh;
-    text-align: center;
     font-size: 400%;
-    font-family: Impact;
+    font-family: Impact, Arial, Helvetica, sans-serif;
+    text-decoration: underline;
 }
 
 #playfield {
     grid-area: playfield;
-    grid-template-rows: repeat(11, 50px);
-    grid-template-columns: repeat(11, 50px);
-    width: 550px;
+}
+
+#playfield2 {
+    grid-area: playfield2;
 }
 
 #dataPanel {
     grid-area: dataPanel;
     border: 1px dashed black;
+    width: 30vw;
 }
 
 #infoPanel {

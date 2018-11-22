@@ -2,8 +2,8 @@
 // VUE components
 //==================================================================================
 Vue.component('cell-element', {
-    props: ['x', 'y'],
-    template: '<div class="cell" v-bind:xIndex="x" v-bind:yIndex="y"></div>',
+    props: ['x', 'y', 'board'],
+    template: '<div class="cell" v-bind:xIndex="x" v-bind:yIndex="y" v-bind:board="board" onclick="clickCell(this)"></div>',
 });
 
 Vue.component('index-element', {
@@ -17,4 +17,8 @@ Vue.component('index-element', {
 //==================================================================================
 new Vue({
     el: '#playfield'
+});
+
+new Vue({
+    el: '#playfield2'
 })

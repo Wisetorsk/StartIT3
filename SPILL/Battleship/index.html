@@ -27,11 +27,21 @@
                 BATTLESHIP
             </div>
             
-            <div id="playfield" class="wrapper"> <!-- VUE -->
+            <div id="playfield" class="wrapper board"> <!-- VUE -->
+                <!-- User ships -->
+            </div>
+
+            <div id="playfield2" class="wrapper board"> <!-- VUE -->
+                <!-- Enemy ships (hidden) -->
             </div>
 
             <div id="dataPanel" class="wrapper"> <!-- VUE -->
                 DATA PANEL
+                <ul>
+                    <li>LastX: <span id="lx"></span></li>
+                    <li>LastY: <span id="ly"></span></li>
+                    <li>User board: <span id="brd"></span></li>
+                </ul>
             </div>
 
             <div id="infoPanel" class="wrapper"> <!-- VUE -->
