@@ -3,6 +3,7 @@ let lastX = 0;
 let lastY = 0;
 let listX = [];
 let listY = [];
+let lastCell;
 const debug = true;
 
 /* Page functions*/
@@ -44,6 +45,7 @@ function closeNav() {
 function clickCell(element) {
     lastX = element.getAttribute("xindex");
     lastY = element.getAttribute("yindex");
+    lastCell = element;
     board = (element.getAttribute("brd") === '0') ? 'User' : 'Enemy';
     listX.push(lastX);
     listY.push(lastY);
