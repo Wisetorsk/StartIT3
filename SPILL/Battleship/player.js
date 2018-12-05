@@ -29,7 +29,6 @@ class Player {
 
     static placeShip(element) {
         if (debug) console.log(len);
-            this.placed ++;
 
 
         //return new Promise(function (resolve, reject) { 
