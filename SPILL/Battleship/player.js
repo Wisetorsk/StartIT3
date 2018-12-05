@@ -13,6 +13,7 @@ class Player {
             {type: 'Battleship', cells: []},
             {type: 'Carrier', cells: []}
         ];
+        this.currentLength;
         this.shipLen = {Destroyer: 2, Submarine: 3, Battleship: 4, Carrier: 5}
         this.shipLengths = [
             { name: 'Destroyer', ships: 4, length: 2 },
@@ -23,13 +24,17 @@ class Player {
         this.board = new Board();
         this.myDivs = document.getElementsByClassName("cell");
         this.placeShips();
+
     }
 
-    placeShip(len) {
+    static placeShip(element) {
         if (debug) console.log(len);
-        return new Promise(function (resolve, reject) { 
-            resolve(true);
-        });
+            this.placed ++;
+
+
+        //return new Promise(function (resolve, reject) { 
+        //    resolve(true);
+        //});
     }
 
     placeShips() {
@@ -37,6 +42,10 @@ class Player {
         if (debug) console.log("User ship placement method");
         let placed = 0;
         if (debug) console.log(this.placements);
+        /*set onclick to Player.placeShip(this)
+            Later reset to clickCell(this)
+        */
+        
         /*
         document.getElementById('playfield').addEventListener('click', function () {
             /* Place ship 
@@ -52,8 +61,8 @@ class Player {
             * Await a change in variable lastCell
             * */
             console.log('Ship Placement');
-            this.placeShip(this.shipLen[this.ships[placed].type])
-            .then(placed++).catch(error => console.log(error));
+            this.currentLength = this.shipLen[this.ships[placed].type];
+            console.log(this.currentLength);
 
         }
         //document.getElementById("playfield").removeEventListener("click", function () { });
