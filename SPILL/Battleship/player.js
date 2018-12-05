@@ -13,6 +13,7 @@ class Player {
             {type: 'Battleship', cells: []},
             {type: 'Carrier', cells: []}
         ];
+        this.shipLen = {Destroyer: 2, Submarine: 3, Battleship: 4, Carrier: 5}
         this.shipLengths = [
             { name: 'Destroyer', ships: 4, length: 2 },
             { name: 'Submarine', ships: 3, length: 3 },
@@ -24,11 +25,18 @@ class Player {
         this.placeShips();
     }
 
+    placeShip(len) {
+        if (debug) console.log(len);
+        return new Promise(function (resolve, reject) { 
+            resolve(true);
+        });
+    }
+
     placeShips() {
         /* Set event listner for mouse clicks */
         if (debug) console.log("User ship placement method");
         let placed = 0;
-        console.log(this.placements);
+        if (debug) console.log(this.placements);
         /*
         document.getElementById('playfield').addEventListener('click', function () {
             /* Place ship 
@@ -44,11 +52,9 @@ class Player {
             * Await a change in variable lastCell
             * */
             console.log('Ship Placement');
-            var successfull = new Promise(function(resolve, reject) { // Set a promise to await user input
-                resolve(''); // Resolve when a ship is placed properly
-            });
+            this.placeShip(this.shipLen[this.ships[placed].type])
+            .then(placed++).catch(error => console.log(error));
 
-            if (successfull) placed++;
         }
         //document.getElementById("playfield").removeEventListener("click", function () { });
     }
