@@ -14,6 +14,7 @@ class Player {
             {type: 'Carrier', cells: []}
         ];
         this.currentLength;
+        this.placed = 0;
         this.shipLen = {Destroyer: 2, Submarine: 3, Battleship: 4, Carrier: 5}
         this.shipLengths = [
             { name: 'Destroyer', ships: 4, length: 2 },
@@ -27,44 +28,35 @@ class Player {
 
     }
 
-    static placeShip(element) {
+    placeShip(len) {
         if (debug) console.log(len);
 
-
-        //return new Promise(function (resolve, reject) { 
-        //    resolve(true);
-        //});
+        return new Promise(function (resolve, reject) { 
+            if () {
+                resolve(function () {
+                    this.placed++;
+                });
+            } else {
+                reject(false);
+            }
+        });
     }
 
     placeShips() {
         /* Set event listner for mouse clicks */
         if (debug) console.log("User ship placement method");
-        let placed = 0;
         if (debug) console.log(this.placements);
-        /*set onclick to Player.placeShip(this)
-            Later reset to clickCell(this)
-        */
         
-        /*
-        document.getElementById('playfield').addEventListener('click', function () {
-            /* Place ship 
-             * Read lastX and lastY and control if they are free
-             *//*
-            console.log(lastCell);
-            
-            
-        }, true);
-        */
-        while (this.placements !== placed) {
+        while (this.placements !== this.placed) {
             /* Gotta place'em all! 
             * Await a change in variable lastCell
             * */
             console.log('Ship Placement');
             this.currentLength = this.shipLen[this.ships[placed].type];
             console.log(this.currentLength);
-
+            promise = this.placeShip(this.currentLength);
+            promise.then(callback => callback()).catch();
         }
-        //document.getElementById("playfield").removeEventListener("click", function () { });
     }
 }
 
