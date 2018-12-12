@@ -30,11 +30,21 @@ class Player {
 
     placeShip(len) {
         if (debug) console.log(len);
-
+        let direction = null;
+        let radios = document.getElementsByName('direction');
+        for (var x in radios) {
+            if (radios[x].checked) {
+                direction = radios[x].value;
+                break;
+            }
+        }
         return new Promise(function (resolve, reject) { 
-            if () {
+            if (this.lastCor[0] !== lastX && this.lastCor[1] !== lastY) {
+                if (this.lastCor[0])
                 resolve(function () {
-                    this.placed++;
+                        // Place the ship at lastX, lastY if possible.
+                        this.placed++;
+                        this.lastCor = [lastX, lastY];
                 });
             } else {
                 reject(false);
@@ -43,18 +53,17 @@ class Player {
     }
 
     placeShips() {
-        /* Set event listner for mouse clicks */
+        // Await change in lastCor
+        this.lastCor = [lastX, lastY];
         if (debug) console.log("User ship placement method");
         if (debug) console.log(this.placements);
         
-        while (this.placements !== this.placed) {
-            /* Gotta place'em all! 
-            * Await a change in variable lastCell
-            * */
+        while (this.placements !== this.placed) { //Infinite...
+            
             console.log('Ship Placement');
-            this.currentLength = this.shipLen[this.ships[placed].type];
+            this.currentLength = this.shipLen[this.ships[this.placed].type];
             console.log(this.currentLength);
-            promise = this.placeShip(this.currentLength);
+            let promise = this.placeShip(this.currentLength);
             promise.then(callback => callback()).catch();
         }
     }
