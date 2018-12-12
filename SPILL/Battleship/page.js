@@ -26,8 +26,12 @@ function insertIndex(val) {
     return '<index-element index-value="' + val + '"></index-element>';
 }
 
-function insertCell(x, y, boardNo) {
-    return '<cell-element x="' + x + '" y="' + y + '" brd="' + boardNo +'"></cell-element>';
+function insertCell(x, y, boardNo, type) {
+    if (type === 'player') {
+        return '<cell-element-player x="' + x + '" y="' + y + '" brd="' + boardNo + '"></cell-element>';
+    } else {
+        return '<cell-element-enemy x="' + x + '" y="' + y + '" brd="' + boardNo + '"></cell-element>';
+    }
 }
 
 function openNav() {

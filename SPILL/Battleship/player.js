@@ -15,6 +15,7 @@ class Player {
         ];
         this.currentLength;
         this.placed = 0;
+        this.done = false;
         this.shipLen = {Destroyer: 2, Submarine: 3, Battleship: 4, Carrier: 5}
         this.shipLengths = [
             { name: 'Destroyer', ships: 4, length: 2 },
@@ -24,11 +25,12 @@ class Player {
         this.placements = this.shipLengths.map(i => i.ships).reduce((total, sum) => total + sum);
         this.board = new Board();
         this.myDivs = document.getElementsByClassName("cell");
+        this.currentShip = this.ships[this.placed];
         this.placeShips();
 
     }
 
-    placeShip(len) {
+    /*placeShip(len) {
         if (debug) console.log(len);
         let direction = null;
         let radios = document.getElementsByName('direction');
@@ -66,6 +68,67 @@ class Player {
             let promise = this.placeShip(this.currentLength);
             promise.then(callback => callback()).catch();
             this.placed++; //Only to break infinite loop...
+        }
+    }*/
+
+    placeShips() {
+        document.getElementById('shp').innerHTML = this.shipLen[this.ships[this.placed].type];
+    }
+
+    placeShip(element) {
+        let x = parseInt(element.getAttribute('yIndex'));
+        let y = parseInt(element.getAttribute('xIndex'));
+        document.getElementById('brd').innerHTML = 'Player';
+        document.getElementById('ly').innerHTML = x;
+        document.getElementById('lx').innerHTML = y;
+
+        if (!this.done) {
+            try {
+                let direction = null;
+                let radios = document.getElementsByName('direction');
+                for (var i in radios) {
+                    if (radios[i].checked) {
+                        direction = radios[i].value;
+                        break;
+                    }
+                }
+                if (direction === null) {
+                    throw ('Direction not set');
+                }
+                
+                this.currentShip = this.ships[this.placed];
+                this.currentLength = this.shipLen[this.currentShip.type];
+                if (debug) console.log(x, y, this.currentShip, this.currentLength, direction);
+                //Try to place ship
+                if (direction = 'Horizontal') {
+                    if (x + this.currentLength - 1 < 10) {
+                        for (let index of arr(this.currentLength)) {
+                            this.currentShip.cells.push(this.board.field[x + index - 1][y - 1]);
+                            this.board.field[x + index - 1][y - 1].occupied = true;
+                        }
+                        this.placed++;
+                    } else {
+                        throw ('Ship does not fit: x: ' + x + '  y: ' + y + '  Length:' + this.currentLength);
+                    }
+                } else {
+                    if (y + this.currentLength - 1 < 10) {
+                        for (let index of arr(this.currentLength)) {
+                            this.currentShip.cells.push(this.board.field[x - 1][y + index - 1]);
+                        }
+                        this.placed++;
+                    } else {
+                        throw ('Ship does not fit: x: ' + x + '  y: ' + y + '  Length:' + this.currentLength);
+                    }
+                }
+
+                
+                if (this.placed === this.placements) {
+                    console.log('all ships placed');
+                    this.done = true;
+                }
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 }

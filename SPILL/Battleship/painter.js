@@ -4,7 +4,7 @@ class Painter { /*
     constructor() {
         this.xCells = 10;
         this.yCells = 10;
-        this.xIndexes = arr(10).map(i => i.toString());
+        this.xIndexes = arr(11).map(i => i.toString());
         this.yIndexes = letters(10);
         this.containers = [document.getElementById('playfield'), document.getElementById('playfield2')];
         this.drawBoard();
@@ -22,13 +22,13 @@ class Painter { /*
                         }
                     } else if (y === '0' && x !== '0') {
                         /* Insert a xindex */
-                        if (x > 0) this.containers[element].innerHTML += insertIndex(this.xIndexes[x - 1]);
+                        if (x > 0) this.containers[element].innerHTML += insertIndex(this.xIndexes[x]);
                     } else if (y === '0' && x === '0') {
                         /* Insert XY index */
                         this.containers[element].innerHTML += insertIndex('XY');
                     } else {
                         /* Insert a cell */
-                        this.containers[element].innerHTML += insertCell(x, y, element);
+                        this.containers[element].innerHTML += insertCell(x, y, element, (element === '1') ? 'enemy' : 'player');
                     }
                 }
             }

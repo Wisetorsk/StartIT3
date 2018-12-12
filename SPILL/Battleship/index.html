@@ -38,9 +38,10 @@
             <div id="dataPanel" class="wrapper"> <!-- VUE -->
                 DATA PANEL
                 <ul>
-                    <li>LastX: <span id="lx"></span></li>
-                    <li>LastY: <span id="ly"></span></li>
+                    <li>LastX: <span id="ly"></span></li>
+                    <li>LastY: <span id="lx"></span></li>
                     <li>User board: <span id="brd"></span></li>
+                    <li>Ship length: <span id="shp"></span></li>
                 </ul>
                 <input type="number" id="xInput"/>
                 <input type="number" id="yInput"/>
@@ -60,7 +61,7 @@
             </div>
         </div>
         <script>
-            new Main();
+            main = new Main();
         </script>
         <script type="text/javascript" src="vueFunctions.js"></script>
 
