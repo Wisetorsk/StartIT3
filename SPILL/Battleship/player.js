@@ -65,6 +65,7 @@ class Player {
             console.log(this.currentLength);
             let promise = this.placeShip(this.currentLength);
             promise.then(callback => callback()).catch();
+            this.placed++; //Only to break infinite loop...
         }
     }
 }
