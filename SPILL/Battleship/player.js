@@ -110,11 +110,11 @@ class Player {
         if (!this.done) {
             try {
                 let direction = null;
-                let radios = document.getElementsByName('direction');
+                let radios = [...document.getElementsByName('direction')];
                 for (var i of radios) {
                     if (i.checked) {
                         direction = i.value;
-                        //break;
+                        break;
                     }
                 }
                 if (direction === null) {
@@ -125,11 +125,11 @@ class Player {
                 this.currentLength = this.shipLen[this.currentShip.type];
                 if (debug) console.log(x, y, this.currentShip, this.currentLength, direction);
                 //Try to place ship
-                if (direction = 'Horizontal') {
+                if (direction === 'Horizontal') {
                     console.log(direction);
                     if (x + this.currentLength - 1 < 10) {
                         for (let index of arr(this.currentLength)) {
-                            this.currentShip.cells.push(this.board.field[x + index - 2][y]);
+                            this.currentShip.cells.push(this.board.field[x + index][y]);
                             this.board.field[x + index - 2][y].occupied = true;
                             this.board.field[x + index - 2][y].div.innerHTML = 'X';
                         }
@@ -137,14 +137,14 @@ class Player {
                     } else {
                         throw ('Ship does not fit: x: ' + x + '  y: ' + y + '  Length:' + this.currentLength);
                     }
-                } else {
+                } else if (direction === 'Vertical') {
                     console.log(direction);
 
                     if (y + this.currentLength - 1 < 10) {
                         for (let index of arr(this.currentLength)) {
-                            this.currentShip.cells.push(this.board.field[x][y + index - 2]);
-                            this.board.field[x][y + index - 2].occupied = true;
-                            this.board.field[x][y + index - 2].div.innerHTML = 'X';
+                            this.currentShip.cells.push(this.board.field[x][y + index]);
+                            this.board.field[x - 2][y + index].occupied = true;
+                            this.board.field[x - 2][y + index].div.innerHTML = 'X';
                         }
                         this.placed++;
                     } else {
