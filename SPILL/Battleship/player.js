@@ -1,5 +1,5 @@
 class Player {
-    constructor() {
+    constructor(type) {
         if (debug) console.log("User Player instance");
         this.ships = [ // Attribute cells contains the cells that the current ship occupies
             {type: 'Destroyer', cells: []},
@@ -24,7 +24,9 @@ class Player {
             { name: 'Carrier', ships: 1, length: 5 } ];
         this.placements = this.shipLengths.map(i => i.ships).reduce((total, sum) => total + sum);
         this.board = new Board();
-        this.myDivs = document.getElementsByClassName("cell");
+        this.myDivs = document.getElementsByClassName(type);
+        this.formatDiv();
+        this.bindCellsAndDivs();
         this.currentShip = this.ships[this.placed];
         this.placeShips();
 
@@ -71,6 +73,29 @@ class Player {
         }
     }*/
 
+    formatDiv() {
+        console.log('formatting divs');
+        let divs = [...this.myDivs];
+        let row = [];
+        let board = [];
+        for (let i in divs) {
+            row.push(divs[i]);
+            if (i % 10 === 0 && i !== 0) {
+                board.push(row);
+                row = [];
+            }
+        }
+        this.myDivs = board;
+    }
+
+    bindCellsAndDivs() {
+        for (let row of this.board.field) {
+            for (let cell of row) {
+                cell.bind(this.myDivs[cell.y][cell.x]);
+            }
+        }
+    }
+
     placeShips() {
         document.getElementById('shp').innerHTML = this.shipLen[this.ships[this.placed].type];
     }
@@ -86,10 +111,10 @@ class Player {
             try {
                 let direction = null;
                 let radios = document.getElementsByName('direction');
-                for (var i in radios) {
-                    if (radios[i].checked) {
-                        direction = radios[i].value;
-                        break;
+                for (var i of radios) {
+                    if (i.checked) {
+                        direction = i.value;
+                        //break;
                     }
                 }
                 if (direction === null) {
@@ -101,19 +126,25 @@ class Player {
                 if (debug) console.log(x, y, this.currentShip, this.currentLength, direction);
                 //Try to place ship
                 if (direction = 'Horizontal') {
+                    console.log(direction);
                     if (x + this.currentLength - 1 < 10) {
                         for (let index of arr(this.currentLength)) {
-                            this.currentShip.cells.push(this.board.field[x + index - 1][y - 1]);
-                            this.board.field[x + index - 1][y - 1].occupied = true;
+                            this.currentShip.cells.push(this.board.field[x + index - 2][y]);
+                            this.board.field[x + index - 2][y].occupied = true;
+                            this.board.field[x + index - 2][y].div.innerHTML = 'X';
                         }
                         this.placed++;
                     } else {
                         throw ('Ship does not fit: x: ' + x + '  y: ' + y + '  Length:' + this.currentLength);
                     }
                 } else {
+                    console.log(direction);
+
                     if (y + this.currentLength - 1 < 10) {
                         for (let index of arr(this.currentLength)) {
-                            this.currentShip.cells.push(this.board.field[x - 1][y + index - 1]);
+                            this.currentShip.cells.push(this.board.field[x][y + index - 2]);
+                            this.board.field[x][y + index - 2].occupied = true;
+                            this.board.field[x][y + index - 2].div.innerHTML = 'X';
                         }
                         this.placed++;
                     } else {
@@ -134,8 +165,12 @@ class Player {
 }
 
 class Ai extends Player {
-    constructor() {
-        super();
-        if (debug) console.log("Ai Player instance");
+    constructor(type) {
+        super(type);
+        if (debug) console.log("Ai");
+    }
+
+    placeShips() {
+        console.log('AI placement');
     }
 }

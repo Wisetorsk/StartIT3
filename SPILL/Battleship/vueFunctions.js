@@ -21,12 +21,12 @@ Vue.component('cell-element-player', {
             //cell: main.user.board.field[this.x][this.y]
         }
     },
-    template: '<div class="cell" v-bind:xIndex="x" v-bind:yIndex="y" v-bind:board="board" onclick="main.user.placeShip(this)"></div>'
+    template: '<div class="cell player" v-bind:xIndex="x" v-bind:yIndex="y" v-bind:board="board" onclick="main.user.placeShip(this)"></div>'
 });
 
 Vue.component('cell-element-enemy', {
     props: ['x', 'y', 'board'],
-    template: '<div class="cell" v-bind:xIndex="x" v-bind:yIndex="y" v-bind:board="board" onclick="clickCell(this)"></div>',
+    template: '<div class="cell enemy" v-bind:xIndex="x" v-bind:yIndex="y" v-bind:board="board" onclick="clickCell(this)"></div>',
 });
 
 Vue.component('index-element', {
