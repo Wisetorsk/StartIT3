@@ -38,6 +38,5 @@ class Painter { /*
     updateBoard(board) {
         // Updates the content on page according to board object
     }
-
-
 }
+
