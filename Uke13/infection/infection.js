@@ -20,52 +20,135 @@
 params = {
     width: 20,
     height: 20,
-    alpha: 0.2,
-    beta: 0.5,
+    alpha: 0.5,
+    beta: 0.2,
     mapping: 10,
     phi: 0.5
 };
 
 class Person {
-    constructor(alpha, beta, infected=false) {
+    /**
+     * 
+     * @param {any} parameters
+     * @param {any} x
+     * @param {any} y
+     * @param {any} infected
+     */
+    constructor(parameters, x, y, infected=false) {
         this.infected = infected;
-        this.alpha = alpha;
-        this.beta = beta;
+        this.params = parameters;
+        this.x = x;
+        this.y = y;
     }
 
     goingToMove() {
-        return (this.beta <= Math.floor(Math.random())) ? true : false;
+        return (this.params.beta > Math.random()) ? true : false;
     }
 
     infect() {
-        return (this.alpha <= Math.floor(Math.random())) ? true : false;
+        return (this.infected) ? ((this.params.alpha <= Math.random()) ? true : false) : false;
     }
 }
 
 
 class Cell {
-    constructor() {
+    /**
+     * 
+     * @param {any} x
+     * @param {any} y
+     * @param {any} parameters
+     */
+    constructor(x, y, parameters) {
+        this.infections = 0;
+        this.x = x;
+        this.y = y;
         this.people = [];
+        this.params = parameters;
+        this.movements = [];
+    }
+
+    mapMovements() {
+        this.movements = [];
+        let movements = [];
+        let obj = null;
+        for (let person of this.people) {
+            if (person.goingToMove()) {
+                console.log('Moving');
+                if (Math.random() > 0.5) {
+                    obj = {
+                        person: person,
+                        x: (this.x === 0) ? (this.x + 1) : ((this.x === this.params.width) ? (this.x + 1) : ((Math.random() > 0.5) ? (this.x + 1) : (this.x - 1))),
+                        y: this.y
+                    }
+                    console.log(obj);
+                } else {
+                    obj = {
+                        person: person,
+                        x: this.x,
+                        y: (this.y === 0) ? (this.y + 1) : ((this.y === this.params.height) ? (this.y + 1) : ((Math.random() > 0.5) ? (this.y + 1) : (this.y - 1)))
+                    }
+                    console.log(obj);
+                }
+                if (obj != null) movements.push(obj);
+            }
+        }
+        console.log(movements);
+        this.movements = movements;
+    }
+
+    infect() {
+        this.infections = 0;
+        for (let person of this.people) {
+            if (person.infect()) infections++;
+        }
     }
 }
 
 
 class Board {
-    constructor(width, height) {
-        this.cells = [[]];
-        this.width = width;
-        this.height = height;
+    /**
+     * 
+     * @param {any} parameters
+     */
+    constructor(parameters) {
+        this.cells = [];
+        this.params = parameters;
+
+        this.buildBoard();
+        this.loadCells();
+    }
+
+    infect() {
+        for (let row of this.cells) {
+            for (let cell of row) {
+                cell.infect();
+            }
+        }
+    }
+
+    move() {
+        for (let row of this.cells) {
+            for (let cell of row) {
+                cell.movement();
+            }
+        }
     }
 
     loadCells() {
-
+        for (let row of this.cells) {
+            for (let cell of row) {
+                for (let _ in arr(this.params.mapping)) {
+                    cell.people.push(new Person(this.params, cell.x, cell.y));
+                }
+            }
+        }
     }
 
     buildBoard() {
-        for (let row in arr(this.height)) {
+        for (let row in arr(this.params.height)) {
             let r = [];
-            for (let column in arr(this.width)) {
-                r.push(new Cell());
+            for (let column in arr(this.params.width)) {
+                r.push(new Cell(parseInt(column), parseInt(row), this.params));
             }
             this.cells.push(r);
         }
@@ -74,30 +157,47 @@ class Board {
 
 
 class Simulation {
+    /**
+     * 
+     * @param {any} parameters
+     */
     constructor(parameters) {
-        this.alpha;
-        this.beta;
-        this.mapping;
-        this.phi;
-        this.width;
-        this.height;
-
-        this.loadParams();
-        this.board = new Board();
+        this.params = parameters;
+        this.board = new Board(parameters);
+        this.done = false;
+        this.view = new View();
     }
 
     oneStep() {
-
+        /*
+         Map infections
+         Infect
+         Map movements
+         Move
+         Update view
+         */
     }
 
     run() {
+        /*Repeat OneStep with n ms pause */
+        this.oneStep();
+        this.updateView();
+    }
+
+    updateView() {
+
+    }
+
+    infectRandomPerson() {
+        xIndex = Math.floor(Math.random() * this.params.width);
+        yIndex = Math.floor(Math.random() * this.params.height);
 
     }
 
     mapMovements() {
         for (let row of this.board) {
             for (let cell of row) {
-
+                cell.mapMovements();
             }
         }
     }
@@ -109,19 +209,39 @@ class Simulation {
             }
         }
     }
-
-    loadParams() {
-        for (let param of parameters) {
-
-        }
-    }
 }
 
 
+class View {
+    /**
+     * /
+     * @param {any} container
+     * @param {any} width
+     * @param {any} height
+     * 
+     * Controls the html output
+     */
+    constructor(container, width, height) {
+        this.width = width;
+        this.height = height;
+        this.element = document.getElementById(container);
+    }
+
+    build() {
+
+    }
+
+    update(data) {
+        this.element.innerHTML = '';
+    }
+}
+
 class Main {
+
     constructor() {
-        this.view = new View();
         this.sim = new Simulation(params);
-        this.sim.run();
+        console.table(params);
+        console.log(this.sim);
+        //this.sim.run();
     }
 }
