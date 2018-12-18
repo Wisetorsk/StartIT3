@@ -127,11 +127,11 @@ class Player {
                 //Try to place ship
                 if (direction === 'Horizontal') {
                     console.log(direction);
-                    if (x + this.currentLength - 1 < 10) {
+                    if (x + this.currentLength < 10) {
                         for (let index of arr(this.currentLength)) {
                             this.currentShip.cells.push(this.board.field[x + index][y]);
-                            this.board.field[x + index - 2][y].occupied = true;
-                            this.board.field[x + index - 2][y].div.innerHTML = 'X';
+                            this.board.field[x + index][y].occupied = true;
+                            this.board.field[x + index][y].div.innerHTML = 'X';
                         }
                         this.placed++;
                     } else {
@@ -140,11 +140,11 @@ class Player {
                 } else if (direction === 'Vertical') {
                     console.log(direction);
 
-                    if (y + this.currentLength - 1 < 10) {
+                    if (y + this.currentLength < 10) {
                         for (let index of arr(this.currentLength)) {
                             this.currentShip.cells.push(this.board.field[x][y + index]);
-                            this.board.field[x - 2][y + index].occupied = true;
-                            this.board.field[x - 2][y + index].div.innerHTML = 'X';
+                            this.board.field[x][y + index].occupied = true;
+                            this.board.field[x][y + index].div.innerHTML = 'X';
                         }
                         this.placed++;
                     } else {

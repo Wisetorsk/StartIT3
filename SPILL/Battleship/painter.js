@@ -28,7 +28,7 @@ class Painter { /*
                         this.containers[element].innerHTML += insertIndex('XY');
                     } else {
                         /* Insert a cell */
-                        this.containers[element].innerHTML += insertCell(x, y, element, (element === '1') ? 'enemy' : 'player');
+                        this.containers[element].innerHTML += insertCell(x -1, y-1, element, (element === '1') ? 'enemy' : 'player');
                     }
                 }
             }
