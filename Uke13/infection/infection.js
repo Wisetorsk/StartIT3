@@ -17,6 +17,20 @@
  *  
  *  When the simulation completes, return a summary.
  */
+
+Vue.component('cell', {
+    props: ['x', 'y', 'infected'],
+    data: function () {
+        return {
+            cellStyle: {
+                backgroundColor: 'rgba(' + infected + ',0,0,0)',
+                border: '1px solid black'
+            }
+        }
+    },
+    template: '<div class="cell" v-bind:x="x" v-bind:y="y" v-bind:style="cellStyle"></div>'
+});
+
 params = {
     width: 20,
     height: 20,
@@ -39,6 +53,7 @@ class Person {
         this.params = parameters;
         this.x = x;
         this.y = y;
+        this.newCoordinates = { x: NaN, y: NaN };
     }
 
     goingToMove() {
@@ -60,6 +75,7 @@ class Cell {
      */
     constructor(x, y, parameters) {
         this.infections = 0;
+        this.infected = 0; // The number of total infected persons in cell
         this.x = x;
         this.y = y;
         this.people = [];
@@ -73,33 +89,32 @@ class Cell {
         let obj = null;
         for (let person of this.people) {
             if (person.goingToMove()) {
-                console.log('Moving');
+                //console.log('Moving');
                 if (Math.random() > 0.5) {
                     obj = {
                         person: person,
                         x: (this.x === 0) ? (this.x + 1) : ((this.x === this.params.width) ? (this.x + 1) : ((Math.random() > 0.5) ? (this.x + 1) : (this.x - 1))),
                         y: this.y
                     }
-                    console.log(obj);
                 } else {
                     obj = {
                         person: person,
                         x: this.x,
                         y: (this.y === 0) ? (this.y + 1) : ((this.y === this.params.height) ? (this.y + 1) : ((Math.random() > 0.5) ? (this.y + 1) : (this.y - 1)))
                     }
-                    console.log(obj);
                 }
                 if (obj != null) movements.push(obj);
             }
         }
-        console.log(movements);
+        //console.log(movements);
         this.movements = movements;
     }
 
-    infect() {
+    mapInfections() {
         this.infections = 0;
         for (let person of this.people) {
-            if (person.infect()) infections++;
+            if (person.infected) this.infected++;
+            if (person.infect()) this.infections++;  //Adds one to the number of people to infect
         }
     }
 }
@@ -118,10 +133,25 @@ class Board {
         this.loadCells();
     }
 
+    mapInfections() {
+        for (let row of this.cells) {
+            for (let cell of row) {
+                cell.mapInfections();
+            }
+        }
+    }
+
     infect() {
         for (let row of this.cells) {
             for (let cell of row) {
-                cell.infect();
+                for (let _ in arr(cell.infections)) {
+                    for (let person of cell.people) {
+                        if (!person.infected) {
+                            person.infected = true;
+                            break;
+                        }
+                    }
+                }
             }
         }
     }
@@ -129,7 +159,15 @@ class Board {
     move() {
         for (let row of this.cells) {
             for (let cell of row) {
-                cell.movement();
+
+            }
+        }
+    }
+
+    mapMovements() {
+        for (let row of this.cells) {
+            for (let cell of row) {
+                cell.mapMovements();
             }
         }
     }
@@ -162,10 +200,14 @@ class Simulation {
      * @param {any} parameters
      */
     constructor(parameters) {
+        this.iteration = 0;
         this.params = parameters;
         this.board = new Board(parameters);
         this.done = false;
-        this.view = new View();
+        this.view = new View('board', 'table', parameters.width, parameters.height);
+        this.infectRandomPerson();
+        this.infectedTotal;
+        this.view.build(this.board.cells);
     }
 
     oneStep() {
@@ -176,6 +218,12 @@ class Simulation {
          Move
          Update view
          */
+        this.mapInfections();
+        this.infection();
+        this.mapMovements();
+        this.movePersons();
+        this.iteration++;
+        this.updateLog();
     }
 
     run() {
@@ -189,25 +237,47 @@ class Simulation {
     }
 
     infectRandomPerson() {
-        xIndex = Math.floor(Math.random() * this.params.width);
-        yIndex = Math.floor(Math.random() * this.params.height);
+        let xIndex = Math.floor(Math.random() * this.params.width);
+        let yIndex = Math.floor(Math.random() * this.params.height);
+        this.board.cells[yIndex][xIndex].people[Math.floor(Math.random() * this.params.mapping)].infected = true;
+    }
 
+    mapInfections() {
+        this.board.mapInfections();
+    }
+
+    infection() {
+        this.board.infect();
     }
 
     mapMovements() {
-        for (let row of this.board) {
-            for (let cell of row) {
-                cell.mapMovements();
-            }
-        }
+        this.board.mapMovements();
     }
 
     movePersons() {
-        for (let row of this.board) {
-            for (let cell of row) {
+        
+    }
 
+    listAllInfected() {
+        /* Create list of all infected persons and their objects */
+    }
+
+    mapAllInfected() {
+        // Updates the number of total infected persons
+        let infected = 0;
+        for (let row of this.board.cells) {
+            for (let cell of row) {
+                for (let person of cell.people) {
+                    if (person.infected) infected++;
+                }
             }
         }
+        this.infectedTotal = infected;
+    }
+
+    updateLog() {
+        this.mapAllInfected();
+        this.view.updateLog(this.iteration, this.infectedTotal);
     }
 }
 
@@ -221,18 +291,32 @@ class View {
      * 
      * Controls the html output
      */
-    constructor(container, width, height) {
+    constructor(container, log, width, height) {
         this.width = width;
         this.height = height;
-        this.element = document.getElementById(container);
+        this.display = document.getElementById(container);
+        this.log = document.getElementById(log);
     }
 
-    build() {
-
+    build(board) {
+        console.log('build');
+        for (let row in arr(this.height)) {
+            for (let column in arr(this.width)) {
+                this.display.innerHTML += '<cell x=' + column + ' y=' + row + ' infected=' + board[row][column].infected + '></cell>';
+            }
+        }
     }
 
-    update(data) {
-        this.element.innerHTML = '';
+    updateDisplay(data) {
+        this.display.innerHTML = '';
+    }
+
+    updateLog(iteration, infected) {
+        /*this.log.innerHTML += '<tr>';
+        this.log.innerHTML += '<td>' + iteration + '</td>';
+        this.log.innerHTML += '<td>' + infected + '</td>';
+        this.log.innerHTML += '</tr>';*/
+        this.log.innerHTML += '<div>Infected: ' + infected + '</div>';
     }
 }
 
@@ -240,7 +324,10 @@ class Main {
 
     constructor() {
         this.sim = new Simulation(params);
+        //this.sim.infectRandomPerson();
         console.table(params);
+        console.log(this.sim);
+        this.sim.oneStep();
         console.log(this.sim);
         //this.sim.run();
     }
