@@ -203,6 +203,7 @@ class Simulation {
      */
     constructor(parameters) {
         this.iteration = 0;
+        this.history = [];
         this.params = parameters;
         this.board = new Board(parameters);
         this.done = false;
@@ -211,6 +212,7 @@ class Simulation {
         this.infectedTotal;
         this.view.build(this.board.cells);
         this.link();
+        this.history.push({ iteration: this.iteration, infected: 1 });
     }
 
     oneStep() {
@@ -291,6 +293,7 @@ class Simulation {
     updateLog() {
         this.mapAllInfected();
         this.view.updateLog(this.iteration, this.infectedTotal);
+        this.history.push({ iteration: this.iteration, infected: this.infectedTotal });
     }
 }
 
@@ -345,11 +348,7 @@ class View {
     }
 
     updateLog(iteration, infected) {
-        /*this.log.innerHTML += '<tr>';
-        this.log.innerHTML += '<td>' + iteration + '</td>';
-        this.log.innerHTML += '<td>' + infected + '</td>';
-        this.log.innerHTML += '</tr>';*/
-        this.log.innerHTML += '<div>Infected: ' + infected + '</div>';
+        this.log.innerHTML = '<div>Step: ' + iteration + ' Infected: ' + infected + '</div>';
     }
 }
 
