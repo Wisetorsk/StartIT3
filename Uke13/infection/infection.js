@@ -17,7 +17,7 @@
  *  
  *  When the simulation completes, return a summary.
  */
-
+ 
 Vue.component('cell', {
     props: ['x', 'y', 'infected'],
     data: function () {
