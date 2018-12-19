@@ -17,15 +17,15 @@
  *  
  *  When the simulation completes, return a summary.
  */
- 
-Vue.component('cell', {
+Vue.component('cell-element', {
     props: ['x', 'y', 'infected'],
     data: function () {
         return {
             cellStyle: {
                 backgroundColor: 'rgba(' + infected + ',0,0,0)',
                 border: '1px solid black'
-            }
+            },
+            cls: 'cell'
         }
     },
     template: '<div class="cell" v-bind:x="x" v-bind:y="y" v-bind:style="cellStyle"></div>'
@@ -81,6 +81,7 @@ class Cell {
         this.people = [];
         this.params = parameters;
         this.movements = [];
+        this.element = null;
     }
 
     mapMovements() {
@@ -208,6 +209,7 @@ class Simulation {
         this.infectRandomPerson();
         this.infectedTotal;
         this.view.build(this.board.cells);
+        this.link();
     }
 
     oneStep() {
@@ -224,6 +226,14 @@ class Simulation {
         this.movePersons();
         this.iteration++;
         this.updateLog();
+    }
+
+    link() {
+        for (let row in arr(this.params.height)) {
+            for (let column in arr(this.params.width)) {
+                this.board.cells[row][column].element = document.getElementById('X' + column + 'Y' + row);
+            }
+        }
     }
 
     run() {
@@ -302,7 +312,9 @@ class View {
         console.log('build');
         for (let row in arr(this.height)) {
             for (let column in arr(this.width)) {
-                this.display.innerHTML += '<cell x=' + column + ' y=' + row + ' infected=' + board[row][column].infected + '></cell>';
+                //this.display.innerHTML += '<cell-element x=' + column + ' y=' + row + ' infected=' + board[row][column].infected + '></cell-element>';
+                this.display.innerHTML += '<div class="cell" id="X' + column + 'Y' + row + '" x="' + column + '" y="' + row + '" infected="' + board[row][column].infected + '"></div>';
+
             }
         }
     }
