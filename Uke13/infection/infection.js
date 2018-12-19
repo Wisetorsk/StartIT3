@@ -112,6 +112,7 @@ class Cell {
     }
 
     mapInfections() {
+        this.infected = 0;
         this.infections = 0;
         for (let person of this.people) {
             if (person.infected) this.infected++;
@@ -226,6 +227,7 @@ class Simulation {
         this.movePersons();
         this.iteration++;
         this.updateLog();
+        this.view.updateDisplay(this.board.cells);
     }
 
     link() {
@@ -243,12 +245,13 @@ class Simulation {
     }
 
     updateView() {
-
+        this.view.updateDisplay(this.board.cells);
     }
 
     infectRandomPerson() {
         let xIndex = Math.floor(Math.random() * this.params.width);
         let yIndex = Math.floor(Math.random() * this.params.height);
+        console.log('Infecting random person in cell  x:' + xIndex + ' y:' + yIndex)
         this.board.cells[yIndex][xIndex].people[Math.floor(Math.random() * this.params.mapping)].infected = true;
     }
 
@@ -320,7 +323,25 @@ class View {
     }
 
     updateDisplay(data) {
-        this.display.innerHTML = '';
+        for (let row of data) {
+            for (let cell of row) {
+                if (cell.infected === 0) {
+                    cell.element.style.backgroundColor = 'rgba(255,0,0,0)';
+                } else if (cell.infected < 2 && cell.infected > 0) {
+                    cell.element.style.backgroundColor = 'rgba(255,0,0,0.28)';
+                } else if (cell.infected < 5 && cell.infected >= 2) {
+                    cell.element.style.backgroundColor = 'rgba(255,0,0,0.42)';
+                } else if (cell.infected < 7 && cell.infected >= 5) {
+                    cell.element.style.backgroundColor = 'rgba(255,0,0,0.56)';
+                } else if (cell.infected < 10 && cell.infected >= 7) {
+                    cell.element.style.backgroundColor = 'rgba(255,0,0,0.70)';
+                } else if (cell.infected < 15 && cell.infected >= 10) {
+                    cell.element.style.backgroundColor = 'rgba(255,0,0,0.84)';
+                } else if (cell.infected < 20 && cell.infected >= 15) {
+                    cell.element.style.backgroundColor = 'rgba(255,0,0,1)';
+                }
+            }
+        }
     }
 
     updateLog(iteration, infected) {
@@ -336,9 +357,8 @@ class Main {
 
     constructor() {
         this.sim = new Simulation(params);
-        //this.sim.infectRandomPerson();
         console.table(params);
-        console.log(this.sim);
+        //console.log(this.sim);
         this.sim.oneStep();
         console.log(this.sim);
         //this.sim.run();
