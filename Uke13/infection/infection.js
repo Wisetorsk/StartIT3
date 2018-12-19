@@ -94,14 +94,14 @@ class Cell {
                 if (Math.random() > 0.5) {
                     obj = {
                         person: person,
-                        x: (this.x === 0) ? (this.x + 1) : ((this.x === this.params.width) ? (this.x + 1) : ((Math.random() > 0.5) ? (this.x + 1) : (this.x - 1))),
+                        x: (this.x === 0) ? (this.x + 1) : ((this.x === this.params.width - 1) ? (this.x - 1) : ((Math.random() > 0.5) ? (this.x + 1) : (this.x - 1))),
                         y: this.y
                     }
                 } else {
                     obj = {
                         person: person,
                         x: this.x,
-                        y: (this.y === 0) ? (this.y + 1) : ((this.y === this.params.height) ? (this.y + 1) : ((Math.random() > 0.5) ? (this.y + 1) : (this.y - 1)))
+                        y: (this.y === 0) ? (this.y + 1) : ((this.y === this.params.height - 1) ? (this.y - 1) : ((Math.random() > 0.5) ? (this.y + 1) : (this.y - 1)))
                     }
                 }
                 if (obj != null) movements.push(obj);
@@ -161,7 +161,15 @@ class Board {
     move() {
         for (let row of this.cells) {
             for (let cell of row) {
-
+                for (let move of cell.movements) {
+                    for (let person of cell.people) {
+                        if (person === move.person) {
+                            this.cells[move.y][move.x].people.push(move.person);
+                            //cell.people.splice(cell.people.indexOf(person));
+                            break;
+                        }
+                    }
+                }
             }
         }
     }
@@ -270,7 +278,7 @@ class Simulation {
     }
 
     movePersons() {
-        
+        this.board.move();
     }
 
     listAllInfected() {
