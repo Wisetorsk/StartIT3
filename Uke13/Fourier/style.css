@@ -1,0 +1,12 @@
+.wrapper {
+    display: grid;
+    grid-template-areas: "f1" "f2";
+}
+
+#fourier {
+    grid-area: f1;
+}
+
+#fourier2 {
+    grid-area: f2;
+}
