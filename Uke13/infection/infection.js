@@ -17,7 +17,8 @@
  *  
  *  When the simulation completes, return a summary.
  */
-Vue.component('cell-element', {
+
+/*Vue.component('cell-element', {
     props: ['x', 'y', 'infected'],
     data: function () {
         return {
@@ -29,7 +30,7 @@ Vue.component('cell-element', {
         }
     },
     template: '<div class="cell" v-bind:x="x" v-bind:y="y" v-bind:style="cellStyle"></div>'
-});
+});*/
 
 params = {
     width: 20,
