@@ -12,15 +12,10 @@
         <canvas id="fourier" width="800" height="300">
 
         </canvas>
-        <canvas id="fourier2" width="800" height="300">
-
-        </canvas>
     </div>
     <script>
-        let fourier = new Fourier(100, 100, 0.05, 'fourier');
-        let fourier2 = new Fourier(100, 100, 0.2,  'fourier2');
+        let fourier = new Fourier(100, 100, 0.01, 'fourier');
         setInterval(() => fourier.oneStep(), 50);
-        setInterval(() => fourier2.oneStep(), 50);
     </script>
     <a href="https://www.youtube.com/watch?v=Mm2eYfj0SgA">Based on Daniel shiffmans video</a>
 </body>
