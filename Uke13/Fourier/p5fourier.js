@@ -11,13 +11,14 @@ function draw() {
     translate(200, 200);
     let radius = 50;
     stroke(255);
+    let steps = parseInt(document.getElementById('numberInput').value);
     noFill();
     ellipse(0, 0, radius * 2);
     let x = 0;
     let y = 0;
 
     //let coor = polToCart(radius, angle);
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < steps; i++) {
         n = i * 2 + 1;
         let coor = fourierStep(n, radius, angle);
         x += coor.x;
@@ -37,7 +38,7 @@ function draw() {
         vertex(i, wave[i]);
     }
     endShape();
-    if (wave.length > 200) {
+    if (wave.length > 300) {
         wave.splice(-1);
     }
     angle += 0.05;
