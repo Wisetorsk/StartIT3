@@ -36,7 +36,7 @@ class Fourier {
         this.drawCircle(this.offset.x, this.offset.y, this.radius);
         this.time += this.step;
         let coor = this.point(this.radius, this.time);
-        coor.y = this.sumFourier(5, coor.x)*3;
+        coor.y = this.sumFourier(10, coor.x)*3;
         this.addY(coor.y);
         this.drawCircle(this.offset.x + coor.x, this.offset.y + coor.y, 5);
         this.drawLine(this.offset.x * 2, this.offset.y + coor.y, coor.x + this.offset.x, this.offset.y + coor.y);
