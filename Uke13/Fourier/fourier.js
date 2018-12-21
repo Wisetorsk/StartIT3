@@ -1,4 +1,3 @@
-let time = 0;
 
 class Fourier {
     constructor(x, y, rate, canvas) {
@@ -36,24 +35,11 @@ class Fourier {
         this.drawCircle(this.offset.x, this.offset.y, this.radius);
         this.time += this.step;
         let coor = this.point(this.radius, this.time);
-        coor.y = this.sumFourier(10, this.time)*5;
         this.addY(coor.y);
         this.drawCircle(this.offset.x + coor.x, this.offset.y + coor.y, 5);
         this.drawLine(this.offset.x * 2, this.offset.y + coor.y, coor.x + this.offset.x, this.offset.y + coor.y);
         this.drawCircle(this.offset.x * 2, this.offset.y + coor.y, 5);
         this.drawWave();
-    }
-
-    sumFourier(n, x) {
-        let sum = 0;
-        for (let i = 1; i < n; i++) {
-            sum += this.fourierStep(i * 2, x);
-        }
-        return sum;
-    }
-
-    fourierStep(i, x) {
-        return (4/i*Math.PI) * Math.sin(i*Math.PI*x / this.period)
     }
 
     cls() {

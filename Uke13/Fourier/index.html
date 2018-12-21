@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <title></title>
     <script src="fourier.js"></script>
+    <script src="../../Libraries/p5.js"></script>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -17,6 +18,10 @@
         let fourier = new Fourier(100, 100, 0.025, 'fourier');
         setInterval(() => fourier.oneStep(), 25);
     </script>
+    <div id="sketch-holder">
+            <script src="p5fourier.js"></script>
+
+    </div>
     <a href="https://www.youtube.com/watch?v=Mm2eYfj0SgA">Based on Daniel shiffmans video</a>
 </body>
 </html>
