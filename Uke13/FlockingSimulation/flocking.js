@@ -3,7 +3,8 @@ let flock = [];
 let alignSlider, cohesionSlider, seperationSlider;
 
 function setup() {
-    createCanvas(640, 360);
+    let canvas = createCanvas(640, 360);
+    canvas.parent('window');
     alignSlider = document.getElementById('align');
     alignSlider.step = "0.1";
     cohesionSlider = document.getElementById('cohesion');

@@ -10,11 +10,32 @@
     <script src="boid.js"></script>
     <link rel="stylesheet" href="style.css" />
     <title>Flocking Simulator</title>
+    <style>
+        .wrapper {
+            display: grid;
+            grid-template-rows: 400px, 400px;
+        }
+
+        .sliders {
+
+        }
+
+        .slider {
+            width: 400px;
+        }
+    </style>
 </head>
 <body>
-    Alignment<input type="range" style="width:200px" min="0" max="5" value="1" id="align"/> 
-    Cohesion<input type="range" style="width:200px" min="0" max="5" value="1" id="cohesion"/> 
-    Separation<input type="range" style="width:200px" min="0" max="5" value="1" id="seperation"/> 
-    Perception<input type="range" style="width:200px" min="0" max="500" value="50" id="perception"/> 
+    <div class="wrapper">
+        <div id="window"></div>
+        <div id="sliders">
+            <ul style="list-style: none" class="sliders">
+                <li>Alignment<input class="slider" type="range" min="0" max="5" value="1" id="align" /></li>
+                <li>Cohesion<input class="slider" type="range" min="0" max="5" value="1" id="cohesion" /></li>
+                <li>Separation<input class="slider" type="range" min="0" max="5" value="1" id="seperation" /></li>
+                <li>Perception<input class="slider" type="range" min="0" max="500" value="50" id="perception" /></li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
