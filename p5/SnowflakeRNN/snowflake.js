@@ -6,7 +6,8 @@ let x, y;
 let pen = 'down';
 
 function setup() {
-    createCanvas(1900, 1060);
+    let canvas = createCanvas(1900, 660);
+    canvas.parent('ducksu');
     background(0);
     x = random(width);
     y = random(height);
