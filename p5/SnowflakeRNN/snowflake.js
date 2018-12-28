@@ -6,7 +6,7 @@ let x, y;
 let pen = 'down';
 
 function setup() {
-    createCanvas(800, 800);
+    createCanvas(1900, 1060);
     background(0);
     x = random(width);
     y = random(height);
