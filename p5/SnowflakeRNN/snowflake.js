@@ -1,6 +1,7 @@
+// Source: https://www.youtube.com/watch?v=pdaNttb7Mr8
 let model;
 let strokePath = null;
-
+let scale = 0.2;
 let x, y;
 let pen = 'down';
 
@@ -15,19 +16,13 @@ function setup() {
 
 function draw() {
     if (strokePath != null) {
-        let newX = x + strokePath.dx * 0.1;
-        let newY = y + strokePath.dy * 0.1;
-        if (pen === 'down') {
-            line(x, y, newX, newY);
-        } else if (strokePath.pen === 'end') {
-            console.log('Done');
-            //throw "Done";
-        }
+        let newX = x + strokePath.dx * scale;
+        let newY = y + strokePath.dy * scale;
+        if (pen === 'down') line(x, y, newX, newY);
         pen = strokePath.pen;
         x = newX;
         y = newY;
         strokePath = null;
-
         if (pen !== 'end') {
             model.generate(gotSketch);
         } else {
@@ -47,12 +42,10 @@ function modelReady() {
 }
 
 
-function gotSketch(err, s) {
+function gotSketch(err, sPath) {
     // Error first callback function
     if (err) {
-        //console.log(err);
         throw (err);
     }
-    strokePath = s;
-    //console.log(strokePath);
+    strokePath = sPath;
 }
