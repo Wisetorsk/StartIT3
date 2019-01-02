@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #chat {
+            border: 2px solid black;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat"></div>
+    <input type="text" id="name" value="name"/>
+    <input type="text" id="inputField" value="message" />
+    <button class="submitButton" onclick="writeToBase()">Submit</button>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-firestore.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBuX8JXDmNLolyuF6Q0P5U9CT66DG_Lo_4",
+        authDomain: "testing-av-firebase-5acb5.firebaseapp.com",
+        databaseURL: "https://testing-av-firebase-5acb5.firebaseio.com",
+        projectId: "testing-av-firebase-5acb5",
+        storageBucket: "testing-av-firebase-5acb5.appspot.com",
+        messagingSenderId: "98873862790"
+      };
+        firebase.initializeApp(config);
+
+        const db = firebase.firestore();
+        const settings = {/* your settings... */ timestampsInSnapshots: true};
+        db.settings(settings);
+
+        let chatRooms = db.collection('chat').doc('room1').collection('messages')//.doc('messages');
+        chatRooms.get().then(readChatBase);
+        //let chatRoom = chatRooms.collection('room1');
+        //chatRoom.get().then(readChatBase);
+
+        function writeToBase() {
+            let usrId = document.getElementById('name');
+            let usrVal = document.getElementById('inputField');
+        }
+
+        //=================================================================================================================
+        // Callbacks
+        //=================================================================================================================
+
+        function getResponse(response, error) {
+            // ReturnValue is the data given back by firestore when executing the callback.
+            // This function logs all data in the database... 
+            if (error) {
+                throw error;
+            } else {
+                console.log(response)
+                response.forEach(i => console.log(i.data()));
+            }
+        }
+
+        function readChatBase(response, error) {
+            //Reads the content of the chat database and writes it to the page
+            console.log('read chat');
+            if (!response) {
+                console.log('Got nothing back...');
+            } else {
+                if (error) {
+                    throw error;
+                } else {
+                    console.log('Got something', response);
+                    try {
+                        response.forEach(//For room in chat
+                            function (element) {
+                                console.log('Room: ', element)
+                                element.forEach(
+                                    function (subElement) {
+                                        console.log(subElement.data());
+                                    }
+                                )
+                            }
+                        )
+                    } catch (err) {
+                        console.log('ForEach failed');
+                        console.log(response.data());
+                    }
+
+                }
+            }
+        }
+
+        function writeChatDatabase(response, error) {
+            if (error) {
+                throw error;
+            } else {
+
+            }
+        }
+    </script>
+</body>
+</html>
