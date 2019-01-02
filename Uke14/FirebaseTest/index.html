@@ -35,7 +35,7 @@
         const settings = {/* your settings... */ timestampsInSnapshots: true};
         db.settings(settings);
 
-        let chatRooms = db.collection('chat').doc('room1').collection('messages')//.doc('messages');
+        let chatRooms = db.collection('chat').doc('aDMY8ee4U8XPNEEb6750').collection('room1').doc('cVJg86MMEnoDaWytMeXB').collection('messages').doc('RjQntY9J15Cma9vZGjAX');
         chatRooms.get().then(readChatBase);
         //let chatRoom = chatRooms.collection('room1');
         //chatRoom.get().then(readChatBase);
@@ -83,7 +83,8 @@
                         )
                     } catch (err) {
                         console.log('ForEach failed');
-                        console.log(response.data());
+                        console.log(err);
+                        console.log('Dumping object data: ', response.data());
                     }
 
                 }
