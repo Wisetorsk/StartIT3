@@ -20,7 +20,7 @@
     <input type="text" id="name" value="name"/>
     <input type="text" id="inputField" value="message" />
     <button class="submitButton" onclick="writeChat()">Submit</button>
-    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>-->
     <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-firestore.js"></script>
     <script>
@@ -40,9 +40,6 @@
         let chatRooms = db.collection('chatrooms');
         let room1 = chatRooms.doc('buzHycgehxiq9RRhu5W6').collection('messages');
         writeToScreen();
-        //chatRooms.get().then(readChatBase);
-        //let chatRoom = chatRooms.collection('room1');
-        //chatRoom.get().then(readChatBase);
 
         //=================================================================================================================
         // Functions
@@ -61,10 +58,26 @@
             writeToScreen();
             writeToBase(room1);
         }
-
+        /*
+        function escape(inputString) {
+            let dict = [
+                {'<': '&lt;'},
+                {'>': '&gt;'}
+            ];
+            let words = inputString.split("");
+            
+            for (let i of dict) {
+                console.log(Object.keys(i)[0]);
+                words.splice(words.indexOf(Object.keys(i)[0]), 1, dict.Object.keys(i)[0]);
+            }
+            output = '';
+            //words.map(i => output += i);
+            return words;
+        }
+        */
         function writeToBase(room) {
-            let usrId = document.getElementById('name').value;
-            let usrVal = document.getElementById('inputField').value;
+            let usrId = encodeURI(document.getElementById('name').value);
+            let usrVal = encodeURI(document.getElementById('inputField').value);
             let timeVal = new Date().today() + " @ " + new Date().timeNow();
             room.doc('message' + Math.floor(Math.random() * 999999999999)).set({
                 time: timeVal,
