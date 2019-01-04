@@ -9,6 +9,15 @@
             border: 2px solid black;
             height: 500px;
         }
+
+        .timestamp {
+            color: red;
+        }
+
+        .hidden {
+            /*display: none;*/
+            display: inline;
+        }
     </style>
 </head>
 <body>
@@ -76,7 +85,8 @@
         function writeToBase(room) {
             let usrId = escape(document.getElementById('name').value);
             let usrVal = escape(document.getElementById('inputField').value);
-            let timeVal = new Date().today() + " @ " + new Date().timeNow();
+            let timeVal = Date.now();
+            //let timeVal = new Date().today() + " @ " + new Date().timeNow();
             let ids = [...chatLog].map(i => i.messageId);
             console.log(ids);
             let id = Math.floor(Math.random() * 999999999999);
@@ -98,9 +108,21 @@
             document.getElementById('chat').innerHTML = '';
             room1.get().then(readChatBase).then(function () {
                 for (msg of chatLog) {
-                    document.getElementById('chat').innerHTML += '<li>' + msg.timestamp + '\t' + msg.user + ' said: ' + msg.message + '</li>'
+                    document.getElementById('chat').innerHTML += '<li><span class="timestamp hidden">' + String(new Date(msg.timestamp)).slice(0, 24) + '</span>\t' + msg.user + ' said: ' + msg.message + '</li>'
                 }
             });
+        }
+
+        function sortChatLog(log) {
+            for (let message of log) {
+                //sort by year
+                //sort by month
+                //sort by day
+                //sort by hour
+                //sort by minute
+                //sort by second
+                console.log(message.timestamp);
+            }
         }
 
         function removeMessage(room, id) {
@@ -113,7 +135,14 @@
 
         function nuke(room) {
             for (let x of [...chatLog].map(i => i.messageId)) { removeMessage(room, x) }
-            console.log('Nuke complete, all messages removed');
+        }
+
+        function nukeAll() {
+            let rooms = [room1];
+            for (let room of rooms) {
+                nuke(room);
+                console.log('Nuke complete, all messages removed');
+            }
         }
 
         function mapping(i) {
