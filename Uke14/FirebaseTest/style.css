@@ -1,0 +1,13 @@
+#chat {
+    border: 2px solid black;
+    height: 500px;
+}
+
+.timestamp {
+    color: red;
+}
+
+.hidden {
+    /*display: none;*/
+    display: inline;
+}
