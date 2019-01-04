@@ -32,6 +32,11 @@
             storageBucket: "testing-av-firebase-5acb5.appspot.com",
             messagingSenderId: "98873862790"
         };
+
+        let dict = {
+                '<': '&lt;',
+                '>': '&gt;'
+            };
         firebase.initializeApp(config);
         const db = firebase.firestore();
         const settings = {/* your settings... */ timestampsInSnapshots: true};
@@ -58,31 +63,31 @@
             writeToScreen();
             writeToBase(room1);
         }
-        /*
+        
         function escape(inputString) {
-        let dict = [
-        {'<': '&lt;'},
-        {'>': '&gt;'}
-        ];
-        let words = inputString.split("");
-            
-        for (let i of dict) {
-        console.log(Object.keys(i)[0]);
-        words.splice(words.indexOf(Object.keys(i)[0]), 1, dict.Object.keys(i)[0]);
+            let letters = inputString.split("");
+            let output = '';
+            for (let letter of letters) {
+                output += mapping(letter);
+            }
+            return output;
         }
-        output = '';
-        //words.map(i => output += i);
-        return words;
-        }
-        */
+
         function writeToBase(room) {
-            let usrId = encodeURI(document.getElementById('name').value);
-            let usrVal = encodeURI(document.getElementById('inputField').value);
+            let usrId = escape(document.getElementById('name').value);
+            let usrVal = escape(document.getElementById('inputField').value);
             let timeVal = new Date().today() + " @ " + new Date().timeNow();
-            room.doc('message' + Math.floor(Math.random() * 999999999999)).set({
-            time: timeVal,
-            usr: usrId,
-            message: usrVal
+            let ids = [...chatLog].map(i => i.messageId);
+            console.log(ids);
+            let id = Math.floor(Math.random() * 999999999999);
+            while (ids.indexOf(id) >= 0) {
+                id = Math.floor(Math.random() * 999999999999);
+            }
+            room.doc('message' + id).set({
+                time: timeVal,
+                usr: usrId,
+                message: usrVal,
+                messageId: id
             })
             .then(writeChatBase)
             .catch(writeChatBase);
@@ -98,9 +103,32 @@
             });
         }
 
+        function removeMessage(room, id) {
+            room.doc('message' + id).delete().then(function () {
+                console.log('Message ' + id + ' deleted');
+            }).catch(function (error) {
+                console.error('Error removing message id: ' + id);
+            });
+        }
+
+        function nuke(room) {
+            for (let x of [...chatLog].map(i => i.messageId)) { removeMessage(room, x) }
+            console.log('Nuke complete, all messages removed');
+        }
+
+        function mapping(i) {
+            for (let word of Object.keys(dict)) {
+                if (word === i) {
+                    return dict[word];
+                }
+            }
+            return i;
+        }
+
         //=================================================================================================================
         // Callbacks
         //=================================================================================================================
+
 
         function getResponse(response, error) {
             // ReturnValue is the data given back by firestore when executing the callback.
@@ -126,11 +154,12 @@
                     console.log('Got something', response);
                     response.forEach(
                         function (element) {
-                            console.log(element.data());
+                            //console.log(element.data());
                             chatLog.push({
                             user: element.data().usr,
                             timestamp: element.data().time,
-                            message: element.data().message
+                            message: element.data().message,
+                            messageId: element.data().messageId
                         });
                     });
 
