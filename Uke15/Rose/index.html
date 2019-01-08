@@ -4,15 +4,55 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <style>
+        .wrapper {
+            display: grid;
+            grid-template-columns: 800px 500px;
+        }
+
+        .canvas {
+            border: 2px solid grey;
+        }
+
+        .id {
+            margin: 20px;
+        }
+    </style>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 </head>
 <body>
+    <h1>Rose pattern</h1>
     <input type="text" id="k" value="k"/>
     <input type="text" id="steps" value="steps"/>
     <input type="text" id="factor" value="2"/>
     <button onclick="drawRose()">Draw</button>
-    <div class="canvas container">
-        <canvas id="rose" width="800" height="800"></canvas>
-        <script src="script.js"></script>
+    <div class="wrapper">
+        <div class="canvas container">
+            <canvas id="rose" width="800" height="800"></canvas>
+            <script src="script.js"></script>
+        </div>
+        <div class="id container">
+            Mathematical Rose Pattern Generator. This page plots the output of the polar function, r(θ) = cos(θ * κ). This function can be converted to cartesian coordinates, and the resulting functions for x and y is:
+            <script type="math/tex; mode=display" id="MathJax-Element-1">x(θ) = cos(κθ)cos(θ)</script><br />
+            <script type="math/tex; mode=display" id="MathJax-Element-2">y(θ) = cos(κθ)sin(θ)</script><br />
+            K kan be any rational number. If K is an integer the following rules apply:
+            <ul>
+                <li>If κ is even the resulting graph will have 2*κ nodes.</li>
+                <li>If κ is odd the resulting graph will have κ number of nodes</li>
+            </ul>
+            Where k is even, the entire graph of the rose will be traced out exactly once when the value of theta, θ changes from 0 to 2π. When k is odd, this will happen on the interval between 0 and π. (More generally, this will happen on any interval of length 2π for k even, and π for k odd.)
+            
+            <ul>
+                <li>If k is a half-integer (e.g. 1/2, 3/2, 5/2), the curve will be rose-shaped with 4k petals. Example: n=7, d=2, k= n/d =3.5, as θ changes from 0 to 4π.</li>
+
+            <li>If k can be expressed as n±1/6, where n is a nonzero integer, the curve will be rose-shaped with 12k petals.</li>
+
+            <li>If k can be expressed as n/3, where n is an integer not divisible by 3, the curve will be rose-shaped with n petals if n is odd and 2n petals if n is even.</li>
+
+            <li>If k is rational, then the curve is closed and has finite length. If k is irrational, then it is not closed and has infinite length. Furthermore, the graph of the rose in this case forms a dense set (i.e., it comes arbitrarily close to every point in the unit disk).</li>
+            </ul>
+        </div>
     </div>
+    <a href="https://en.wikipedia.org/wiki/Rose_(mathematics)">Source</a>
 </body>
 </html>
