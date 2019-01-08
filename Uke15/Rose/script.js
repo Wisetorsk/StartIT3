@@ -1,19 +1,20 @@
 class Rose {
-    constructor(steps, k) {
+    constructor(steps, k, factor=2) {
         this.k = k;
         this.steps = steps;
         this.points = {
             x: [],
             y: []
         }
+        this.factor = factor;
         this.canvas = new Painter("rose");
         this.calculate();
         this.canvas.drawShape(this.points);
     }
 
     calculate() {
-        this.points.x = [...Array(this.steps).keys()].map(theta => Math.cos(theta / this.steps * Math.PI * 2 * this.k) * Math.cos(theta / this.steps * Math.PI * 2)).map(i => i * 400).map(i => i + 400);
-        this.points.y = [...Array(this.steps).keys()].map(theta => Math.cos(theta / this.steps * Math.PI * 2 * this.k) * Math.sin(theta / this.steps * Math.PI * 2)).map(i => i * 400).map(i => i + 400);
+        this.points.x = [...Array(this.steps).keys()].map(theta => Math.cos(theta / this.steps * Math.PI * this.factor * this.k) * Math.cos(theta / this.steps * Math.PI * this.factor)).map(i => i * 400).map(i => i + 400);
+        this.points.y = [...Array(this.steps).keys()].map(theta => Math.cos(theta / this.steps * Math.PI * this.factor * this.k) * Math.sin(theta / this.steps * Math.PI * this.factor)).map(i => i * 400).map(i => i + 400);
     }
 }
 
@@ -38,6 +39,7 @@ class Painter {
 function drawRose() {
     let k = parseFloat(document.getElementById('k').value);
     let steps = parseFloat(document.getElementById('steps').value);
-    let rose = new Rose(10000, 49);
+    let factor = parseFloat(document.getElementById('factor').value);
+    new Rose(steps, k, factor);
 }
 
