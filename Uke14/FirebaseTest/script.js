@@ -1,3 +1,14 @@
+/*
+ Legg inn egen klasse for username når de vises, og er registrert som users eller server.
+
+
+Elevation parameter: 
+0, unregistered user
+1, registered user
+2, admin user
+3, server
+ */
+
 var config = {
     apiKey: "AIzaSyBuX8JXDmNLolyuF6Q0P5U9CT66DG_Lo_4",
     authDomain: "testing-av-firebase-5acb5.firebaseapp.com",
@@ -33,9 +44,14 @@ Date.prototype.timeNow = function () {
     return ((this.getHours() < 10) ? "0" : "") + this.getHours() + ":" + ((this.getMinutes() < 10) ? "0" : "") + this.getMinutes() + ":" + ((this.getSeconds() < 10) ? "0" : "") + this.getSeconds();
 }
 
-function writeChat() {
+function adminMessage(message) {
+    writeToBase(room1, 'admin', 'ADMIN', message);
     writeToScreen();
-    writeToBase(room1);
+}
+
+function writeChat() {
+    writeToBase(room1, 'unregistered');
+    writeToScreen();
 }
 
 function escape(inputString) {
@@ -47,9 +63,9 @@ function escape(inputString) {
     return output;
 }
 
-function writeToBase(room) {
-    let usrId = escape(document.getElementById('name').value);
-    let usrVal = escape(document.getElementById('inputField').value);
+function writeToBase(room, elevation, usrId=null, usrVal=null) {
+    if(usrId === null) usrId = escape(document.getElementById('name').value);
+    if(usrVal === null) usrVal = escape(document.getElementById('inputField').value);
     let timeVal = Date.now();
     //let timeVal = new Date().today() + " @ " + new Date().timeNow();
     let ids = [...chatLog].map(i => i.messageId);
@@ -62,7 +78,8 @@ function writeToBase(room) {
         time: timeVal,
         usr: usrId,
         message: usrVal,
-        messageId: id
+        messageId: id,
+        elevation: elevation
     })
         .then(writeChatBase)
         .catch(writeChatBase);
@@ -73,7 +90,7 @@ function writeToScreen() {
     document.getElementById('chat').innerHTML = '';
     room1.get().then(readChatBase).then(function () {
         for (msg of chatLog) {
-            document.getElementById('chat').innerHTML += '<li><span class="timestamp hidden">' + String(new Date(msg.timestamp)).slice(0, 24) + '</span>\t' + msg.user + ' said: ' + msg.message + '</li>'
+            document.getElementById('chat').innerHTML += '<li><span class="timestamp hidden">' + String(new Date(msg.timestamp)).slice(0, 24) + '</span>\t<span class="' + msg.elevation + '">' + msg.user + '</span> said: ' + msg.message + '</li>'
         }
     });
 }
@@ -153,7 +170,8 @@ function readChatBase(response, error) {
                         user: element.data().usr,
                         timestamp: element.data().time,
                         message: element.data().message,
-                        messageId: element.data().messageId
+                        messageId: element.data().messageId,
+                        elevation: element.data().elevation
                     });
                 });
 

@@ -4,10 +4,28 @@
 }
 
 .timestamp {
-    color: red;
+    color: sandybrown;
 }
 
 .hidden {
     /*display: none;*/
     display: inline;
+}
+
+
+.unregistered {
+    color: black;
+}
+
+.registered {
+    color: green;
+}
+
+.admin {
+    color: red;
+}
+
+.server {
+    text-decoration: underline;
+    color: blue;
 }
