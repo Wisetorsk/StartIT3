@@ -35,4 +35,4 @@ class Painter {
     }
 }
 
-let rose = new Rose(1000, 9);
+let rose = new Rose(10000, 49);
