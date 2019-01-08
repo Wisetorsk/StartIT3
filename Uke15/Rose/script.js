@@ -13,8 +13,8 @@ class Rose {
     }
 
     calculate() {
-        this.points.x = [...Array(this.steps).keys()].map(theta => (400 * Math.cos(theta / this.steps * Math.PI * this.factor * this.k) * Math.cos(theta / this.steps * Math.PI * this.factor)) + 400);
-        this.points.y = [...Array(this.steps).keys()].map(theta => (400 * Math.cos(theta / this.steps * Math.PI * this.factor * this.k) * Math.sin(theta / this.steps * Math.PI * this.factor)) + 400);
+        this.points.x = [...Array(this.steps).keys()].map(theta => (350 * Math.cos(theta / this.steps * Math.PI * this.factor * this.k) * Math.cos(theta / this.steps * Math.PI * this.factor)) + 400);
+        this.points.y = [...Array(this.steps).keys()].map(theta => (350 * Math.cos(theta / this.steps * Math.PI * this.factor * this.k) * Math.sin(theta / this.steps * Math.PI * this.factor)) + 400);
     }
 }
 
