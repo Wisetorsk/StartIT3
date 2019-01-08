@@ -35,4 +35,9 @@ class Painter {
     }
 }
 
-let rose = new Rose(10000, 49);
+function drawRose() {
+    let k = parseFloat(document.getElementById('k').value);
+    let steps = parseFloat(document.getElementById('steps').value);
+    let rose = new Rose(10000, 49);
+}
+
