@@ -37,9 +37,9 @@ class Painter {
 }
 
 function drawRose() {
-    let k = parseFloat(document.getElementById('k').value);
+    let k = eval(document.getElementById('k').value);
     let steps = parseFloat(document.getElementById('steps').value);
-    let factor = parseFloat(document.getElementById('factor').value);
+    let factor = parseInt(document.getElementById('factor').value);
     new Rose(steps, k, factor);
 }
 
