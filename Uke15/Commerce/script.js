@@ -18,6 +18,7 @@ let db = firebase.firestore();
 let inventory = db.collection('Store').doc('HrGypMCyFiKs5k63PwHO').collection('Inventory');
 let orders = db.collection('Store').doc('o3LaB1atNQl99DgWWroM').collection('Orders');
 let allOrders = {};
+let inventoryData = {};
 let numberOfOrders = 0;
 
 function getAllOrders() {
@@ -30,52 +31,56 @@ function getAllOrders() {
         .catch(error => console.error(error));
 }
 
-function updateNumberOfOrders(response, error) {
-    if (error) {
-        throw error;
-    } else {
+function updateNumberOfOrders(response) {
         response.forEach(function (element) {
             if (element.data().TotalOrders) {
                 numberOfOrders = parseInt(element.data().TotalOrders);
             }
         });
-    }
-    console.log()
 }
 
-function writeToLocal(response, error) {
+function writeToLocal(response) {
     console.log('Reading database');
     if (!response) {
         console.log('No response');
     } else {
-        if (error) {
-            throw error;
-        } else {
-            //allOrders = {};
-            console.log('Got something: ', typeof (response));
-            response.forEach(function (element) {
-                allOrders[element.data().OrderNumber] = {
-                    customerId: element.data().CustomerId,
-                    orderNumber: element.data().OrderNumber,
-                    productName: element.data().ProductName,
-                    productNumber: element.data().ProductNumber
-                }
-            })
-        }
+        console.log('Got something: ', typeof (response));
+        response.forEach(function (element) {
+            allOrders[element.data().OrderNumber] = {
+                customerId: element.data().CustomerId,
+                orderNumber: element.data().OrderNumber,
+                productName: element.data().ProductName,
+                productNumber: element.data().ProductNumber
+            }
+        })
     }
 }
 
 function getOrder(orderNumber) {
     // Get a single order based on order number
-    getAllOrders()
     return allOrders[orderNumber];
 }
 
-function addOrder(orderNumber, productNumber) {
-
+function addOrder(orderNumber, productNumber, productName, customerId) {
+    orders.add({
+        CustomerId: customerId,
+        OrderNumber: orderNumber,
+        ProductName: productName,
+        ProductNumber: productNumber
+    })
+        .then(function (docRef) {
+            console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function (error) {
+            console.error("Error adding document: ", error);
+        });
 }
 
 function updateInventory(productNumber, change) {
+
+}
+
+function GetInventory() {
 
 }
 
