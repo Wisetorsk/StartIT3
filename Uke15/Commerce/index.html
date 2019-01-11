@@ -11,7 +11,14 @@
     <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-firestore.js"></script>
 
     <div id="page" class="wrapper">
-
+        <table id="orders">
+            
+        </table>
+        <div id="orderAdd">
+            <input type="text" id="productNumber" value="Product Number"/>
+            <input type="text" id="customerId" value="Customer ID"/>
+            <button onclick="addNewOrder()">Add</button>
+        </div>
     </div>
 
     <script src="script.js"></script>

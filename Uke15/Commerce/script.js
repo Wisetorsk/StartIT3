@@ -18,6 +18,7 @@ let db = firebase.firestore();
 let inventory = db.collection('Store').doc('HrGypMCyFiKs5k63PwHO').collection('Inventory');
 let orders = db.collection('Store').doc('o3LaB1atNQl99DgWWroM').collection('Orders');
 let allOrders = {};
+let products = {}; // Object of available products in inventory. Update by function.
 let inventoryData = {};
 let numberOfOrders = 0;
 
@@ -62,6 +63,7 @@ function getOrder(orderNumber) {
 }
 
 function addOrder(orderNumber, productNumber, productName, customerId) {
+    db.collection('Store').TotalOrders += 1;
     orders.add({
         CustomerId: customerId,
         OrderNumber: orderNumber,
@@ -74,6 +76,19 @@ function addOrder(orderNumber, productNumber, productName, customerId) {
         .catch(function (error) {
             console.error("Error adding document: ", error);
         });
+}
+
+function addNewOrder() {
+    let orderNumber = '';
+    for (let i = 0; i < (8 - String(numberOfOrders + 1).length); i++) {
+        orderNumber += '0';
+    }
+    orderNumber += String(numberOfOrders + 1);
+    console.log(orderNumber);
+    let productNumber = document.getElementById('productNumber').value;
+    let customerId = document.getElementById('customerId').value;
+    let productName = products[productNumber];
+    addOrder(orderNumber, productNumber, productName, customerId);
 }
 
 function updateInventory(productNumber, change) {
@@ -95,6 +110,18 @@ function dump(dir) {
             });
         });
     });
+}
+
+function writeOrdersToPage() {
+    let html = '<tr><th> Order Number</th><th>Product Number</th><th>Product Name</th><th>Customer ID</th></tr >';
+    for (let key of Object.keys(allOrders)) {
+        html += '<tr><td>' + allOrders[key].orderNumber + '</td>';
+        html += '<td>' + allOrders[key].productNumber + '</td>';
+        html += '<td>' + allOrders[key].productName + '</td>';
+        html += '<td>' + allOrders[key].customerId + '</td></tr>';
+    }
+    
+    document.getElementById('orders').innerHTML = html;
 }
 
 //dump('orders');
