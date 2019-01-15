@@ -63,6 +63,10 @@ function escape(inputString) {
     return output;
 }
 
+function sigmoid(x) {
+    return (1/(1 + Math.exp(x)))
+}
+
 function writeToBase(room, elevation, usrId=null, usrVal=null) {
     if(usrId === null) usrId = escape(document.getElementById('name').value);
     if(usrVal === null) usrVal = escape(document.getElementById('inputField').value);
