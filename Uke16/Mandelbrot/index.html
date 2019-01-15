@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css" type="text/css"/>
 </head>
 <body>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
     <script src="../../toolbox/functions.js"></script>
     <script src="mandelbrot.js"></script>
     <div class="wrapper">
@@ -18,7 +19,16 @@
         </div>
         <div class="text">
             <p>
-                <span class="bold large">This</span> is a visualization of the set of complex numbers known i mathematics as the Mandelbrot set.
+                <span class="bold large">This</span> is a visualization of the set of complex numbers known in mathematics as the Mandelbrot set.<br />
+                The complex number \(C\) is part of the Mandelbrot set if the resulting equation \(f_c(z) = z^2 + C\) does not diverge (Tends to move towards a value of \(_-^+infinity\))<br />
+                This is calculated programmatically using \(Z_n = Z_{n-1}^2 + C\) as a base. <br /><br />
+                A complex number concists of two parts, a real component(\(a\)), and an imaginary component(\(bi\)). \(C = a + bi \).<br />
+                By further analysis of the number sequence given by Z, we can generalize the real and imaginary components of C in this way:<br /><br />
+                &emsp;&emsp; \(C(real) = a^2 - b^2\)<br />&emsp;&emsp; \(C(imaginary) = 2ab\).<br /><br />
+                By iterating through the values of \(C\) and checking the sub iterations \(Z\) we can determine if the given number \(C\) is part of the set by comparing it against a threshold value we determine. This is done to simplify the programming, since we can assume that if the number \(Z\) is rapidly approaching \(infinity\), then through even a few number of iterations, if the number exceeds our threshold value, we can assume that this number \(C\) is not part of the Mandelbrot set. <br /><br /><br />
+                <a href ="https://en.wikipedia.org/wiki/Mandelbrot_set">Mandelbrot Set Wikipedia page</a>
+
+
             </p>
         </div>
     </div>
