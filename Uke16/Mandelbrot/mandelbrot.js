@@ -12,8 +12,8 @@ class MandelbrotSet {
     calculate() {
         for (let x of arr(this.width)) {
             for (let y of arr(this.height)) {
-                let a = map(x, 0, this.width, -3, 3);
-                let b = map(y, 0, this.height, -3, 3);
+                let a = map(x, 0, this.width, -2.2, 1);
+                let b = map(y, 0, this.height, -1.5, 1.5);
 
                 let iterations = 0;
                 let c_base_a = a;
