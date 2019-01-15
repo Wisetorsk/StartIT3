@@ -1,7 +1,7 @@
 class MandelbrotSet {
     /* This class creates a visualization of the set of complex numbers known as the Mandelbrot set by plotting the real component on the y plane, and the imaginary component on the x plane.
      */
-    constructor(width, height, n=100, threshold=10) {
+    constructor(width, height, n=200, threshold=7) {
         this.width = width; //Number of pixels in x direction
         this.height = height; // Number of pixels in y (b*i) direction
         this.threshold = threshold;
@@ -12,8 +12,8 @@ class MandelbrotSet {
     calculate() {
         for (let x of arr(this.width)) {
             for (let y of arr(this.height)) {
-                let a = map(x, 0, this.width, -2, 2);
-                let b = map(y, 0, this.height, -2, 2);
+                let a = map(x, 0, this.width, -3, 3);
+                let b = map(y, 0, this.height, -3, 3);
 
                 let iterations = 0;
                 let c_base_a = a;
@@ -31,8 +31,12 @@ class MandelbrotSet {
                     }
                     iterations = i;
                 }
-
-                let brightness = map(iterations, 0, this.n-1, 0, 255);
+                let brightness;
+                if (iterations == this.n-1) {
+                    brightness = 0;
+                } else {
+                    brightness = map(iterations, 0, this.n - 1, 0, 255);
+                }
                 this.results.push(brightness);
             }
             
