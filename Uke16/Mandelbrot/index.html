@@ -3,12 +3,25 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Mandelbrot Set</title>
+    <link rel="stylesheet" href="style.css" type="text/css"/>
 </head>
 <body>
     <script src="../../toolbox/functions.js"></script>
     <script src="mandelbrot.js"></script>
-    <canvas id="mandelbrot" width="800" height="800"></canvas>
+    <div class="wrapper">
+        <div class="header">
+            Mandelbrot Set
+        </div>
+        <div class="canvas">
+            <canvas id="mandelbrot" width="800" height="800"></canvas>
+        </div>
+        <div class="text">
+            <p>
+                <span class="bold large">This</span> is a visualization of the set of complex numbers known i mathematics as the Mandelbrot set.
+            </p>
+        </div>
+    </div>
     <script>
         let test = new MandelbrotSet(800, 800, 100, 16);
         test.calculate();

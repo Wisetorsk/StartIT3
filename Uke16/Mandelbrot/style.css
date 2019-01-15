@@ -1,0 +1,35 @@
+body {
+    color: white;
+    background-color: black;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-areas: "header header" "canvas text";
+}
+
+.header {
+    grid-area: header;
+    text-align: center;
+    font-size: 300%;
+    text-decoration: underline;
+}
+
+.text {
+    grid-area: text;
+}
+
+.canvas {
+    grid-area: canvas;
+}
+
+.bold {
+    text-transform: capitalize;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.large {
+    font-size: 150%;
+}
+
