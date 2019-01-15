@@ -9,5 +9,12 @@
     <script src="../../toolbox/functions.js"></script>
     <script src="mandelbrot.js"></script>
     <canvas id="mandelbrot" width="800" height="800"></canvas>
+    <script>
+        let test = new MandelbrotSet(800, 800, 100, 16);
+        test.calculate();
+        let paint = new Painter('mandelbrot');
+        paint.pixelMap(test.results);
+
+    </script>
 </body>
 </html>
