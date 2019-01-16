@@ -11,7 +11,6 @@
 
     </div>
     <script src="board.js"></script>
-    <script src="cell.js"></script>
     <script src="gameOfLife.js"></script>
     <script>
         let run = false;
@@ -31,9 +30,7 @@
                 clearInterval(machine);
                 run = false;
                 document.getElementById('run').innerHTML = 'Start Simulation';
-            }
-            
-        }
+            }        }
     </script>
     <button id="run" onclick="start()">Start Simulation</button>
     <button onclick="life.setRandom(10)">Add 10 random cells</button>
