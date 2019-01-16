@@ -21,7 +21,6 @@ function setCell(element) {
         element.classList.add('dead');
         element.classList.remove('alive');
     }
-
 }
 
 function loadFigure(fig) {
