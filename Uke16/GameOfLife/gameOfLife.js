@@ -10,7 +10,7 @@ class Life {
 
     getCells() {
         let rawCells = [...document.getElementById('board').childNodes];
-        rawCells.shift();
+        //rawCells.shift();
         let index = 0;
         for (let _ in [...Array(this.width).keys()]) {
             let row = [];
@@ -97,7 +97,8 @@ class Life {
     }
 
     oneStep() {
-        this.setGameState(this.mapStates());
+        let states = this.mapStates();
+        this.setGameState(states);
     }
 
 }
