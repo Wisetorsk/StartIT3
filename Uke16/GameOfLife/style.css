@@ -7,17 +7,17 @@
 }
 
 .cell {
-    width: 7px;
-    height: 7px;
-    border: 1px solid black;
+    width: 9px;
+    height: 9px;
+    border: 1px solid grey;
     border-collapse: collapse;
 }
 
 .board {
     display: grid;
     grid-area: board;
-    grid-template-columns: repeat(100, 7px);
-    grid-template-rows: repeat(100, 7px);
+    grid-template-columns: repeat(100, 9px);
+    grid-template-rows: repeat(100, 9px);
 }
 
 .wrapper {
