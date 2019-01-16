@@ -5,7 +5,6 @@ function buildBoard(x, y) {
             board.innerHTML += insertCell(i, j);
         }
     }
-    console.log("build");
 }
 
 function insertCell(x, y) {
