@@ -6,6 +6,7 @@ class Life {
         this.height = height;
         this.width = width;
         this.cells = [];
+        this.generation = 0;
     }
 
     getCells() {
@@ -97,8 +98,10 @@ class Life {
     }
 
     oneStep() {
+        //document.getElementById('generation').innerHTML = this.generation;
         let states = this.mapStates();
         this.setGameState(states);
+        this.generation++;
     }
 
 }
