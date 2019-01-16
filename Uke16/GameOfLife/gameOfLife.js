@@ -36,15 +36,26 @@ class Life {
         }
     }
 
-    setGameState(state, parse = false) {
+    setGameState(state=false, parse = false) {
         if (parse) {
             state = this.parseExternalState(state);
         }
-        for (let row in state) {
-            for (let cell in state[row]) {
-                this.cells[row][cell].classList.remove('alive');
-                this.cells[row][cell].classList.remove('dead');
-                this.cells[row][cell].classList.add(state[row][cell]);
+        if (state) {
+            for (let row in state) {
+                for (let cell in state[row]) {
+                    this.cells[row][cell].classList.remove('alive');
+                    this.cells[row][cell].classList.remove('dead');
+                    this.cells[row][cell].classList.add(state[row][cell]);
+                }
+            }
+        } else {
+            const dim = [...Array(100).keys()];
+            for (let row in dim) {
+                for (let cell in dim) {
+                    this.cells[row][cell].classList.remove('alive');
+                    this.cells[row][cell].classList.remove('dead');
+                    this.cells[row][cell].classList.add('dead');
+                }
             }
         }
     }

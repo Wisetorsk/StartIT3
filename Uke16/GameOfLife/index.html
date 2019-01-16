@@ -23,17 +23,20 @@
                 </ul>
             <p>
                 Click on a cell to make it "alive" before starting the simulation. <br />
-                You can also click on "Add 50 random cells" to add living cells to the board.
+                You can also click on "Add 50 random cells" to add living cells to the board.<br />
+                I've also added some buttons that load a preset pattern into the board.
             </p>
             <button onclick="loadFigure(acorn)">Load Acorn</button>
             <button onclick="loadFigure(gliderGun)">Load Glider Gun</button>
             <button onclick="loadFigure(spaceWar)">Load Space War</button>
+            <button onclick="loadFigure(infinite)">Load Long Generation</button>
         </div>
         <div id="board" class="board">
         </div>
     </div>
     <button id="run" onclick="start()" style="width:200px;">Start Simulation</button>
     <button onclick="life.setRandom(50)" style="width:200px;">Add 50 random cells</button>
+    <button onclick="life.setGameState()">Reset</button>
     <script src="board.js"></script>
     <script src="gameOfLife.js"></script>
     <script>
@@ -45,7 +48,7 @@
             if (!run) {
                 run = setInterval(function () {
                     life.oneStep();
-                }, 25);
+                }, 15);
                 document.getElementById('run').innerHTML = 'Stop Simulation';
             } else {
                 clearInterval(run);
