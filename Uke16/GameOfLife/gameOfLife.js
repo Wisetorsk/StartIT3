@@ -36,7 +36,10 @@ class Life {
         }
     }
 
-    setGameState(state) {
+    setGameState(state, parse = false) {
+        if (parse) {
+            state = this.parseExternalState(state);
+        }
         for (let row in state) {
             for (let cell in state[row]) {
                 this.cells[row][cell].classList.remove('alive');
@@ -44,6 +47,34 @@ class Life {
                 this.cells[row][cell].classList.add(state[row][cell]);
             }
         }
+    }
+
+    parseExternalState(state) {
+        let parsed = [];
+        for (let row of state) {
+            let r = [];
+            for (let letter in row) {
+                r.push((row[letter] == 'A') ? 'alive' : 'dead');
+            }
+            parsed.push(r);
+        }
+        return parsed;
+    }
+
+    saveState() {
+        let state = [];
+        for (let row of this.cells) {
+            let r = '';
+            for (let cell of row) {
+                if (cell.classList.contains('alive')) {
+                    r += 'A';
+                } else {
+                    r += 'D';
+                }
+            }
+            state.push(r);
+        }
+        return state;
     }
 
     mapStates() {
