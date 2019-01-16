@@ -15,6 +15,16 @@
 
 .board {
     display: grid;
+    grid-area: board;
     grid-template-columns: repeat(50, 15px);
     grid-template-rows: repeat(50, 15px);
+}
+
+.wrapper {
+    display: grid;
+    grid-template-areas: "board text"
+}
+
+#text {
+    grid-area: text;
 }

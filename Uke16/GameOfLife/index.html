@@ -7,7 +7,10 @@
     <title></title>
 </head>
 <body>
-    <div id="board" class="board">
+    <div class="wrappper">
+        <div id="board" class="board">
+        </div>
+        <div id="text"></div>
     </div>
     <script src="board.js"></script>
     <script src="gameOfLife.js"></script>
@@ -17,12 +20,11 @@
         machine = null;
         buildBoard(50, 50);
         life.getCells();
-        console.log(life.cells);
         function start() {
             if (!run) {
                 machine = setInterval(function () {
                     life.oneStep();
-                }, 10);
+                }, 50);
                 run = true;
                 document.getElementById('run').innerHTML = 'Stop Simulation';
             } else {
