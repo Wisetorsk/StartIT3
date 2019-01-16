@@ -1,10 +1,12 @@
 function buildBoard(x, y) {
+    let html = '';
     let board = document.getElementById('board');
     for (let j of [...Array(y).keys()]) {
         for (let i of [...Array(x).keys()]) {
-            board.innerHTML += insertCell(i, j);
+            html += insertCell(i, j);
         }
     }
+    board.innerHTML = html;
 }
 
 function insertCell(x, y) {
