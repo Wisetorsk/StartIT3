@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title></title>
+</head>
+<body>
+    <div id="board" class="board">
+
+    </div>
+    <script src="board.js"></script>
+    <script src="cell.js"></script>
+    <script src="gameOfLife.js"></script>
+    <script>
+        let run = false;
+        let life = new Life(50, 50);
+        machine = null;
+        buildBoard(50, 50);
+        life.getCells();
+        console.log(life.cells);
+        function start() {
+            if (!run) {
+                machine = setInterval(function () {
+                    life.oneStep();
+                }, 10);
+                run = true;
+            } else {
+                clearInterval(machine);
+                run = false;
+            }
+            
+        }
+    </script>
+    <button onclick="start()">Start Simulation</button>
+</body>
+</html>

@@ -1,0 +1,20 @@
+.alive {
+    background-color: black;
+}
+
+.dead {
+    background-color : white;
+}
+
+.cell {
+    width: 15px;
+    height: 15px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(50, 15px);
+    grid-template-rows: repeat(50, 15px);
+}
