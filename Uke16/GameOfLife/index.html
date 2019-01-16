@@ -36,21 +36,20 @@
     <script>
         let run = false;
         let life = new Life(100, 100);
-        machine = null;
         buildBoard(100, 100);
         life.getCells();
         function start() {
             if (!run) {
-                machine = setInterval(function () {
+                run = setInterval(function () {
                     life.oneStep();
                 }, 25);
-                run = true;
                 document.getElementById('run').innerHTML = 'Stop Simulation';
             } else {
-                clearInterval(machine);
+                clearInterval(run);
                 run = false;
                 document.getElementById('run').innerHTML = 'Start Simulation';
-            }        }
+            }
+        }
     </script>
 
 </body>
