@@ -44,6 +44,17 @@
         let life = new Life(100, 100);
         buildBoard(100, 100);
         life.getCells();
+        if (getQueryVariable("preset")) {
+            let fig = getQueryVariable("figure");
+            try {
+                console.log('Loading preset ', fig);
+                loadFigure(eval(fig));
+            } catch {
+                console.log('Invalid argument passed ', fig);
+            }
+
+        }
+
         function start() {
             if (!run) {
                 run = setInterval(function () {

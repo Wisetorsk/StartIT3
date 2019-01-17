@@ -11,7 +11,6 @@ class Life {
 
     getCells() {
         let rawCells = [...document.getElementById('board').childNodes];
-        //rawCells.shift();
         let index = 0;
         for (let _ in [...Array(this.width).keys()]) {
             let row = [];
@@ -36,7 +35,7 @@ class Life {
         }
     }
 
-    setGameState(state=false, parse = false) {
+    setGameState(state=false, parse=false) {
         if (parse) {
             state = this.parseExternalState(state);
         }
