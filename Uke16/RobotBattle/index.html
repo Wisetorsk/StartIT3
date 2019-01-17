@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+
+    <script>
+        let canvas = document.getElementById('myCanvas');
+        let ctx = canvas.getContext("2d");
+        let arenaSize = 10;
+        let pxPerCell = canvas.width / arenaSize;
+        let x = 95;
+        let y = 50;
+        let arena = [
+            {
+                name: 'Per',
+
+            },
+            {
+                name: 'Pål',
+
+            },
+            {
+                name: 'Espen',
+
+            }
+        ];
+
+        for (let i = 0; i < arena.length; i++) {
+            const rowIndex = Math.floor(i / arenaSize);
+            const colIndex = i % arenaSize;
+            const x = colIndex * pxPerCell ;
+            const y = rowIndex * pxPerCell ;
+            drawRobot(x, y);
+
+        }
+
+        function line(fromX, fromY, toX, toY) {
+            ctx.moveTo(fromX, fromY);
+            ctx.lineTo(toX, toY);
+            ctx.stroke();
+        }
+
+        function drawRobot(x, y) {
+            const cx = pxPerCell / 2;
+            const cy = pxPerCell / 2;
+            ctx.beginPath();
+            ctx.arc(
+                x + cx,
+                y + cy,
+                0.8 * pxPerCell / 2,
+                0,
+                2 * Math.PI);
+            line(x + cx, y + cy , x, y + 20);
+        }
+    </script>
+</body>
+</html>
