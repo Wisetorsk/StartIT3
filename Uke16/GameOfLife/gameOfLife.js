@@ -45,6 +45,9 @@ class Life {
                     this.cells[row][cell].classList.remove('alive');
                     this.cells[row][cell].classList.remove('dead');
                     this.cells[row][cell].classList.add(state[row][cell]);
+                    if (this.cells[row][cell].classList.contains('alive')) {
+                        this.cells[row][cell].classList.add('trace');
+                    }
                 }
             }
         } else {

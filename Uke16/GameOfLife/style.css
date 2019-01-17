@@ -2,6 +2,10 @@
     background-color: black;
 }
 
+.alive.trace {
+    background-color: black;
+}
+
 .dead {
     background-color : white;
 }
@@ -28,4 +32,8 @@
 .text {
     grid-area: text;
     margin: 20px;
+}
+
+.trace {
+    background-color: darkseagreen;
 }
