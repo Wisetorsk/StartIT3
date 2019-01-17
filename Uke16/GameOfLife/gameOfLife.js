@@ -56,6 +56,7 @@ class Life {
                 for (let cell in dim) {
                     this.cells[row][cell].classList.remove('alive');
                     this.cells[row][cell].classList.remove('dead');
+                    this.cells[row][cell].classList.remove('trace');
                     this.cells[row][cell].classList.add('dead');
                 }
             }
