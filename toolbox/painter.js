@@ -34,13 +34,20 @@ class Painter {
 
     drawShape(xy) {
         console.log('draw');
-        this.ctx.clearRect(0, 0, 800, 800);
+        //console.log(xy);
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.beginPath();
         for (let index = 0; index < xy.x.length; index++) {
-            let x = xy.x[index];
-            let y = xy.y[index];
+            const x = xy.x[index];
+            const y = xy.y[index];
             this.ctx.lineTo(x, y);
         }
         this.ctx.stroke();
+    }
+
+    wipe() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.beginPath();
     }
 
     pixelMap(dataset) {
