@@ -50,7 +50,8 @@ function drawRose() {
     let steps = parseFloat(document.getElementById('steps').value);
     let factor = parseInt(document.getElementById('factor').value);
     new Rose(steps, k, factor);
-    console.log("Parameters: K:\t${k}\nSteps:\t${steps}\nDrawn over factor of PI:\t${factor}\n");
+    var str = "Parameters: K:\t" + k + "\nSteps:\t" + steps + "\nDrawn over factor of PI:\t" + factor;
+    console.log(str);
 
 }
 
