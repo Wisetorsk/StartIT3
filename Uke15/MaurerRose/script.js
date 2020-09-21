@@ -70,7 +70,7 @@ const randomize = () => {
         n: Math.random() * 20,
         d: Math.random() * 30,
         maurer: Math.random() * 720,
-        size: Math.random() * 1100 - 200,
+        size: Math.random() * 800 - 200,
         gg: Math.random() * 500
     })
     draw()
