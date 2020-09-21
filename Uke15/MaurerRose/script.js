@@ -17,15 +17,15 @@ let settings = {
 let xStart, yStart
 
 window.addEventListener('resize', () => {
-    canvas.width = document.body.offsetWidth
-    canvas.height = document.body.offsetHeight
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
     xStart = canvas.width / 2
     yStart = canvas.height / 2
     draw()
 })
 
-canvas.width = document.body.offsetWidth
-canvas.height = document.body.offsetHeight
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
 xStart = canvas.width / 2
 yStart = canvas.height / 2
 
