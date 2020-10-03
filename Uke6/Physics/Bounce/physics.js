@@ -67,7 +67,7 @@ class Palette {
         this.id = canvasID;
         this.ctx = document.getElementById(this.id).getContext("2d");
         this.ctx.fillStyle = "#FF0000";
-        this.system = new System(9.81, 10, 20, 600, 600);
+        this.system = new System(9.81, 20, 20, 600, 600);
     }
 
     oneFrame() {
